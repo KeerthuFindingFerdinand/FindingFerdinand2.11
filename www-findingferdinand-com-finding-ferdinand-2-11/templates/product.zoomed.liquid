@@ -1,0 +1,16 @@
+<!-- /templates/product.liquid -->
+<div itemscope itemtype="http://schema.org/Product">
+    <div class="grid__item one-half text-center">
+      <div class="product-single__photos" style="height: 0px; padding-bottom: 100%; background-image: url('{% for image in product.images limit:1 %}{{ image.src | img_url: 'large' }}{% endfor %}'); background-position: center center; background-size: 150%;"></div>
+      </div>
+
+    <div class="grid__item one-half">
+
+      <h1 itemprop="name">{{ product.title }}</h1>
+
+      <div class="product-description rte" itemprop="description">
+        {{ product.description }}
+        <span class="tags">{{ product.tags }}</span>
+      </div>
+    </div>
+</div>

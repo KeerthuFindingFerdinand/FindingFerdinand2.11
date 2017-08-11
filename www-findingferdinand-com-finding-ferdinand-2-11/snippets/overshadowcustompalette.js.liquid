@@ -1,0 +1,241 @@
+<script type="text/javascript">
+$(document).ready(function() {
+
+	var assetpath = "https://cdn.shopify.com/s/files/1/1099/1078/files/";
+
+	$(".palette-options-container .palette").click(function (evt) {
+        var el = $(this);
+		var code = el.data('code');
+		var utype = el.data('type');
+		var utitle = el.data('title').replace(/\s+/g, '-');
+
+        var ucode =
+            (utype == "bronzer") ? "bronzing-powder" :
+            (utype == "highlighter") ? "shimmer-powder" :
+            (utype == "blush") ? code.replace('#', '') :
+            code.replace('#', '');
+
+      var uhandle = (utype + "-" + utitle + "-" + ucode).toLowerCase().replace('--', '-');
+      
+      
+      $.getJSON('/products/' + uhandle + '.js', function(data) {
+	      var html = 
+              '<div class="ssw-modal ssw-fade">' +
+				'<div class="ssw-modal-dialog">' +
+                  '<div class="ssw-modal-content">' +
+                    '<div class="ssw-modal-body">' +
+				      '<button class="ssw-close" aria-hidden="true" data-dismiss="ssw-modal" type="button">×</button>' +
+              	      '<div itemscope="" itemtype="http://schema.org/Product">' +
+                         '<div class="grid__item one-half text-center">' +
+                            '<div class="product-single__photos" style="height: 0px; padding-bottom: 100%; background-image: url(\'' + data.featured_image + '\'); background-position: center center; background-size: 150%;"></div>' +
+                         '</div>' +
+                         '<div class="grid__item one-half">' +
+                         '<h1 itemprop="name">' + data.title + '</h1>' +
+                         '<div class="product-description rte" itemprop="description">' +
+                           '<p>' + data.description + '</p>' +
+                           '<span class="tags">' + data.tags.join(', ') + '</span>' +
+                         '</div>' +
+              		  '</div>' +
+                    '</div>' +
+              		'<div class="text-right"><button class="btn add-to-palette">Add to Palette</button></div>' +
+                  '</div>' +
+                '</div>' +
+              '</div>'
+          var modal = $(html).sswModal();
+          modal.find('.add-to-palette').on('click', function() {
+            addToPalette(el);
+            modal.sswModal('hide');
+		  })
+          //console.log(data);
+      });
+
+      var addToPalette = function(el) {
+		el.addClass('selected');
+
+		var code = el.data('code');
+		var type = el.data('type');
+		var blink = false;
+		// Check for which dropdown to populate
+
+
+			if (!$("#01 option:selected").val()) {
+				var target = $("#01");
+				var targetb = $("#cp01");
+			} else if (!$("#02 option:selected").val()) {
+				var target = $("#02");
+				var targetb = $("#cp02");
+			} else if (!$("#03 option:selected").val()) {
+				var target = $("#03");
+				var targetb = $("#cp03");
+			} else if (!$("#04 option:selected").val()) {
+				var target = $("#04");
+				var targetb = $("#cp04");
+			} else if (!$("#05 option:selected").val()) {
+				var target = $("#05");
+				var targetb = $("#cp05");
+			} else if (!$("#05 option:selected").val()) {
+				var target = $("#05");
+				var targetb = $("#cp05");
+			} else if (!$("#06 option:selected").val()) {
+				var target = $("#06");
+				var targetb = $("#cp06");
+			} else if (!$("#07 option:selected").val()) {
+				var target = $("#07");
+				var targetb = $("#cp07");
+			} else{
+				var target = $("#08");
+				var targetb = $("#cp08");
+				$('#AddToCart').addClass('blink');
+			} 
+
+
+		var optionItem = target.find("option[data-code='" + code + "']");
+		optionItem.prop('selected', true);
+
+		var optionselected = target.find(":selected");
+		var ref = target.attr('id');
+		var resultTarget = $('.results-palette').find('[data-reference="'+ref+'"]');
+
+		if(optionselected.val().trim().length != 0){
+
+			var img = optionselected.data('img');
+			var imgurl = assetpath + img + "_200x200.jpg";
+			var utype = optionselected.data('type');
+          	var utitle = optionselected.text();
+			utitle = utitle.replace(/\s+/g, '-').toLowerCase();
+
+			if (utype == "bronzer"){
+
+				var ucode = "bronzing-powder";
+				ucode = ucode.toLowerCase();	
+				var uhandle = "//findingferdinand.com/products/"+utype+"-"+utitle+"-"+ucode+"?view=zoomed";
+			} else if (utype == "highlighter") {
+				var ucode = "shimmer-powder";
+				ucode = ucode.toLowerCase();
+				var uhandle = "//findingferdinand.com/products/"+utitle+"-"+ucode+"?view=zoomed";
+            } else if (utype == "blush") {
+              	var ucode = optionselected.data('code');
+				ucode = ucode.toLowerCase();
+              	ucode = ucode.replace('#', '-').toLowerCase();
+				var uhandle = "//findingferdinand.com/products/"+utype+"-"+utitle+""+ucode+"?view=zoomed";
+			} else {
+				var ucode = optionselected.data('code');
+				ucode = ucode.replace('#', '').toLowerCase();	
+              	var uhandle = "//findingferdinand.com/products/"+utype+""+utitle+""+ucode+"?view=zoomed";
+			}
+
+			
+			
+
+			target.parent().find('.palette-swatch').css('background-image','url('+imgurl+')');
+			resultTarget.css('background-image','url('+imgurl+')').addClass('bump selected url-ready').delay(150).queue(function() {
+	              el.removeClass("bump").dequeue();
+	          });
+			resultTarget.attr('data-url',uhandle);
+
+			var url = uhandle;
+
+			resultTarget.click(function (evt) {
+				$('#more-details').attr('src',url);
+				$('.modal').show();
+				setTimeout(function(){
+			  		$('.modal').addClass('loaded');
+				}, 250);
+				evt.preventDefault();
+				return false;
+			});
+
+			targetb.val(imgurl);
+
+
+		} else {
+
+			el.parent().find('.palette-swatch').css('background-image','url("")');
+			resultTarget.css('background-image','url("")').removeClass('selected url-ready');
+			resultTarget.removeAttr('data-url');
+			targetb.val('');	
+
+		};
+		evt.preventDefault();
+		return false;
+      }
+      
+	});
+	          
+	$('select').on('change', function() {
+
+		var optionselected = $(this).find(":selected");
+		var ref = $(this).attr('id');
+		var resultTarget = $('.results-palette').find('[data-reference="'+ref+'"]');
+		var targetb = $("#cp"+ref+"");
+
+		if(optionselected.val().trim().length != 0){
+
+			var img = optionselected.data('img');
+			var imgurl = assetpath + img + "_200x200.jpg";
+
+			var utype = optionselected.data('type');
+
+			if (utype == "bronzer"){
+
+				var ucode = "bronzing-powder";
+				ucode = ucode.toLowerCase();	
+
+			} else if (utype == "highlighter") {
+				var ucode = "shimmer-powder";
+				ucode = ucode.toLowerCase();
+
+			} else {
+				var ucode = optionselected.data('code');
+				ucode = ucode.replace('#', '').toLowerCase();	
+			}
+
+			var utitle = optionselected.text();
+			utitle = utitle.replace(/\s+/g, '-').toLowerCase();
+			var uhandle = "//findingferdinand.com/products/"+utype+"-"+utitle+"-"+ucode+"?view=zoomed";
+
+			$(this).parent().find('.palette-swatch').css('background-image','url('+imgurl+')');
+			resultTarget.css('background-image','url('+imgurl+')').addClass('bump selected url-ready').delay(150).queue(function() {
+	              $(this).removeClass("bump").dequeue();
+	          });
+
+			resultTarget.attr('data-url',uhandle);
+
+			var url = uhandle;
+
+			resultTarget.click(function (evt) {
+				$('#more-details').attr('src',url);
+				$('.modal').show();
+				setTimeout(function(){
+			  		$('.modal').addClass('loaded');
+				}, 250);
+				evt.preventDefault();
+				return false;
+			});
+
+			targetb.val(imgurl);
+
+		} else {
+
+			$(this).parent().find('.palette-swatch').css('background-image','url("")');
+			resultTarget.css('background-image','url("")').removeClass('selected url-ready');
+			resultTarget.removeAttr('data-url');
+			targetb.val('');
+		}
+
+	});
+
+	$(".cancel").click(function (evt) {
+		$(this).siblings('.palette').removeClass('selected').css('background-image','none');
+		var selectref = $(this).siblings('.palette').data('reference');
+		var selectedoption = $('#' + selectref);
+		selectedoption.removeAttr("selected").val('');
+		selectedoption.siblings('.palette-swatch').css('background-image', 'none');
+		evt.preventDefault();
+		return false;
+	});
+
+		
+
+});
+</script>

@@ -1,0 +1,500 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+  <!-- Basic page needs ================================================== -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <!-- Title and description ================================================== -->
+  <title>
+  {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  <meta name="viewport" content="width=device-width, user-scalable=yes" /> 
+
+  <script type="text/javascript">
+  if((navigator.userAgent.match(/Android/i))){document.write('{{ 'android.css' | asset_url | stylesheet_tag }}')};
+  </script>
+
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{'apple-touch-icon-57x57.png' | asset_url }}" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{'apple-touch-icon-114x114.png' | asset_url }}" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{'apple-touch-icon-72x72.png' | asset_url }}" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{'apple-touch-icon-144x144.png' | asset_url }}" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{'apple-touch-icon-60x60.png' | asset_url }}" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{'apple-touch-icon-120x120.png' | asset_url }}" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{'apple-touch-icon-76x76.png' | asset_url }}" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{'apple-touch-icon-152x152.png' | asset_url }}" />
+  <link rel="icon" type="image/png" href="{{'favicon-196x196.png' | asset_url }}" sizes="196x196" />
+  <link rel="icon" type="image/png" href="{{'favicon-96x96.png' | asset_url }}" sizes="96x96" />
+  <link rel="icon" type="image/png" href="{{'favicon-32x32.png' | asset_url }}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{{'favicon-16x16.png' | asset_url }}" sizes="16x16" />
+  <link rel="icon" type="image/png" href="{{'favicon-128.png' | asset_url }}" sizes="128x128" />
+  <meta name="application-name" content="Finding Ferdinand"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="{{'mstile-144x144.png' | asset_url }}" />
+  <meta name="msapplication-square70x70logo" content="{{'mstile-70x70.png' | asset_url }}" />
+  <meta name="msapplication-square150x150logo" content="{{'mstile-150x150.png' | asset_url }}" />
+  <meta name="msapplication-wide310x150logo" content="{{'mstile-310x150.png' | asset_url }}" />
+  <meta name="msapplication-square310x310logo" content="{{'mstile-310x310.png' | asset_url }}" />
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  <!-- Helpers ================================================== -->
+  {% include 'social-meta-tags' %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+
+  <script src="//cdn.optimizely.com/js/4708642039.js"></script>
+  <meta name="google-site-verification" content="Dv-og7kIr62Nkl9490rs-2UkC8cPgY4L3I_Qo6lyuo8" />
+
+
+
+  <!-- CSS ================================================== -->
+  {{ 'slick.css' | asset_url | stylesheet_tag }}
+  {{ 'findingferdinand.scss.css' | asset_url | stylesheet_tag }}
+
+  <!-- Header hook for plugins ================================================== -->
+  {{ content_for_header }}
+  {% include 'oldIE-js' %}
+
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' | script_tag }}
+  {{ '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js' | script_tag }}
+  {{ '//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css' | stylesheet_tag }}
+  
+  {{ 'jquery.ui.touch-punch.min.js' | asset_url | script_tag }}
+  {{ 'modernizr.min.js' | asset_url | script_tag }}
+  {{ 'underscore.min.js' | asset_url | script_tag }}
+  
+  {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+  {% if template contains 'customers' %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% endif %}
+  
+  <script>
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: "1389216117974138",
+        xfbml: true,
+        version: "v2.6"
+      });
+
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) { return; }
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  </script>  
+
+</head>
+
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {% if template contains 'customizable' %}template-customizable {% endif %}{% if template contains 'palette' %}template-custompalette {% endif %}{% if template contains 'zoomed' %}template-zoomed {% endif %}" >
+{% capture the_snippet_content %}{% include 'socialshopwave-helper' %}{% endcapture %}
+            {% unless the_snippet_content contains 'Liquid error' %}
+              {{ the_snippet_content }}
+            {% endunless %}
+
+ 
+{% unless template contains 'zoomed' %}
+  <div id="NavDrawer" class="drawer drawer--left">
+    <div class="drawer__header">
+      <div class="drawer__title h3">{{ 'layout.drawers.browse' | t }}</div>
+      <div class="drawer__close js-drawer-close">
+        <button type="button" class="icon-fallback-text">
+          <span class="icon icon-x" aria-hidden="true"></span>
+          <span class="fallback-text">{{ 'layout.drawers.close_menu' | t }}</span>
+        </button>
+      </div>
+    </div>
+    <!-- begin mobile-nav -->
+    <ul class="mobile-nav">
+      <li class="mobile-nav__item mobile-nav__search">
+        {% include 'search-bar' %}
+      </li>
+      {% for link in linklists.main-menu.links %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links != blank %}
+          <li class="link-{{ link.title | handleize }} mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}" aria-haspopup="true">
+            <div class="mobile-nav__has-sublist">
+              <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+              <div class="mobile-nav__toggle">
+                <button type="button" class="icon-fallback-text mobile-nav__toggle-open">
+                  <span class="icon icon-plus" aria-hidden="true"></span>
+                  <span class="fallback-text">See More</span>
+                </button>
+                <button type="button" class="icon-fallback-text mobile-nav__toggle-close">
+                  <span class="icon icon-minus" aria-hidden="true"></span>
+                  <span class="fallback-text">{{ 'cart.general.close_cart' | t | json }}</span>
+                </button>
+              </div>
+            </div>
+            <ul class="mobile-nav__sublist">
+              {% for childlink in linklists[child_list_handle].links %}
+                <li class="link-{{ link.title | handleize }} mobile-nav__item {% if childlink.active %} mobile-nav__item--active{% endif %}">
+                  <a href="{{ childlink.url }}" class="mobile-nav__link">{{ childlink.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}">
+            <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <li class="mobile-nav__item">
+            {% if customer.first_name != blank %}
+              {% capture first_name %}{{ customer.first_name }}{% endcapture %}
+              <a href="/account">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a>
+            {% else %}
+              <a href="/account">{{ 'layout.customer.account' | t }}</a>
+            {% endif %}
+          </li>
+          <li class="mobile-nav__item">
+            {{ 'layout.customer.log_out' | t | customer_logout_link }}
+          </li>
+        {% else %}
+          <li class="mobile-nav__item">
+            {{ 'layout.customer.log_in' | t | customer_login_link }}
+          </li>
+          <li class="mobile-nav__item">
+            {{ 'layout.customer.create_account' | t | customer_register_link }}
+          </li>
+        {% endif %}
+      {% endif %}
+    </ul>
+    <!-- //mobile-nav -->
+  </div>
+
+  <div id="nav-cover"></div>
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+
+      <div class="grid--full">
+        <div class="grid__item large--one-third navigation-container">
+          <nav class="nav-bar" role="navigation">
+            <div>
+              <div class="medium-down--hide height-fix">
+                <!-- begin site-nav -->
+                <ul class="site-nav height-fix" id="AccessibleNav">
+                  {% for link in linklists.main-menu.links %}
+                    {% assign child_list_handle = link.title | handleize %}
+                    {% if linklists[child_list_handle].links != blank %}
+                      <li class="link-{{ link.title | handleize }} height-fix site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+                        <a href="{{ link.url }}" class="site-nav__link height-fix">
+                          {{ link.title }}
+                          <span class="icon" aria-hidden="true"></span>
+                        </a>
+                        <ul class="site-nav__dropdown">
+                          {% for childlink in linklists[child_list_handle].links %}
+                            <li{% if childlink.active %} class="link-{{ link.title | handleize }} site-nav--active"{% endif %}>
+                              <a href="{{ childlink.url }}" class="site-nav__link"><span>{{ childlink.title | escape }}</span></a>
+                            </li>
+                          {% endfor %}
+                          <div class="sticker-container">
+                            <i class="sticker star-gold star-01 rotate"></i>
+                            <i class="sticker star-gold star-02 o-rotate"></i>
+
+                            <i class="sticker star-gold star-03 o-rotate"></i>
+                            <i class="sticker star-black star-04 rotate"></i>
+
+                            <i class="sticker star-gold star-05 o-rotate"></i>
+                            <i class="sticker star-black star-06 rotate"></i>
+
+                            <i class="sticker eyes rotate"></i>
+                          </div>
+                        </ul>
+                      </li>
+                    {% else %}
+                      <li class="height-fix{% if link.active %} site-nav--active{% endif %}">
+                        <a href="{{ link.url }}" class="height-fix site-nav__link">{% if link.active %}<span>{% endif %}{{ link.title }}{% if link.active %}</span>{% endif %}</a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+                <!-- //site-nav -->
+              </div>
+              <div class="large--hide medium-down--show">
+                <div class="grid">
+                  <div class="grid__item one-half">
+                    <div class="site-nav--mobile">
+                      <button type="button" class="icon-fallback-text site-nav__link js-drawer-open-left" aria-controls="NavDrawer" aria-expanded="false">
+                        <span class="icon icon-hamburger" aria-hidden="true"></span>
+                        <span class="fallback-text">{{ 'layout.navigation.menu' | t }}</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="grid__item one-half text-right">
+                    <div class="site-nav--mobile">
+                      <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
+                        <span class="icon-fallback-text">
+                          <span class="icon icon-cart" aria-hidden="true"></span>
+                          <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="grid__item large--one-third text-center header-logo-container">
+          {% if template == 'index' %}
+            <h1 class="site-header__logo" itemscope itemtype="http://schema.org/Organization">
+          {% else %}
+            <div class="h1 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+          {% endif %}
+              <a href="/" itemprop="url"><span>{{ shop.name }}</span></a>
+          {% if template == 'index' %}
+            </h1>
+          {% else %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="grid__item large--one-third large--text-right medium-down--hide utility-navigation">
+          <div class="grid grid--full"><div class="inner-utility">
+            <div class="grid__item large--two-thirds">
+              {% include 'search-bar-desktop' %}
+            </div>
+            <div class="grid__item large--one-third">
+            <div class="grid">
+              <div class="grid__item two-thirds text-right">
+               
+
+                {% capture the_snippet_auth %}{% include 'ssw-widget-auth-dropdown' %}{% endcapture %}
+                {% if the_snippet_auth contains 'Liquid error' %}
+                
+                {% if shop.customer_accounts_enabled %}
+                  <a href="/account">My Account</a><br/>             
+                {% endif %}
+                
+                {% else %}
+                	{{ the_snippet_auth }}
+                {% endif %}
+                
+                
+                  <span class="site-header__search"><span id="search-toggle">Search</span></span>
+              </div>
+              <div class="grid__item one-third"> 
+                  <a href="/cart" class="site-header__cart-toggle js-drawer-open-right cart-bg" aria-controls="CartDrawer" aria-expanded="false"><span id="CartCount">{{ cart.item_count }}</span></a>
+              </div>
+              <div class="grid__item one-whole"> 
+              </div>
+            </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+  {% if template contains 'palette' %}
+    <div class="modal">
+      <div class="iframe-modal-cover"></div>
+      <div class="more-details">
+        <iframe src="" id="more-details" scrolling="no" border="0"></iframe>
+        <span class="close">&times;</span>
+      </div>
+    </div>
+  {% endif %}
+  <div id="PageContainer" class="is-moved-by-drawer">
+{% endunless %}
+    
+
+    <main class="main-content" role="main">
+
+      {{ content_for_layout }}
+
+    </main>
+{% unless template contains 'zoomed' %}
+    <!-- begin site-footer -->
+    <footer class="site-footer small--text-center" role="contentinfo">
+      <div class="wrapper">
+        <div class="grid">
+          <div class="grid__item text-center large--text-left">
+            <h3>Finding Ferdinand</h3>
+            <hr>
+          </div>  
+          <div class="grid__item large--one-half relative sticker-container">
+            <div class="scale-down">
+              <i class="sticker made-in-ny rotate"></i>
+
+              <i class="sticker star-gold star-01 rotate"></i>
+              <i class="sticker star-black star-02 o-rotate"></i>
+
+              <i class="sticker star-gold star-03 o-rotate"></i>
+              <i class="sticker star-black star-04 rotate"></i>
+
+              <i class="sticker star-gold star-05 o-rotate"></i>
+              <i class="sticker star-black star-06 rotate"></i>
+
+              <i class="sticker taxi o-rotate"></i>
+              <i class="sticker eyes rotate"></i>
+              <i class="sticker liberty o-rotate"></i>
+            </div>
+          </div>
+          <div class="grid__item large--one-half">
+            <div class="grid">
+              <div class="grid__item large--one-fifth medium--one-third">
+                <h4 class="medium-down--hide">INFO</h4>
+                <ul class="no-bullets">
+                  {% for link in linklists.footer.links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="grid__item large--one-fifth medium--one-third">
+                <h4 class="medium-down--hide">Social</h4>
+                <ul class="no-bullets">
+                  {% for link in linklists.footer-connect.links %}
+                  <li><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="grid__item large--three-fifths medium--one-third newsletter-container">
+                <h4>E–Mail</h4>
+                <p>{{ 'layout.footer.newsletter_paragraph_html' | t }}</p>
+                
+                  <form method="POST" action="//findingferdinand.activehosted.com/proc.php" id="_form_30_" target="_blank" class="input-group">
+
+                    <input type="hidden" name="u" value="30" />
+                    <input type="hidden" name="f" value="30" />
+                    <input type="hidden" name="s" />
+                    <input type="hidden" name="c" value="0" />
+                    <input type="hidden" name="m" value="0" />
+                    <input type="hidden" name="act" value="sub" />
+                    <input type="hidden" name="v" value="2" />
+                    
+                      <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="email" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+                      <span class="input-group-btn">
+                        <input type="submit" class="btn" name="subscribe" id="_form_30_submit" value="{{ 'general.newsletter_form.submit' | t }}">
+                      </span>
+                  </form>
+                {% unless shop.enabled_payment_types == empty %}
+              {% assign payment_icons_available = 'amazon_payments,american_express,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' %}
+              <ul class="inline-list payment-icons text-right" style="margin-top:2em;">
+                {% for type in shop.enabled_payment_types %}
+                  {% if payment_icons_available contains type %}
+                    <li style="color:#FFF; border-bottom: 0px !important;margin: 0 4px 9px">
+                      <span class="icon-fallback-text">
+                        <span class="icon icon-{{type}}" aria-hidden="true"></span>
+                        <span class="fallback-text">{{ type | replace: '_',' '}}</span>
+                      </span>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endunless %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </footer>
+    <!-- //site-footer -->
+  </div>
+  {% endunless %}
+  {{ 'fastclick.min.js' | asset_url | script_tag }}
+  {{ 'jquery.marquee.js' | asset_url | script_tag }}
+  {{ 'imagesloaded.pkgd.min.js' | asset_url | script_tag }}
+  {{ 'isotope.pkgd.min.js' | asset_url | script_tag }}
+  {{ 'slick.min.js' | asset_url | script_tag }}
+  {{ 'jquery.inview.min.js' | asset_url | script_tag }}
+
+  {% if template contains 'customizable' %}
+  {{ 'plug.js' | asset_url | script_tag }}
+  {{ 'js.customizablelip.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {{ 'app.js' | asset_url | script_tag }}
+  {{ 'findingferdinand.js' | asset_url | script_tag }}
+
+  {% comment %}
+    Template-specific js
+  {% endcomment %}
+  <script>
+    {% if resetPassword %}
+      $(function() {
+        timber.resetPasswordSuccess();
+      });
+    {% endif %}
+  </script>
+
+  {% if settings.ajax_cart_method == "drawer" %}
+    {{ 'handlebars.min.js' | asset_url | script_tag }}
+    {% include 'ajax-cart-template' %}
+    {{ 'ajax-cart.js' | asset_url | script_tag }}
+    <script>
+      jQuery(function($) {
+        ajaxCart.init({
+          formSelector: '#AddToCartForm',
+          cartContainer: '#CartContainer',
+          addToCartSelector: '#AddToCart',
+          cartCountSelector: '#CartCount',
+          cartCostSelector: '#CartCost',
+          moneyFormat: {{ shop.money_format | json }}
+        });
+      });
+
+      jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
+        // Bind to 'afterCartLoad.ajaxCart' to run any javascript after the cart has loaded in the DOM
+        timber.RightDrawer.open();
+      });
+    </script>
+  {% endif %}
+  {% unless template contains 'zoomed' %}
+  <script src="https://findingferdinand.activehosted.com/f/embed.php?id=20" type="text/javascript" charset="utf-8"></script>
+  {% endunless %}
+  
+  <!-- Bold: CSP Step 1 (theme) -->
+  <script type="text/javascript" charset="utf-8">
+  var shappify_customer_tags ={{ customer.tags|json }}
+  </script>
+  <!-- // end bold code -->
+
+  {% if template contains 'cart' %}
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $('input[type=radio].other-help').change(function() {
+          if($(this).is(':checked')) {
+            $('#other-trigger').slideDown();
+            $('#mag-trigger').slideUp();
+          } else{
+            $('#other-trigger').slideUp();
+          }
+      });
+      $('input[type=radio].mag-help').change(function() {
+          if($(this).is(':checked')) {
+            $('#mag-trigger').slideDown();
+            $('#other-trigger').slideUp();
+          } else{
+            $('#mag-trigger').slideUp();
+          }
+      });
+  });
+  </script>
+  {% endif %}
+  
+                                
+ 
+
+</body>
+</html>

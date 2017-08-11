@@ -1,0 +1,225 @@
+<!-- /templates/article.liquid -->
+
+
+{% assign number_of_comments = article.comments_count %}
+
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+{% include 'breadcrumb' %}
+
+<div class="grid blog-wrap">
+
+  <h1 class="wrapper extra-wrapper text-center pink pink-bg overline"><span>{{ blog.title }}</span></h1>
+  <article class="grid__item" itemscope itemtype="http://schema.org/Article">
+
+    <header class="wrapper extra-wrapper">
+
+        <div class="grid grid--full top-gutter bottom-gutter">
+          <div class="grid__item text-center sidelines thin dotted tags">{% include 'tags-article' %}</div>
+        </div>
+
+        <h1 class="wrapper text-center"><span>{{ article.title }}</span></h1><br/>
+        <h5 class="wrapper text-center author-name">
+          {% assign author_keyword = 'author' %}
+          {% assign authormarker = '-' %}
+
+          {% for tag in article.tags %}
+
+            {% if tag contains author_keyword %}
+                {% assign author = true %}
+                {% capture authortitle %}{{ tag | remove: "author-" }}{% endcapture %}
+            {% endif %}
+          {% endfor %}
+
+          {% if author == true %}
+            by {{ authortitle }}
+          {% else %}
+            by {{ article.user.first_name }}
+          {% endif %}
+
+        </h5>
+
+        <div class="rte">
+        {% if article.excerpt.size > 0 %}
+          <p class="text-center excerpt">{{ article.excerpt }}</p>
+        {% endif %}
+        </div>
+
+        <div class="grid grid--full top-gutter bottom-gutter">
+          <div class="grid__item text-center sidelines thin tags"><span>{{ article.published_at | date: format: 'month_day_year' }}</span></div>
+        </div>
+
+        <div class="featured-image">
+          {% if article.image %}
+            {{ article | img_url: 'master' | img_tag }}
+          {% endif %}
+        </div>
+        
+    </header>
+
+    <div class="wrapper extra-wrapper">
+      <div class="rte" itemprop="articleBody">
+        {{ article.content }}
+      </div>
+      <hr>
+    </div>
+
+    {% assign attribute_keyword = 'products' %}
+    {% assign attribute_keywordb = 'singleproduct' %}
+
+    {% assign marker = '-' %}
+
+
+    {% for tag in article.tags %}
+
+    {% if tag contains attribute_keyword %}
+    {% capture collectiontitle %}{{ tag | remove: "products-" }}{% endcapture %}
+    <footer class="related-products large-margin-top">
+      <h2 class="text-center section-title">
+      {% assign collection = collections.[collectiontitle] %}
+      Shop {{ collection.title }}
+      </h2>
+      <div class="grid--full wrapper extra-wrapper">
+        {% for product in collections.[collectiontitle].products limit:4 %}
+          {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
+          {% include 'product-grid-item' %}
+        {% endfor %}
+      </div>
+    </footer>
+    {% elsif tag contains attribute_keywordb %}
+      {% assign featured = true %}
+    {% endif %}
+    {% endfor %}
+
+    {% if featured == true %}
+
+    <footer class="related-products large-margin-top">
+      <h2 class="text-center section-title">
+      {% assign collection = collections.[collectiontitle] %}
+      Shop Now
+      </h2>
+      <div class="grid-uniform wrapper extra-wrapper">
+        {% for tag in article.tags %}
+        {% capture producttitle %}{{ tag | remove: "singleproduct-" }}{% endcapture %}
+        {% capture collectiontitle %}all{% endcapture %}
+        {% for product in collections.[collectiontitle].products limit:999 %}
+          {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
+          {% if product.handle contains producttitle %}
+          {% include 'product-grid-item' %}
+          {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </div>
+    </footer>
+
+    {% endif %}
+
+
+    {% if blog.next_article or blog.previous_article %}
+      <p class="clearfix wrapper extra-wrapper">
+        {% if blog.previous_article %}
+          <span class="left">
+            &larr; {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
+          </span>
+        {% endif %}
+        {% if blog.next_article %}
+          <span class="right">
+            {{ 'blogs.article.newer_post' | t | link_to: blog.next_article }} &rarr;
+          </span>
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {% if blog.comments_enabled? %}
+      <div class="wrapper extra-wrapper">
+
+      <h2 class="h3 text-center">{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h2>
+
+      <hr>
+
+      {% comment %}
+        Just like blog.liquid page, define how many comments should be on each page.
+      {% endcomment %}
+      {% paginate article.comments by 5 %}
+        {% comment %}
+          #comments is required, it is used as an anchor link by Shopify.
+        {% endcomment %}
+        <div id="comments">
+
+          {% if comment and comment.created_at %}
+            <p class="note form-success">
+              {% if blog.moderated? %}
+                {{ 'blogs.comments.success_moderated' | t }}
+              {% else %}
+                {{ 'blogs.comments.success' | t }}
+              {% endif %}
+            </p>
+          {% endif %}
+
+          {% if number_of_comments > 0 %}
+            <ul class="no-bullets">
+              {% comment %}
+                If a comment was just submitted with no blank field, show it.
+              {% endcomment %}
+              {% if comment and comment.created_at %}
+                <li id="{{ comment.id }}" class="comment first{% if article.comments_count == 0 %} last{% endif %}">
+                  {% include 'comment' %}
+                </li>
+              {% endif %}
+
+              {% comment %}
+                Showing the rest of the comments.
+              {% endcomment %}
+              {% for comment in article.comments %}
+                <li id="{{ comment.id }}" class="comment{% unless number_of_comments > article.comments_count %}{% if forloop.first %} first{% endif %}{% endunless %}{% if forloop.last %} last {% endif %}">
+                  {% include 'comment' %}
+                </li>
+
+                {% unless forloop.last %}
+                  <li><hr></li>
+                {% endunless %}
+              {% endfor %}
+            </ul>
+
+            {% if paginate.pages > 1 %}
+              <hr>
+              <div class="pagination wrapper">
+                {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+              </div>
+            {% endif %}
+
+            <hr>
+
+
+          {% endif %}
+
+
+        </div>
+      {% endpaginate %}
+      </div>
+    {% endif %}
+	{% if blog.title != "Press" %}
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_config = function () {
+    this.page.url = '{{ canonical_url }}';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = '{{ canonical_url }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://findingferdinand-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                
+    
+    <script id="dsq-count-scr" src="//www-findingferdinand-com.disqus.com/count.js" async></script>
+	{% endif %}
+</article>
+</div>
+

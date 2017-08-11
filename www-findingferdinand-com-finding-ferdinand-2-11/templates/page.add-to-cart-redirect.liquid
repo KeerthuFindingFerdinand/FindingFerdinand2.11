@@ -1,0 +1,33 @@
+<!-- /templates/page.liquid -->
+<div class="wrapper relative">
+<div class="grid">
+
+  <div class="grid__item large--two-thirds push--large--one-sixth">
+
+    <h1 class="page-title text-center">{{ page.title }}</h1>
+
+    {% comment %}
+      Regular page content goes here.
+    {% endcomment %}
+    <div class="rte">
+      {{ page.content }}
+    </div>
+    <div class="bg-triangle-pink marquee"></div>
+    <div class="bg-triangle-blue marquee"></div>
+    <div class="bg-triangle-yellow marquee"></div>
+  </div>
+
+</div>
+</div>
+
+<script type="text/javascript">
+  var x = window.location.hash.substr(1);
+  if (x) {
+    var form = $('<form action="/cart/add" method="post"></form>');
+    unescape(x).split('&').forEach(function(i) {
+      var kv = i.split('=');
+      form.append('<input type="hidden" name="' + kv[0] + '" value="' + kv[1] +'">');
+    });
+    form.submit();
+  }
+</script>

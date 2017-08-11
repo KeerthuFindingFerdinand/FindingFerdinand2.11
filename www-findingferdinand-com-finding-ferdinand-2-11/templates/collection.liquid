@@ -1,0 +1,59 @@
+<!-- /templates/collection.liquid -->
+{% if collection.image %}
+  {% assign collection_image = collection | img_url: 'master' %}
+{% endif %}
+<div class="featured-image" style="background-image:url('{{ collection | img_url: 'master' }}');"></div>
+{% paginate collection.products by 99 %}
+
+{% include 'breadcrumb' %}
+
+
+<div class="grid--rev">
+  <div class="grid__item">
+
+    {% if collection.description != blank %}
+      <header class="section-header">
+        <h1 class="section-header__title text-center wrapper">{{ collection.title }}</h1>
+        <div class="rte rte--header wrapper text-center">
+          {{ collection.description }}
+        </div>
+      </header>
+    {% else %}
+      <header class="section-header">
+        <h1 class="section-header__title text-center wrapper">{{ collection.title }}</h1>
+      </header>
+    {% endif %}
+
+    <div class="wrapper relative">
+      <div class="grid-uniform">
+
+      {% for product in collection.products %}
+        
+        {% include 'bold-product' with product, hide_action: 'skip' %}
+
+
+        {% include 'product-grid-item' %}
+
+      {% else %}
+
+        <div class="grid__item">
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+
+      {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <hr>
+        <div class="pagination">
+          {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+        </div>
+      {% endif %}
+    </div>
+  <div class="bg-triangle-pink marquee"></div>
+  <div class="bg-triangle-blue marquee"></div>
+  <div class="bg-triangle-yellow marquee"></div>
+  </div>
+</div>
+
+{% endpaginate %}

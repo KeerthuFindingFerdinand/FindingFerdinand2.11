@@ -1,0 +1,11 @@
+<!-- /snippets/tags-article.liquid -->
+{% if article.tags.size > 0 %}
+  <span class="uppercase condensed blue">
+    {% for tag in article.tags %}
+     {% if tag contains 'product' or tag contains 'author' %}
+     {% else %}
+      <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="blue">{{ tag }}</a>
+     {% endif %}
+    {% endfor %}
+  </span>
+{% endif %}

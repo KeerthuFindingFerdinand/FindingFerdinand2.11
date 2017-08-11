@@ -1,0 +1,71 @@
+<!-- /templates/blog.liquid -->
+{% comment %}
+
+  Loop through a defined number of articles with the 'paginate' tag.
+  Don't forget to close the tag after your loop.
+
+{% endcomment %}
+
+{% paginate blog.articles by 24 %}
+
+{% include 'breadcrumb' %}
+
+{% comment %}
+  This template is also used for listing out articles of a specific tag.
+  You can change layouts or styles by checking if current_tags is true.
+{% endcomment %}
+<div class="grid blog-wrap">
+
+  <div class="grid__item">
+    <h1 class="wrapper extra-wrapper text-center pink pink-bg overline"><span>{{ blog.title }}</span></h1>
+  </div>
+    <div class="grid__item" style="margin-top: 42px;">
+      <div class="grid grid--full wrapper other-articles">
+      {% for article in blog.articles limit:999 %}
+      <article class="grid__item blog-listing blog-listing-sub large--one-quarter{% for tag in article.tags %} {{ tag | handleize }}{% endfor %}">
+        <div class="article gutter-bottom">
+            <a class="article__featured-image with-image" href="{{ article.url }}" style="background-image: url('{{ article | img_url: 'master' }}')"></a>
+            <div class="information-sub padding">
+              <div class="text-center sidelines thin tags">{% include 'tags-article' %}</div>
+              <div>
+                <h3 class="text-center"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+                <h5 class="wrapper text-center author-name">
+                  {% assign author_keyword = 'author' %}
+                  {% assign authormarker = '-' %}
+                  {% assign author = false %}
+                  {% for tag in article.tags %}
+
+                    {% if tag contains author_keyword %}
+                        {% assign author = true %}
+                        {% capture authortitle %}{{ tag | remove: "author-" }}{% endcapture %}
+                    {% endif %}
+                  {% endfor %}
+
+                </h5>
+              </div>
+              <div class="excerpt-container text-center">
+                {% if article.excerpt.size > 0 %}
+                  {{ article.excerpt | truncatewords: 25 | strip_html }}
+                {% else %}
+                  <p>{{ article.content | strip_html | truncatewords:100 | strip_html }}</p>
+                {% endif %}
+                  <p class="text-center"><a href="{{ article.url }}" class="cta condensed read-more" style="">More</a></p>
+              </div>
+            </div>
+        </div>
+      </article>
+      {% endfor %}
+      </div>
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <div class="wrapper extra-wrapper pagination">
+        {{ paginate | default_pagination }}
+      </div>
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endpaginate %}

@@ -1,0 +1,39 @@
+{% if customer %}
+  {% assign submit_button = "Save Account" %}
+{% else %}
+  {% assign submit_button = "Create Account" %}
+{% endif %}
+{% assign customr_url = "https://customr.heliumdev.com" %}
+{% assign customr_cdn_url = "https://cdn-customr.heliumdev.com" %}
+<script>
+  var Customr = {
+    base_url: "{{ customr_url }}",
+    shopify_customer: {{ customer.id | json }},
+    domain: "{{ shop.permanent_domain }}"
+  };
+</script>
+{% assign token = customer.metafields.customr_auth.token %}
+{% if customer and token == blank %}
+  <form id="customr-token-create" action="{{ customr_url }}/customers/token" method="post">
+    <input type="hidden" name="shop" value="{{ shop.permanent_domain }}">
+    <input type="hidden" name="id" value="{{customer.id}}">
+  </form>
+  <script>document.getElementById('customr-token-create').submit();</script>
+{% endif %}
+<form id="customr-form" action="{{ customr_url }}/customers/{% if token %}{{ customer.id }}{% endif %}" method="post" accept-charset="UTF-8">
+  {% if token %}
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="auth_token" value="{{ token }}">
+    <input type="hidden" name="customer[id]" value="{{ customer.id }}">
+  {% endif %}
+  <input type="hidden" name="shop" value="{{ shop.permanent_domain }}">
+  <img class="customr-loader" src="{{ customr_cdn_url }}/assets/loader.gif" alt="Loading..." />
+  <div class="customr-fields" {% unless customer %}data-registration="true"{% endunless %}></div>
+  <div class="customr-actionable">
+    <input type="submit" value="{{ submit_button }}" class="btn">
+  </div>
+  <div>
+    <p class="customr-success">Your account has been updated.</p>
+  </div>
+</form>
+<script src="{{ customr_cdn_url }}/js/1.0/customr.js"></script>

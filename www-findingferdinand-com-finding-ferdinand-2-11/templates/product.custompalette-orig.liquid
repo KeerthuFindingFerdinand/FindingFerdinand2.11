@@ -1,0 +1,760 @@
+<!-- /templates/product.liquid -->
+<div itemscope itemtype="http://schema.org/Product">
+
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+
+  {% include 'breadcrumb' %}
+
+  <div class="grid product-single relative wrapper">
+    <div class="grid__item large--three-fifths text-center">
+      <div class="product-single__photos" id="ProductPhoto">
+        {% for image in product.images %}
+        <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
+        {% endfor %}
+      </div>
+      <div class="palette-options-container medium-down--hide">
+        <div class="grid">
+          <div class="grid__item one-half">
+            <div class="grid option-container bronzer-container">
+                <div class="grid__item one-whole"><span class="uppercase condensed palette-option-title">Bronzers</span></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="bronzer" data-img="Bronzer_CocoaBronze" data-code="CocoaBronze" data-title="Cocoa Bronze"></div></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="bronzer" data-img="Bronzer_LightBronze" data-code="LightBronze" data-title="Light Bronze"></div></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="bronzer" data-img="Bronzer_SunkissedBronze" data-code="SunkissedBronze" data-title="Sunkissed Bronze"></div></div>
+            </div>
+          </div>
+
+          <div class="grid__item one-half">
+            <div class="grid option-container highlighter-container">
+                <div class="grid__item one-whole"><span class="uppercase condensed palette-option-title">Highlighters</span></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="highlighter" data-img="Highlighter_GoldenGlow" data-code="GoldenGlow" data-title="Golden Glow"></div></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="highlighter" data-img="Highlighter_PinkGlow" data-code="PinkGlow" data-title="Pink Glow"></div></div>
+            </div>
+          </div>
+
+          <div class="grid__item one-whole">
+            <div class="grid option-container blush-container">
+                <div class="grid__item one-whole"><span class="uppercase condensed palette-option-title">Blushes</span></div>
+                <div class="grid__item one-whole"><div class="grid scroll">
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No2"  data-code="#2"  data-title="Bubble Gum"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No3"  data-code="#3"  data-title="Cheeky"             ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No8"  data-code="#8"  data-title="HBIC"               ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No9"  data-code="#9"  data-title="Terracotta"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No14" data-code="#14" data-title="Disco Fever"        ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No15" data-code="#15" data-title="Hot Mama"           ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No18" data-code="#18" data-title="Lingerie"           ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No19" data-code="#19" data-title="Skinny Dip"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No21" data-code="#21" data-title="Passionfruit"       ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No23" data-code="#23" data-title="War Paint"          ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No28" data-code="#28" data-title="Cinnamon"          ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No33" data-code="#33" data-title="Strawberry Spritzer"></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No34" data-code="#34" data-title="Jelly Donut"        ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No36" data-code="#36" data-title="Peony"              ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No37" data-code="#37" data-title="No Regrets"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No38" data-code="#38" data-title="Fetch"              ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No45" data-code="#45" data-title="Happy Hour"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No46" data-code="#46" data-title="Peaches and Cream"  ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No48" data-code="#48" data-title="Paaank"         ></div></div>
+                </div></div>
+            </div>
+          </div>
+
+          <div class="grid__item one-whole">
+            <div class="grid option-container eyeshadow-container">
+                <div class="grid__item one-whole"><span class="uppercase condensed palette-option-title">Eyeshadows</span></div>
+                <div class="grid__item one-whole"><div class="grid scroll">
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B101" data-code="B101" data-title="Sleeping Beauty"          ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B67"  data-code="B67"  data-title="Pajama Party"        ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B12"  data-code="B12"  data-title="Lolli" ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B60"  data-code="B60"  data-title="Flat White"      ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_A1"   data-code="A1"   data-title="Zodiac"     ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B84"  data-code="B84"  data-title="Beignet"   ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B20"  data-code="B20"  data-title="Extra Foam"      ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B93"  data-code="B93"  data-title="Trench Coat"         ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B82"  data-code="B82"  data-title="Canvas"  ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_C1"   data-code="C1"   data-title="Nude Beach"         ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_A15"  data-code="A15"  data-title="Flora" ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B102" data-code="B102" data-title="Violet Pride"         ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B26"  data-code="B26"  data-title="Orchid"  ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_A12"  data-code="A12"  data-title="Crush" ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B56"  data-code="B56"  data-title="The Plaza "     ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B108" data-code="B108" data-title="Teddy"       ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B41"  data-code="B41"  data-title="Lucky Penny"       ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B69"  data-code="B69"  data-title="Dirty Chai"      ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B77"  data-code="B77"  data-title="Platinum"    ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B113" data-code="B113" data-title="Dust Bunny"       ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B59"  data-code="B59"  data-title="Dragon Fruit"       ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B53"  data-code="B53"  data-title="Sugar Plum"      ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B100" data-code="B100" data-title="Mermaid"    ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_A21"  data-code="A21"  data-title="Sherbert"    ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B35"  data-code="B35"  data-title="Longhorn"    ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_C6"   data-code="C6"   data-title="Coral Cove"         ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_C2"   data-code="C2"   data-title="Milk Chocolate"          ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_C4"   data-code="C4"   data-title="Cocoa Chanel"         ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B88"  data-code="B88"  data-title="Apparatus"     ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B80"  data-code="B80"  data-title="Black Pearl"       ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B70"  data-code="B70"  data-title="Amethyst"    ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B38"  data-code="B38"  data-title="Purple Rain"       ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B22"  data-code="B22"  data-title="Sci-Fi"  ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B76"  data-code="B76"  data-title="Succulent"     ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B117" data-code="B117" data-title="Bellini Punch"          ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B5"   data-code="B5"   data-title="Apricot"      ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B44"  data-code="B44"  data-title="Mud Bath"    ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_A2"   data-code="A2"   data-title="Antique"      ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B37"  data-code="B37"  data-title="Buried Treasure"          ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B6"   data-code="B6"   data-title="Mahogany"        ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_A18"  data-code="A18"  data-title="Monster"   ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B90"  data-code="B90"  data-title="Pandora"   ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B43"  data-code="B43"  data-title="Kate Moss"     ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B111" data-code="B111" data-title="Tempest"    ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B34"  data-code="B34"  data-title="Princess Peach"          ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_C5"   data-code="C5"   data-title="Honeymoon"          ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_A20"  data-code="A20"  data-title="Rawr"> </div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B62"  data-code="B62"  data-title="Haute Chocolate"          ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B94"  data-code="B94"  data-title="Fortune Teller"          ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B119" data-code="B119" data-title="Enchanted"      ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B110" data-code="B110" data-title="Cauldron"     ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B122" data-code="B122" data-title="Nebula"   ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B92"  data-code="B92"  data-title="Go Blue"   ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_A10"  data-code="A10"  data-title="Matcha"  ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B55"  data-code="B55"  data-title="Olympian"    ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B51"  data-code="B51"  data-title="Café Au Lait "        ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B107" data-code="B107" data-title="Espresso"     ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B21"  data-code="B21"  data-title="Grizzly"   ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B96"  data-code="B96"  data-title="Pewter"   ></div></div>
+                <div class="grid__item one-tenth"><div class="palette palette-small" data-type="eyeshadow" data-img="Eyeshadow_B25"  data-code="B25"  data-title="Eclipse"   ></div></div>
+                </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid__item large--two-fifths">
+
+      <h1 itemprop="name" class="medium-down--text-center">{{ product.title }}</h1>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <meta itemprop="priceCurrency" class="medium-down--text-center" content="{{ shop.currency }}">
+        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+        {% comment %}
+          ID addToCartForm is a selector for the ajax cart plugin
+        {% endcomment %}
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+          <div class="grid main-el">
+            <div class="pricing grid__item large--one-fifth">
+              <span class="visually-hidden medium-down--text-center">{{ 'products.general.regular_price' | t }}</span>
+              <span id="ProductPrice" class="h2 medium-down--text-center" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money }}</span>
+
+              {% if product.compare_at_price_max > product.price %}
+                <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                <p id="ComparePrice">
+                  {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
+                </p>
+              {% endif %}
+            </div>
+            <div class="grid__item large--four-fifths social-sharing social-sharing-wrap medium-down--text-center">
+              {% include 'social-sharing' %}
+            </div>
+            <div class="grid__item one-whole">
+            <div class="product-description rte" itemprop="description">
+              {{ product.description }}
+            </div>
+            <hr>
+            </div>
+            
+          </div>
+          <div class="palette-options">
+            <div class="grid">
+              <div class="grid__item">
+                <div class="condensed uppercase" style="margin-top: 18px; margin-bottom: 18px;">Your Bronzers, Highlighters, or Blush</div>
+              </div>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>01</label>
+                <select required class="large-select required" id="01" name="properties[01]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Blush — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Blush — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Blush — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Blush — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Blush — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Blush — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="Blush — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Blush — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Blush — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Blush — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="Blush — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Blush — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Blush — No. 21"    data-type="blush" data-code="#21">Passionfruit</option>
+                  <option data-img="Blush_No46"   value="Blush — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Blush — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Blush — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Blush — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Blush — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="Blush — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>02</label>
+                <select required class="large-select required" id="02" name="properties[02]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Blush — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Blush — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Blush — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Blush — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Blush — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Blush — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="Blush — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Blush — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Blush — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Blush — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="Blush — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Blush — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Blush — No. 21"    data-type="blush" data-code="#21">Passionfruit</option>
+                  <option data-img="Blush_No46"   value="Blush — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Blush — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Blush — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Blush — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Blush — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="Blush — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>03</label>
+                <select required class="large-select required" id="03" name="properties[03]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Blush — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Blush — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Blush — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Blush — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Blush — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Blush — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="Blush — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Blush — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Blush — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Blush — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="Blush — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Blush — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Blush — No. 21"    data-type="blush" data-code="#21">Passionfruit</option>
+                  <option data-img="Blush_No46"   value="Blush — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Blush — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Blush — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Blush — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Blush — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="Blush — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <div class="grid__item">
+                <div class="condensed uppercase" style="margin-top: 18px; margin-bottom: 18px;">Your Eyeshadows</div>
+              </div>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>04</label>
+                <select required class="small-select required" id="04" name="properties[04]">
+                  <option value=""                >Select Eyeshadow</option>
+                  <option data-img="Eyeshadow_B70"  value="B70"     data-type="eyeshadow" data-code="B70" >Amethyst</option>
+                  <option data-img="Eyeshadow_A2"  value="A2"   data-type="eyeshadow" data-code="A2"  >Antique</option>
+                  <option data-img="Eyeshadow_B88"  value="B88"     data-type="eyeshadow" data-code="B88" >Apparatus</option>
+                  <option data-img="Eyeshadow_B5"   value="B5"    data-type="eyeshadow" data-code="B5"  >Apricot</option>
+                  <option data-img="Eyeshadow_B84"  value="B84"     data-type="eyeshadow" data-code="B84" >Beignet</option>
+                  <option data-img="Eyeshadow_B117" value="B117"    data-type="eyeshadow" data-code="B117">Bellini Punch</option>
+                  <option data-img="Eyeshadow_B80"  value="B80"     data-type="eyeshadow" data-code="B80" >Black Pearl</option>
+                  <option data-img="Eyeshadow_B37"  value="B37"   data-type="eyeshadow" data-code="B37" >Buried Treasure</option>
+                  <option data-img="Eyeshadow_B51"  value="B51"     data-type="eyeshadow" data-code="B51" >Café Au Lait</option>
+                  <option data-img="Eyeshadow_B82"  value="B82"     data-type="eyeshadow" data-code="B82" >Canvas</option>
+                  <option data-img="Eyeshadow_B110" value="B110"    data-type="eyeshadow" data-code="B110">Cauldron</option>
+                  <option data-img="Eyeshadow_C4"   value="C4"      data-type="eyeshadow" data-code="C4"  >Cocoa Chanel</option>
+                  <option data-img="Eyeshadow_C6"   value="C6"      data-type="eyeshadow" data-code="C6"  >Coral Cove</option>
+                  <option data-img="Eyeshadow_A12"  value="A12"   data-type="eyeshadow" data-code="A12" >Crush</option>
+                  <option data-img="Eyeshadow_B69"  value="B69"     data-type="eyeshadow" data-code="B69" >Dirty Chai</option>
+                  <option data-img="Eyeshadow_B59"  value="B59"     data-type="eyeshadow" data-code="B59" >Dragon Fruit</option>
+                  <option data-img="Eyeshadow_B113" value="B113"    data-type="eyeshadow" data-code="B113">Dust Bunny</option>
+                  <option data-img="Eyeshadow_B25"  value="B25"   data-type="eyeshadow" data-code="B25" >Eclipse</option>
+                  <option data-img="Eyeshadow_B119" value="B119"    data-type="eyeshadow" data-code="B119">Enchanted</option>
+                  <option data-img="Eyeshadow_B107" value="B107"    data-type="eyeshadow" data-code="B107">Espresso</option>
+                  <option data-img="Eyeshadow_B20"  value="B20"   data-type="eyeshadow" data-code="B20" >Extra Foam</option>
+                  <option data-img="Eyeshadow_B60"  value="B60"     data-type="eyeshadow" data-code="B60" >Flat White</option>
+                  <option data-img="Eyeshadow_A15"  value="A15"   data-type="eyeshadow" data-code="A15" >Flora</option>
+                  <option data-img="Eyeshadow_B94"  value="B94"     data-type="eyeshadow" data-code="B94" >Fortune Teller</option>
+                  <option data-img="Eyeshadow_B92"  value="B92"     data-type="eyeshadow" data-code="B92" >Go Blue</option>
+                  <option data-img="Eyeshadow_B21"  value="B21"   data-type="eyeshadow" data-code="B21" >Grizzly</option>
+                  <option data-img="Eyeshadow_B62"  value="B62"     data-type="eyeshadow" data-code="B62" >Haute Chocolate</option>
+                  <option data-img="Eyeshadow_C5"   value="C5"      data-type="eyeshadow" data-code="C5"  >Honey Moon</option>
+                  <option data-img="Eyeshadow_B43"  value="B43"     data-type="eyeshadow" data-code="B43" >Kate Moss</option>
+                  <option data-img="Eyeshadow_B12"  value="B12"   data-type="eyeshadow" data-code="B12" >Lolli</option>
+                  <option data-img="Eyeshadow_B35"  value="B35"   data-type="eyeshadow" data-code="B35" >Longhorn</option>
+                  <option data-img="Eyeshadow_B41"  value="B41"     data-type="eyeshadow" data-code="B41" >Lucky Penny</option>
+                  <option data-img="Eyeshadow_B6"   value="B6"    data-type="eyeshadow" data-code="B6"  >Mahogany</option>
+                  <option data-img="Eyeshadow_A10"  value="A10"   data-type="eyeshadow" data-code="A10" >Matcha</option>
+                  <option data-img="Eyeshadow_B100" value="B100"    data-type="eyeshadow" data-code="B100">Mermaid</option>
+                  <option data-img="Eyeshadow_C2"   value="C2"      data-type="eyeshadow" data-code="C2"  >Milk Chocolate</option>
+                  <option data-img="Eyeshadow_A18"  value="A18"   data-type="eyeshadow" data-code="A18" >Monster</option>
+                  <option data-img="Eyeshadow_B44"  value="B44"     data-type="eyeshadow" data-code="B44" >Mud Bath</option>
+                  <option data-img="Eyeshadow_B122" value="B122"    data-type="eyeshadow" data-code="B122">Nebula</option>
+                  <option data-img="Eyeshadow_C1"   value="C1"      data-type="eyeshadow" data-code="C1"  >Nude Beach</option>
+                  <option data-img="Eyeshadow_B55"  value="B55"     data-type="eyeshadow" data-code="B55" >Olympian</option>
+                  <option data-img="Eyeshadow_B26"  value="B26"   data-type="eyeshadow" data-code="B26" >Orchid</option>
+                  <option data-img="Eyeshadow_B67"  value="B67"     data-type="eyeshadow" data-code="B67" >Pajama Party</option>
+                  <option data-img="Eyeshadow_B90"  value="B90"     data-type="eyeshadow" data-code="B90" >Pandora</option>
+                  <option data-img="Eyeshadow_B96"  value="B96"     data-type="eyeshadow" data-code="B96" >Pewter</option>
+                  <option data-img="Eyeshadow_B77"  value="B77"     data-type="eyeshadow" data-code="B77" >Platinum</option>
+                  <option data-img="Eyeshadow_B34"  value="B34"   data-type="eyeshadow" data-code="B34" >Princess Peach</option>
+                  <option data-img="Eyeshadow_B38"  value="B38"     data-type="eyeshadow" data-code="B38" >Purple Rain</option>
+                  <option data-img="Eyeshadow_A20"  value="A20"   data-type="eyeshadow" data-code="A20" >Rawr</div></div></option>
+                  <option data-img="Eyeshadow_B22"  value="B22"   data-type="eyeshadow" data-code="B22" >Sci-Fi</option>
+                  <option data-img="Eyeshadow_A21"  value="A21"   data-type="eyeshadow" data-code="A21" >Sherbert</option>
+                  <option data-img="Eyeshadow_B101" value="B101"    data-type="eyeshadow" data-code="B101">Sleeping Beauty</option>
+                  <option data-img="Eyeshadow_B76"  value="B76"     data-type="eyeshadow" data-code="B76" >Succulent</option>
+                  <option data-img="Eyeshadow_B53"  value="B53"     data-type="eyeshadow" data-code="B53" >Sugar Plum</option>
+                  <option data-img="Eyeshadow_B108" value="B108"    data-type="eyeshadow" data-code="B108">Teddy</option>
+                  <option data-img="Eyeshadow_B111" value="B111"    data-type="eyeshadow" data-code="B111">Tempest</option>
+                  <option data-img="Eyeshadow_B56"  value="B56"     data-type="eyeshadow" data-code="B56" >The Plaza</option>
+                  <option data-img="Eyeshadow_B93"  value="B93"     data-type="eyeshadow" data-code="B93" >Trench Coat</option>
+                  <option data-img="Eyeshadow_B102" value="B102"    data-type="eyeshadow" data-code="B102">Violet Pride</option>
+                  <option data-img="Eyeshadow_A1"   value="A1"    data-type="eyeshadow" data-code="A1"  >Zodiac</option>
+                </select>   
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>05</label>
+                <select required class="small-select required" id="05" name="properties[05]">
+                  <option value=""                >Select Eyeshadow</option>
+                                    <option data-img="Eyeshadow_B70"  value="B70"     data-type="eyeshadow" data-code="B70" >Amethyst</option>
+                                    <option data-img="Eyeshadow_A2"  value="A2"   data-type="eyeshadow" data-code="A2"  >Antique</option>
+                                    <option data-img="Eyeshadow_B88"  value="B88"     data-type="eyeshadow" data-code="B88" >Apparatus</option>
+                                    <option data-img="Eyeshadow_B5"   value="B5"    data-type="eyeshadow" data-code="B5"  >Apricot</option>
+                                    <option data-img="Eyeshadow_B84"  value="B84"     data-type="eyeshadow" data-code="B84" >Beignet</option>
+                                    <option data-img="Eyeshadow_B117" value="B117"    data-type="eyeshadow" data-code="B117">Bellini Punch</option>
+                                    <option data-img="Eyeshadow_B80"  value="B80"     data-type="eyeshadow" data-code="B80" >Black Pearl</option>
+                                    <option data-img="Eyeshadow_B37"  value="B37"   data-type="eyeshadow" data-code="B37" >Buried Treasure</option>
+                                    <option data-img="Eyeshadow_B51"  value="B51"     data-type="eyeshadow" data-code="B51" >Café Au Lait</option>
+                                    <option data-img="Eyeshadow_B82"  value="B82"     data-type="eyeshadow" data-code="B82" >Canvas</option>
+                                    <option data-img="Eyeshadow_B110" value="B110"    data-type="eyeshadow" data-code="B110">Cauldron</option>
+                                    <option data-img="Eyeshadow_C4"   value="C4"      data-type="eyeshadow" data-code="C4"  >Cocoa Chanel</option>
+                                    <option data-img="Eyeshadow_C6"   value="C6"      data-type="eyeshadow" data-code="C6"  >Coral Cove</option>
+                                    <option data-img="Eyeshadow_A12"  value="A12"   data-type="eyeshadow" data-code="A12" >Crush</option>
+                                    <option data-img="Eyeshadow_B69"  value="B69"     data-type="eyeshadow" data-code="B69" >Dirty Chai</option>
+                                    <option data-img="Eyeshadow_B59"  value="B59"     data-type="eyeshadow" data-code="B59" >Dragon Fruit</option>
+                                    <option data-img="Eyeshadow_B113" value="B113"    data-type="eyeshadow" data-code="B113">Dust Bunny</option>
+                                    <option data-img="Eyeshadow_B25"  value="B25"   data-type="eyeshadow" data-code="B25" >Eclipse</option>
+                                    <option data-img="Eyeshadow_B119" value="B119"    data-type="eyeshadow" data-code="B119">Enchanted</option>
+                                    <option data-img="Eyeshadow_B107" value="B107"    data-type="eyeshadow" data-code="B107">Espresso</option>
+                                    <option data-img="Eyeshadow_B20"  value="B20"   data-type="eyeshadow" data-code="B20" >Extra Foam</option>
+                                    <option data-img="Eyeshadow_B60"  value="B60"     data-type="eyeshadow" data-code="B60" >Flat White</option>
+                                    <option data-img="Eyeshadow_A15"  value="A15"   data-type="eyeshadow" data-code="A15" >Flora</option>
+                                    <option data-img="Eyeshadow_B94"  value="B94"     data-type="eyeshadow" data-code="B94" >Fortune Teller</option>
+                                    <option data-img="Eyeshadow_B92"  value="B92"     data-type="eyeshadow" data-code="B92" >Go Blue</option>
+                                    <option data-img="Eyeshadow_B21"  value="B21"   data-type="eyeshadow" data-code="B21" >Grizzly</option>
+                                    <option data-img="Eyeshadow_B62"  value="B62"     data-type="eyeshadow" data-code="B62" >Haute Chocolate</option>
+                                    <option data-img="Eyeshadow_C5"   value="C5"      data-type="eyeshadow" data-code="C5"  >Honey Moon</option>
+                                    <option data-img="Eyeshadow_B43"  value="B43"     data-type="eyeshadow" data-code="B43" >Kate Moss</option>
+                                    <option data-img="Eyeshadow_B12"  value="B12"   data-type="eyeshadow" data-code="B12" >Lolli</option>
+                                    <option data-img="Eyeshadow_B35"  value="B35"   data-type="eyeshadow" data-code="B35" >Longhorn</option>
+                                    <option data-img="Eyeshadow_B41"  value="B41"     data-type="eyeshadow" data-code="B41" >Lucky Penny</option>
+                                    <option data-img="Eyeshadow_B6"   value="B6"    data-type="eyeshadow" data-code="B6"  >Mahogany</option>
+                                    <option data-img="Eyeshadow_A10"  value="A10"   data-type="eyeshadow" data-code="A10" >Matcha</option>
+                                    <option data-img="Eyeshadow_B100" value="B100"    data-type="eyeshadow" data-code="B100">Mermaid</option>
+                                    <option data-img="Eyeshadow_C2"   value="C2"      data-type="eyeshadow" data-code="C2"  >Milk Chocolate</option>
+                                    <option data-img="Eyeshadow_A18"  value="A18"   data-type="eyeshadow" data-code="A18" >Monster</option>
+                                    <option data-img="Eyeshadow_B44"  value="B44"     data-type="eyeshadow" data-code="B44" >Mud Bath</option>
+                                    <option data-img="Eyeshadow_B122" value="B122"    data-type="eyeshadow" data-code="B122">Nebula</option>
+                                    <option data-img="Eyeshadow_C1"   value="C1"      data-type="eyeshadow" data-code="C1"  >Nude Beach</option>
+                                    <option data-img="Eyeshadow_B55"  value="B55"     data-type="eyeshadow" data-code="B55" >Olympian</option>
+                                    <option data-img="Eyeshadow_B26"  value="B26"   data-type="eyeshadow" data-code="B26" >Orchid</option>
+                                    <option data-img="Eyeshadow_B67"  value="B67"     data-type="eyeshadow" data-code="B67" >Pajama Party</option>
+                                    <option data-img="Eyeshadow_B90"  value="B90"     data-type="eyeshadow" data-code="B90" >Pandora</option>
+                                    <option data-img="Eyeshadow_B96"  value="B96"     data-type="eyeshadow" data-code="B96" >Pewter</option>
+                                    <option data-img="Eyeshadow_B77"  value="B77"     data-type="eyeshadow" data-code="B77" >Platinum</option>
+                                    <option data-img="Eyeshadow_B34"  value="B34"   data-type="eyeshadow" data-code="B34" >Princess Peach</option>
+                                    <option data-img="Eyeshadow_B38"  value="B38"     data-type="eyeshadow" data-code="B38" >Purple Rain</option>
+                                    <option data-img="Eyeshadow_A20"  value="A20"   data-type="eyeshadow" data-code="A20" >Rawr</div></div></option>
+                                    <option data-img="Eyeshadow_B22"  value="B22"   data-type="eyeshadow" data-code="B22" >Sci-Fi</option>
+                                    <option data-img="Eyeshadow_A21"  value="A21"   data-type="eyeshadow" data-code="A21" >Sherbert</option>
+                                    <option data-img="Eyeshadow_B101" value="B101"    data-type="eyeshadow" data-code="B101">Sleeping Beauty</option>
+                                    <option data-img="Eyeshadow_B76"  value="B76"     data-type="eyeshadow" data-code="B76" >Succulent</option>
+                                    <option data-img="Eyeshadow_B53"  value="B53"     data-type="eyeshadow" data-code="B53" >Sugar Plum</option>
+                                    <option data-img="Eyeshadow_B108" value="B108"    data-type="eyeshadow" data-code="B108">Teddy</option>
+                                    <option data-img="Eyeshadow_B111" value="B111"    data-type="eyeshadow" data-code="B111">Tempest</option>
+                                    <option data-img="Eyeshadow_B56"  value="B56"     data-type="eyeshadow" data-code="B56" >The Plaza</option>
+                                    <option data-img="Eyeshadow_B93"  value="B93"     data-type="eyeshadow" data-code="B93" >Trench Coat</option>
+                                    <option data-img="Eyeshadow_B102" value="B102"    data-type="eyeshadow" data-code="B102">Violet Pride</option>
+                                    <option data-img="Eyeshadow_A1"   value="A1"    data-type="eyeshadow" data-code="A1"  >Zodiac</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>06</label>
+                <select required class="small-select required" id="06" name="properties[06]">
+                  <option value=""                >Select Eyeshadow</option>
+                  <option data-img="Eyeshadow_B70"  value="B70"     data-type="eyeshadow" data-code="B70" >Amethyst</option>
+                  <option data-img="Eyeshadow_A2"  value="A2"   data-type="eyeshadow" data-code="A2"  >Antique</option>
+                  <option data-img="Eyeshadow_B88"  value="B88"     data-type="eyeshadow" data-code="B88" >Apparatus</option>
+                  <option data-img="Eyeshadow_B5"   value="B5"    data-type="eyeshadow" data-code="B5"  >Apricot</option>
+                  <option data-img="Eyeshadow_B84"  value="B84"     data-type="eyeshadow" data-code="B84" >Beignet</option>
+                  <option data-img="Eyeshadow_B117" value="B117"    data-type="eyeshadow" data-code="B117">Bellini Punch</option>
+                  <option data-img="Eyeshadow_B80"  value="B80"     data-type="eyeshadow" data-code="B80" >Black Pearl</option>
+                  <option data-img="Eyeshadow_B37"  value="B37"   data-type="eyeshadow" data-code="B37" >Buried Treasure</option>
+                  <option data-img="Eyeshadow_B51"  value="B51"     data-type="eyeshadow" data-code="B51" >Café Au Lait</option>
+                  <option data-img="Eyeshadow_B82"  value="B82"     data-type="eyeshadow" data-code="B82" >Canvas</option>
+                  <option data-img="Eyeshadow_B110" value="B110"    data-type="eyeshadow" data-code="B110">Cauldron</option>
+                  <option data-img="Eyeshadow_C4"   value="C4"      data-type="eyeshadow" data-code="C4"  >Cocoa Chanel</option>
+                  <option data-img="Eyeshadow_C6"   value="C6"      data-type="eyeshadow" data-code="C6"  >Coral Cove</option>
+                  <option data-img="Eyeshadow_A12"  value="A12"   data-type="eyeshadow" data-code="A12" >Crush</option>
+                  <option data-img="Eyeshadow_B69"  value="B69"     data-type="eyeshadow" data-code="B69" >Dirty Chai</option>
+                  <option data-img="Eyeshadow_B59"  value="B59"     data-type="eyeshadow" data-code="B59" >Dragon Fruit</option>
+                  <option data-img="Eyeshadow_B113" value="B113"    data-type="eyeshadow" data-code="B113">Dust Bunny</option>
+                  <option data-img="Eyeshadow_B25"  value="B25"   data-type="eyeshadow" data-code="B25" >Eclipse</option>
+                  <option data-img="Eyeshadow_B119" value="B119"    data-type="eyeshadow" data-code="B119">Enchanted</option>
+                  <option data-img="Eyeshadow_B107" value="B107"    data-type="eyeshadow" data-code="B107">Espresso</option>
+                  <option data-img="Eyeshadow_B20"  value="B20"   data-type="eyeshadow" data-code="B20" >Extra Foam</option>
+                  <option data-img="Eyeshadow_B60"  value="B60"     data-type="eyeshadow" data-code="B60" >Flat White</option>
+                  <option data-img="Eyeshadow_A15"  value="A15"   data-type="eyeshadow" data-code="A15" >Flora</option>
+                  <option data-img="Eyeshadow_B94"  value="B94"     data-type="eyeshadow" data-code="B94" >Fortune Teller</option>
+                  <option data-img="Eyeshadow_B92"  value="B92"     data-type="eyeshadow" data-code="B92" >Go Blue</option>
+                  <option data-img="Eyeshadow_B21"  value="B21"   data-type="eyeshadow" data-code="B21" >Grizzly</option>
+                  <option data-img="Eyeshadow_B62"  value="B62"     data-type="eyeshadow" data-code="B62" >Haute Chocolate</option>
+                  <option data-img="Eyeshadow_C5"   value="C5"      data-type="eyeshadow" data-code="C5"  >Honey Moon</option>
+                  <option data-img="Eyeshadow_B43"  value="B43"     data-type="eyeshadow" data-code="B43" >Kate Moss</option>
+                  <option data-img="Eyeshadow_B12"  value="B12"   data-type="eyeshadow" data-code="B12" >Lolli</option>
+                  <option data-img="Eyeshadow_B35"  value="B35"   data-type="eyeshadow" data-code="B35" >Longhorn</option>
+                  <option data-img="Eyeshadow_B41"  value="B41"     data-type="eyeshadow" data-code="B41" >Lucky Penny</option>
+                  <option data-img="Eyeshadow_B6"   value="B6"    data-type="eyeshadow" data-code="B6"  >Mahogany</option>
+                  <option data-img="Eyeshadow_A10"  value="A10"   data-type="eyeshadow" data-code="A10" >Matcha</option>
+                  <option data-img="Eyeshadow_B100" value="B100"    data-type="eyeshadow" data-code="B100">Mermaid</option>
+                  <option data-img="Eyeshadow_C2"   value="C2"      data-type="eyeshadow" data-code="C2"  >Milk Chocolate</option>
+                  <option data-img="Eyeshadow_A18"  value="A18"   data-type="eyeshadow" data-code="A18" >Monster</option>
+                  <option data-img="Eyeshadow_B44"  value="B44"     data-type="eyeshadow" data-code="B44" >Mud Bath</option>
+                  <option data-img="Eyeshadow_B122" value="B122"    data-type="eyeshadow" data-code="B122">Nebula</option>
+                  <option data-img="Eyeshadow_C1"   value="C1"      data-type="eyeshadow" data-code="C1"  >Nude Beach</option>
+                  <option data-img="Eyeshadow_B55"  value="B55"     data-type="eyeshadow" data-code="B55" >Olympian</option>
+                  <option data-img="Eyeshadow_B26"  value="B26"   data-type="eyeshadow" data-code="B26" >Orchid</option>
+                  <option data-img="Eyeshadow_B67"  value="B67"     data-type="eyeshadow" data-code="B67" >Pajama Party</option>
+                  <option data-img="Eyeshadow_B90"  value="B90"     data-type="eyeshadow" data-code="B90" >Pandora</option>
+                  <option data-img="Eyeshadow_B96"  value="B96"     data-type="eyeshadow" data-code="B96" >Pewter</option>
+                  <option data-img="Eyeshadow_B77"  value="B77"     data-type="eyeshadow" data-code="B77" >Platinum</option>
+                  <option data-img="Eyeshadow_B34"  value="B34"   data-type="eyeshadow" data-code="B34" >Princess Peach</option>
+                  <option data-img="Eyeshadow_B38"  value="B38"     data-type="eyeshadow" data-code="B38" >Purple Rain</option>
+                  <option data-img="Eyeshadow_A20"  value="A20"   data-type="eyeshadow" data-code="A20" >Rawr</div></div></option>
+                  <option data-img="Eyeshadow_B22"  value="B22"   data-type="eyeshadow" data-code="B22" >Sci-Fi</option>
+                  <option data-img="Eyeshadow_A21"  value="A21"   data-type="eyeshadow" data-code="A21" >Sherbert</option>
+                  <option data-img="Eyeshadow_B101" value="B101"    data-type="eyeshadow" data-code="B101">Sleeping Beauty</option>
+                  <option data-img="Eyeshadow_B76"  value="B76"     data-type="eyeshadow" data-code="B76" >Succulent</option>
+                  <option data-img="Eyeshadow_B53"  value="B53"     data-type="eyeshadow" data-code="B53" >Sugar Plum</option>
+                  <option data-img="Eyeshadow_B108" value="B108"    data-type="eyeshadow" data-code="B108">Teddy</option>
+                  <option data-img="Eyeshadow_B111" value="B111"    data-type="eyeshadow" data-code="B111">Tempest</option>
+                  <option data-img="Eyeshadow_B56"  value="B56"     data-type="eyeshadow" data-code="B56" >The Plaza</option>
+                  <option data-img="Eyeshadow_B93"  value="B93"     data-type="eyeshadow" data-code="B93" >Trench Coat</option>
+                  <option data-img="Eyeshadow_B102" value="B102"    data-type="eyeshadow" data-code="B102">Violet Pride</option>
+                  <option data-img="Eyeshadow_A1"   value="A1"    data-type="eyeshadow" data-code="A1"  >Zodiac</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>07</label>
+                <select required class="small-select required" id="07" name="properties[07]">
+                 <option value=""                >Select Eyeshadow</option>
+                  <option data-img="Eyeshadow_B70"  value="B70"     data-type="eyeshadow" data-code="B70" >Amethyst</option>
+                  <option data-img="Eyeshadow_A2"  value="A2"   data-type="eyeshadow" data-code="A2"  >Antique</option>
+                  <option data-img="Eyeshadow_B88"  value="B88"     data-type="eyeshadow" data-code="B88" >Apparatus</option>
+                  <option data-img="Eyeshadow_B5"   value="B5"    data-type="eyeshadow" data-code="B5"  >Apricot</option>
+                  <option data-img="Eyeshadow_B84"  value="B84"     data-type="eyeshadow" data-code="B84" >Beignet</option>
+                  <option data-img="Eyeshadow_B117" value="B117"    data-type="eyeshadow" data-code="B117">Bellini Punch</option>
+                  <option data-img="Eyeshadow_B80"  value="B80"     data-type="eyeshadow" data-code="B80" >Black Pearl</option>
+                  <option data-img="Eyeshadow_B37"  value="B37"   data-type="eyeshadow" data-code="B37" >Buried Treasure</option>
+                  <option data-img="Eyeshadow_B51"  value="B51"     data-type="eyeshadow" data-code="B51" >Café Au Lait</option>
+                  <option data-img="Eyeshadow_B82"  value="B82"     data-type="eyeshadow" data-code="B82" >Canvas</option>
+                  <option data-img="Eyeshadow_B110" value="B110"    data-type="eyeshadow" data-code="B110">Cauldron</option>
+                  <option data-img="Eyeshadow_C4"   value="C4"      data-type="eyeshadow" data-code="C4"  >Cocoa Chanel</option>
+                  <option data-img="Eyeshadow_C6"   value="C6"      data-type="eyeshadow" data-code="C6"  >Coral Cove</option>
+                  <option data-img="Eyeshadow_A12"  value="A12"   data-type="eyeshadow" data-code="A12" >Crush</option>
+                  <option data-img="Eyeshadow_B69"  value="B69"     data-type="eyeshadow" data-code="B69" >Dirty Chai</option>
+                  <option data-img="Eyeshadow_B59"  value="B59"     data-type="eyeshadow" data-code="B59" >Dragon Fruit</option>
+                  <option data-img="Eyeshadow_B113" value="B113"    data-type="eyeshadow" data-code="B113">Dust Bunny</option>
+                  <option data-img="Eyeshadow_B25"  value="B25"   data-type="eyeshadow" data-code="B25" >Eclipse</option>
+                  <option data-img="Eyeshadow_B119" value="B119"    data-type="eyeshadow" data-code="B119">Enchanted</option>
+                  <option data-img="Eyeshadow_B107" value="B107"    data-type="eyeshadow" data-code="B107">Espresso</option>
+                  <option data-img="Eyeshadow_B20"  value="B20"   data-type="eyeshadow" data-code="B20" >Extra Foam</option>
+                  <option data-img="Eyeshadow_B60"  value="B60"     data-type="eyeshadow" data-code="B60" >Flat White</option>
+                  <option data-img="Eyeshadow_A15"  value="A15"   data-type="eyeshadow" data-code="A15" >Flora</option>
+                  <option data-img="Eyeshadow_B94"  value="B94"     data-type="eyeshadow" data-code="B94" >Fortune Teller</option>
+                  <option data-img="Eyeshadow_B92"  value="B92"     data-type="eyeshadow" data-code="B92" >Go Blue</option>
+                  <option data-img="Eyeshadow_B21"  value="B21"   data-type="eyeshadow" data-code="B21" >Grizzly</option>
+                  <option data-img="Eyeshadow_B62"  value="B62"     data-type="eyeshadow" data-code="B62" >Haute Chocolate</option>
+                  <option data-img="Eyeshadow_C5"   value="C5"      data-type="eyeshadow" data-code="C5"  >Honey Moon</option>
+                  <option data-img="Eyeshadow_B43"  value="B43"     data-type="eyeshadow" data-code="B43" >Kate Moss</option>
+                  <option data-img="Eyeshadow_B12"  value="B12"   data-type="eyeshadow" data-code="B12" >Lolli</option>
+                  <option data-img="Eyeshadow_B35"  value="B35"   data-type="eyeshadow" data-code="B35" >Longhorn</option>
+                  <option data-img="Eyeshadow_B41"  value="B41"     data-type="eyeshadow" data-code="B41" >Lucky Penny</option>
+                  <option data-img="Eyeshadow_B6"   value="B6"    data-type="eyeshadow" data-code="B6"  >Mahogany</option>
+                  <option data-img="Eyeshadow_A10"  value="A10"   data-type="eyeshadow" data-code="A10" >Matcha</option>
+                  <option data-img="Eyeshadow_B100" value="B100"    data-type="eyeshadow" data-code="B100">Mermaid</option>
+                  <option data-img="Eyeshadow_C2"   value="C2"      data-type="eyeshadow" data-code="C2"  >Milk Chocolate</option>
+                  <option data-img="Eyeshadow_A18"  value="A18"   data-type="eyeshadow" data-code="A18" >Monster</option>
+                  <option data-img="Eyeshadow_B44"  value="B44"     data-type="eyeshadow" data-code="B44" >Mud Bath</option>
+                  <option data-img="Eyeshadow_B122" value="B122"    data-type="eyeshadow" data-code="B122">Nebula</option>
+                  <option data-img="Eyeshadow_C1"   value="C1"      data-type="eyeshadow" data-code="C1"  >Nude Beach</option>
+                  <option data-img="Eyeshadow_B55"  value="B55"     data-type="eyeshadow" data-code="B55" >Olympian</option>
+                  <option data-img="Eyeshadow_B26"  value="B26"   data-type="eyeshadow" data-code="B26" >Orchid</option>
+                  <option data-img="Eyeshadow_B67"  value="B67"     data-type="eyeshadow" data-code="B67" >Pajama Party</option>
+                  <option data-img="Eyeshadow_B90"  value="B90"     data-type="eyeshadow" data-code="B90" >Pandora</option>
+                  <option data-img="Eyeshadow_B96"  value="B96"     data-type="eyeshadow" data-code="B96" >Pewter</option>
+                  <option data-img="Eyeshadow_B77"  value="B77"     data-type="eyeshadow" data-code="B77" >Platinum</option>
+                  <option data-img="Eyeshadow_B34"  value="B34"   data-type="eyeshadow" data-code="B34" >Princess Peach</option>
+                  <option data-img="Eyeshadow_B38"  value="B38"     data-type="eyeshadow" data-code="B38" >Purple Rain</option>
+                  <option data-img="Eyeshadow_A20"  value="A20"   data-type="eyeshadow" data-code="A20" >Rawr</div></div></option>
+                  <option data-img="Eyeshadow_B22"  value="B22"   data-type="eyeshadow" data-code="B22" >Sci-Fi</option>
+                  <option data-img="Eyeshadow_A21"  value="A21"   data-type="eyeshadow" data-code="A21" >Sherbert</option>
+                  <option data-img="Eyeshadow_B101" value="B101"    data-type="eyeshadow" data-code="B101">Sleeping Beauty</option>
+                  <option data-img="Eyeshadow_B76"  value="B76"     data-type="eyeshadow" data-code="B76" >Succulent</option>
+                  <option data-img="Eyeshadow_B53"  value="B53"     data-type="eyeshadow" data-code="B53" >Sugar Plum</option>
+                  <option data-img="Eyeshadow_B108" value="B108"    data-type="eyeshadow" data-code="B108">Teddy</option>
+                  <option data-img="Eyeshadow_B111" value="B111"    data-type="eyeshadow" data-code="B111">Tempest</option>
+                  <option data-img="Eyeshadow_B56"  value="B56"     data-type="eyeshadow" data-code="B56" >The Plaza</option>
+                  <option data-img="Eyeshadow_B93"  value="B93"     data-type="eyeshadow" data-code="B93" >Trench Coat</option>
+                  <option data-img="Eyeshadow_B102" value="B102"    data-type="eyeshadow" data-code="B102">Violet Pride</option>
+                  <option data-img="Eyeshadow_A1"   value="A1"    data-type="eyeshadow" data-code="A1"  >Zodiac</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>08</label>
+                <select required class="small-select required" id="08" name="properties[08]">
+                  <option value=""                >Select Eyeshadow</option>
+                  <option data-img="Eyeshadow_B70"  value="B70"     data-type="eyeshadow" data-code="B70" >Amethyst</option>
+                  <option data-img="Eyeshadow_A2"  value="A2"   data-type="eyeshadow" data-code="A2"  >Antique</option>
+                  <option data-img="Eyeshadow_B88"  value="B88"     data-type="eyeshadow" data-code="B88" >Apparatus</option>
+                  <option data-img="Eyeshadow_B5"   value="B5"    data-type="eyeshadow" data-code="B5"  >Apricot</option>
+                  <option data-img="Eyeshadow_B84"  value="B84"     data-type="eyeshadow" data-code="B84" >Beignet</option>
+                  <option data-img="Eyeshadow_B117" value="B117"    data-type="eyeshadow" data-code="B117">Bellini Punch</option>
+                  <option data-img="Eyeshadow_B80"  value="B80"     data-type="eyeshadow" data-code="B80" >Black Pearl</option>
+                  <option data-img="Eyeshadow_B37"  value="B37"   data-type="eyeshadow" data-code="B37" >Buried Treasure</option>
+                  <option data-img="Eyeshadow_B51"  value="B51"     data-type="eyeshadow" data-code="B51" >Café Au Lait</option>
+                  <option data-img="Eyeshadow_B82"  value="B82"     data-type="eyeshadow" data-code="B82" >Canvas</option>
+                  <option data-img="Eyeshadow_B110" value="B110"    data-type="eyeshadow" data-code="B110">Cauldron</option>
+                  <option data-img="Eyeshadow_C4"   value="C4"      data-type="eyeshadow" data-code="C4"  >Cocoa Chanel</option>
+                  <option data-img="Eyeshadow_C6"   value="C6"      data-type="eyeshadow" data-code="C6"  >Coral Cove</option>
+                  <option data-img="Eyeshadow_A12"  value="A12"   data-type="eyeshadow" data-code="A12" >Crush</option>
+                  <option data-img="Eyeshadow_B69"  value="B69"     data-type="eyeshadow" data-code="B69" >Dirty Chai</option>
+                  <option data-img="Eyeshadow_B59"  value="B59"     data-type="eyeshadow" data-code="B59" >Dragon Fruit</option>
+                  <option data-img="Eyeshadow_B113" value="B113"    data-type="eyeshadow" data-code="B113">Dust Bunny</option>
+                  <option data-img="Eyeshadow_B25"  value="B25"   data-type="eyeshadow" data-code="B25" >Eclipse</option>
+                  <option data-img="Eyeshadow_B119" value="B119"    data-type="eyeshadow" data-code="B119">Enchanted</option>
+                  <option data-img="Eyeshadow_B107" value="B107"    data-type="eyeshadow" data-code="B107">Espresso</option>
+                  <option data-img="Eyeshadow_B20"  value="B20"   data-type="eyeshadow" data-code="B20" >Extra Foam</option>
+                  <option data-img="Eyeshadow_B60"  value="B60"     data-type="eyeshadow" data-code="B60" >Flat White</option>
+                  <option data-img="Eyeshadow_A15"  value="A15"   data-type="eyeshadow" data-code="A15" >Flora</option>
+                  <option data-img="Eyeshadow_B94"  value="B94"     data-type="eyeshadow" data-code="B94" >Fortune Teller</option>
+                  <option data-img="Eyeshadow_B92"  value="B92"     data-type="eyeshadow" data-code="B92" >Go Blue</option>
+                  <option data-img="Eyeshadow_B21"  value="B21"   data-type="eyeshadow" data-code="B21" >Grizzly</option>
+                  <option data-img="Eyeshadow_B62"  value="B62"     data-type="eyeshadow" data-code="B62" >Haute Chocolate</option>
+                  <option data-img="Eyeshadow_C5"   value="C5"      data-type="eyeshadow" data-code="C5"  >Honey Moon</option>
+                  <option data-img="Eyeshadow_B43"  value="B43"     data-type="eyeshadow" data-code="B43" >Kate Moss</option>
+                  <option data-img="Eyeshadow_B12"  value="B12"   data-type="eyeshadow" data-code="B12" >Lolli</option>
+                  <option data-img="Eyeshadow_B35"  value="B35"   data-type="eyeshadow" data-code="B35" >Longhorn</option>
+                  <option data-img="Eyeshadow_B41"  value="B41"     data-type="eyeshadow" data-code="B41" >Lucky Penny</option>
+                  <option data-img="Eyeshadow_B6"   value="B6"    data-type="eyeshadow" data-code="B6"  >Mahogany</option>
+                  <option data-img="Eyeshadow_A10"  value="A10"   data-type="eyeshadow" data-code="A10" >Matcha</option>
+                  <option data-img="Eyeshadow_B100" value="B100"    data-type="eyeshadow" data-code="B100">Mermaid</option>
+                  <option data-img="Eyeshadow_C2"   value="C2"      data-type="eyeshadow" data-code="C2"  >Milk Chocolate</option>
+                  <option data-img="Eyeshadow_A18"  value="A18"   data-type="eyeshadow" data-code="A18" >Monster</option>
+                  <option data-img="Eyeshadow_B44"  value="B44"     data-type="eyeshadow" data-code="B44" >Mud Bath</option>
+                  <option data-img="Eyeshadow_B122" value="B122"    data-type="eyeshadow" data-code="B122">Nebula</option>
+                  <option data-img="Eyeshadow_C1"   value="C1"      data-type="eyeshadow" data-code="C1"  >Nude Beach</option>
+                  <option data-img="Eyeshadow_B55"  value="B55"     data-type="eyeshadow" data-code="B55" >Olympian</option>
+                  <option data-img="Eyeshadow_B26"  value="B26"   data-type="eyeshadow" data-code="B26" >Orchid</option>
+                  <option data-img="Eyeshadow_B67"  value="B67"     data-type="eyeshadow" data-code="B67" >Pajama Party</option>
+                  <option data-img="Eyeshadow_B90"  value="B90"     data-type="eyeshadow" data-code="B90" >Pandora</option>
+                  <option data-img="Eyeshadow_B96"  value="B96"     data-type="eyeshadow" data-code="B96" >Pewter</option>
+                  <option data-img="Eyeshadow_B77"  value="B77"     data-type="eyeshadow" data-code="B77" >Platinum</option>
+                  <option data-img="Eyeshadow_B34"  value="B34"   data-type="eyeshadow" data-code="B34" >Princess Peach</option>
+                  <option data-img="Eyeshadow_B38"  value="B38"     data-type="eyeshadow" data-code="B38" >Purple Rain</option>
+                  <option data-img="Eyeshadow_A20"  value="A20"   data-type="eyeshadow" data-code="A20" >Rawr</div></div></option>
+                  <option data-img="Eyeshadow_B22"  value="B22"   data-type="eyeshadow" data-code="B22" >Sci-Fi</option>
+                  <option data-img="Eyeshadow_A21"  value="A21"   data-type="eyeshadow" data-code="A21" >Sherbert</option>
+                  <option data-img="Eyeshadow_B101" value="B101"    data-type="eyeshadow" data-code="B101">Sleeping Beauty</option>
+                  <option data-img="Eyeshadow_B76"  value="B76"     data-type="eyeshadow" data-code="B76" >Succulent</option>
+                  <option data-img="Eyeshadow_B53"  value="B53"     data-type="eyeshadow" data-code="B53" >Sugar Plum</option>
+                  <option data-img="Eyeshadow_B108" value="B108"    data-type="eyeshadow" data-code="B108">Teddy</option>
+                  <option data-img="Eyeshadow_B111" value="B111"    data-type="eyeshadow" data-code="B111">Tempest</option>
+                  <option data-img="Eyeshadow_B56"  value="B56"     data-type="eyeshadow" data-code="B56" >The Plaza</option>
+                  <option data-img="Eyeshadow_B93"  value="B93"     data-type="eyeshadow" data-code="B93" >Trench Coat</option>
+                  <option data-img="Eyeshadow_B102" value="B102"    data-type="eyeshadow" data-code="B102">Violet Pride</option>
+                  <option data-img="Eyeshadow_A1"   value="A1"    data-type="eyeshadow" data-code="A1"  >Zodiac</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <div class="grid__item">
+                <hr/>
+                <div class="condensed uppercase" style="margin-bottom: 18px;">Your Custom Palette</div>
+                <div class="results-palette">
+                  <div class="palette-group">
+                    <div class="grid">
+                      <div class="grid__item one-third">
+                        <div id="p01" data-reference="01" class="palette"><div class="url-block"></div></div>
+                      </div>
+                      <div class="grid__item one-third">
+                        <div id="p02" data-reference="02" class="palette"><div class="url-block"></div></div>
+                      </div>
+                      <div class="grid__item one-third">
+                        <div id="p03" data-reference="03" class="palette"><div class="url-block"></div></div>
+                      </div>
+                      <div class="grid__item one-whole spacing">
+                      </div>
+                      <div class="grid__item one-fifth">
+                        <div id="p04" data-reference="04" class="palette palette-eyeshadow pushed"><div class="url-block"></div></div>
+                      </div>
+                      <div class="grid__item one-fifth">
+                        <div id="p05" data-reference="05" class="palette palette-eyeshadow"><div class="url-block"></div></div>
+                      </div>
+                      <div class="grid__item one-fifth">
+                        <div id="p06" data-reference="06" class="palette palette-eyeshadow pushed"><div class="url-block"></div></div>
+                      </div>
+                      <div class="grid__item one-fifth">
+                        <div id="p07" data-reference="07" class="palette palette-eyeshadow"><div class="url-block"></div></div>
+                      </div>
+                      <div class="grid__item one-fifth">
+                        <div id="p08" data-reference="08" class="palette palette-eyeshadow pushed"><div class="url-block"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="gift-wrap">
+                <div class="gift-registration" style="margin-top: 18px; margin-bottom: 18px;">
+                    <span class="condensed uppercase">Is this a gift? <span class="option option-yes">Yes</span><span class="option option-no active">No</span></span>
+                </div>
+                <div class="gift-form selector-wrapper-wrap">
+                    <p class="line-item-property__field">
+                      <label for="recipients-name">Recipient's Name</label>
+                      <input id="recipients-name" type="text" name="properties[_Recipient's Name]">
+                    </p>
+                </div>
+            </div>
+          {% include 'custompalette.js' %}
+
+          <select name="id" id="productSelect" class="product-single__variants">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+
+                {% comment %}
+                  Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                {% endcomment %}
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+             </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <div class="selector-wrapper-wrap" style="display: none;">
+            <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector qty-select">
+          </div>
+          <hr/>
+          <button type="submit" name="add" id="AddToCart" class="btn">
+            <span id="AddToCartText">Add To Bag</span>
+          </button>
+        </form>
+      </div>
+      <div class="sticker-container medium-down--hide">
+        <i class="sticker made-in-ny rotate"></i>
+        <i class="sticker star-gold star-01 rotate"></i>
+        <i class="sticker star-gold star-02 o-rotate"></i>
+        <i class="sticker star-gold star-03 o-rotate"></i>
+        <i class="sticker star-black star-04 rotate"></i>
+
+        <i class="sticker star-gold star-05 o-rotate"></i>
+        <i class="sticker star-black star-06 rotate"></i>
+        <i class="sticker liberty rotate"></i>
+        <i class="sticker taxi o-rotate"></i>
+        <i class="sticker eyes rotate"></i>
+      </div>
+
+    </div>
+    <div class="grid__item">
+    <div class="grid wrapper productreview-wrap">
+        <div class="grid__item">
+          <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% comment %}
+  To take advantage of a callback on the select dropdown, add option_selection.js
+  and customize the JS in timber.productPage as needed.
+
+  Currently, timber.productPage does the following:
+    - Hides your <select> tag from above
+    - Breaks out the product variants into separate product options, if more than one exists
+    - Generates a <select> tag for each product option
+    - Enables/disables elements based on variant availability
+
+  Callback notes:
+    - Keep the callback available to the global scope (window.selectCallback) so that advanced
+      addons can override it.
+      * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
+{% endcomment %}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<script>
+  var selectCallback = function(variant, selector) {
+    timber.productPage({
+      money_format: "{{ shop.money_format }}",
+      variant: variant,
+      selector: selector
+    });
+  };
+
+  jQuery(function($) {
+    new Shopify.OptionSelectors('productSelect', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+      enableHistoryState: true
+    });
+
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    // Hide selectors if we only have 1 variant and its title contains 'Default'.
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      $('.selector-wrapper').hide();
+    {% endif %}
+  });
+</script>

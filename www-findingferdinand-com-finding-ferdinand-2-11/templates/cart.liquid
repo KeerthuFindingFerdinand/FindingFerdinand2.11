@@ -1,0 +1,220 @@
+<!-- /templates/cart.liquid -->
+{% comment %}
+
+  For info on test orders:
+    - General http://docs.shopify.com/manual/your-store/orders/test-orders
+    - Shopify Payments - http://docs.shopify.com/manual/more/shopify-payments/testing-shopify-payments
+
+{% endcomment %}
+
+{% if cart.item_count > 0 %}
+
+  <h1 class="wrapper text-center">{{ 'cart.general.title' | t }}</h1>
+  <form action="/cart" method="post" novalidate class="wrapper cart table-wrap">
+    <table class="cart-table full table--responsive">
+      <thead class="cart__row cart__header-labels">
+        <th colspan="2" class="text-left condensed uppercase">{{ 'cart.label.product' | t }}</th>
+        <th class="text-center condensed uppercase">{{ 'cart.label.price' | t }}</th>
+        <th class="text-center condensed uppercase">{{ 'cart.label.quantity' | t }}</th>
+        <th class="text-right condensed uppercase">{{ 'cart.label.total' | t }}</th>
+      </thead>
+      <tbody>
+        {% for item in cart.items %}
+        {% assign property_size = item.properties | size %}
+          <tr class="cart__row table__section">
+            <td data-label="{{ 'customer.order.product' | t }}"{% if item.product.handle == 'overnight-palette' %} class="overnight-palette"{% elsif item.product.handle == 'overshadow-palette' %} class="overshadow-palette" style="padding-left: 0px;"{% elsif item.product.handle == 'rose-palette' %} class="rose-palette" style="padding-left: 0px;"{% endif %}>
+              <a href="{{ item.url | within: collections.all }}" class="cart__image">
+                {% if item.product.handle contains 'overnight-palette' %}
+                  {% if item.product.handle == 'finding-ferdinand-overnight-palette' %}
+                  
+                  <div class="results-palette">
+                    <div class="palette-group">
+                      <div class="grid">
+
+                      {% for p in item.properties %}
+                        {% unless p.last == blank %}
+                          {% if p.first contains 'cp' %}
+                            {% capture indexnumber %}{{ forloop.rindex }}{% endcapture %}
+                  
+                            <div class="grid__item {% if indexnumber == '6' or indexnumber == '7' or indexnumber == '8' %}one-third {% else %}one-fifth {% endif %}"><div class="relative{% if indexnumber == '1' or indexnumber == '3' or indexnumber == '5' %} pushed {% endif %}">
+                              <div class="palette selected" style="background-image:url('{{ p.last }}');"></div>
+                            </div></div>
+                              {% if indexnumber == '6' %}
+                            <div class="grid__item one-whole spacing"></div>
+                              {% endif %}
+                          {% endif %}
+                        {% endunless %}
+                      {% endfor %}
+                      
+                      </div>
+                    </div>
+                  </div>
+                  {% else %}
+                  <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                  {% endif %}
+
+                {% elsif item.product.handle contains 'overshadow-palette' %}
+                <div class="results-palette overshadow-results-palette">
+                  <div class="palette-group">
+                    <div class="grid">
+
+                    {% for p in item.properties %}
+                      {% unless p.last == blank %}
+                        {% if p.first contains 'cp' %}
+                          {% capture indexnumber %}{{ forloop.rindex }}{% endcapture %}
+                
+                          <div class="grid__item one-quarter"><div class="relative">
+                            <div class="palette selected" style="background-image:url('{{ p.last }}');"></div>
+                          </div></div>
+                            {% if indexnumber == '5' %}
+                          <div class="grid__item one-whole spacing"></div>
+                            {% endif %}
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+                    
+                    </div>
+                  </div>
+                </div>
+
+                {% elsif item.product.handle contains 'rose-palette' %}
+                <div class="results-palette rose-results-palette">
+                  <div class="palette-group">
+                    <div class="grid">
+
+                    {% for p in item.properties %}
+                      {% unless p.last == blank %}
+                        {% if p.first contains 'cp' %}
+                          {% capture indexnumber %}{{ forloop.rindex }}{% endcapture %}
+                
+                          <div class="grid__item one-third"><div class="relative">
+                            <div class="palette selected" style="background-image:url('{{ p.last }}');"></div>
+                          </div></div>
+                            {% if indexnumber == '6' %}
+                          <div class="grid__item one-whole spacing"></div>
+                            {% endif %}
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+                    
+                    </div>
+                  </div>
+                </div>
+
+                {% else %}
+                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                {% endif %}
+              </a>
+            </td>
+            <td>
+              <a href="{{ item.url }}" class="h4">
+                {{ item.product.title }}
+              </a>
+              {% unless item.variant.title contains 'Default' %}
+                <br>
+                <small class="condensed uppercase">{{ item.variant.title }}</small>
+                <br>
+              {% endunless %}
+
+              {% if settings.cart_vendor_enable %}
+                <p>{{ item.vendor }}</p>
+              {% endif %}
+
+              
+              {% if property_size > 0 %}
+                {% for p in item.properties %}
+                  {% unless p.last == blank %}
+                    {% unless p.first contains 'cp' %}
+                      <small>{{ p.first }}: </small>
+                      <small>{{ p.last }}</small>
+                      <br>
+                      {% endunless %}
+                  {% endunless %}
+                {% endfor %}
+              {% endif %}
+
+              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove" style="">
+                <small>{{ 'cart.general.remove' | t }}</small>
+              </a>
+            </td>
+            <td data-label="{{ 'cart.label.price' | t }}">
+              <span class="type-normal">
+                {{ item.price | money }}
+              </span>
+            </td>
+            <td data-label="{{ 'cart.label.quantity' | t }}">
+              <input type="number" name="updates[]" id="updates_{{ item.key }}" data-id="{{ item.key }}" value="{{ item.quantity }}" min="0">
+            </td>
+            <td data-label="{{ 'cart.label.total' | t }}" class="text-right">
+              {% if item.original_line_price != item.line_price %}
+                <span class="cart-item__original-price"><s>{{ item.original_line_price | money }}</s></span>
+              {% endif %}
+              <span class="type-normal">
+                {{ item.line_price | money }}
+              </span>
+              {% for discount in item.discounts %}
+                <span class="cart-item__discount">{{ discount.title }}</span>
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="grid grid--full cart__row">
+      <div class="grid__item"><div class="grid grid--full">
+      {% if settings.cart_notes_enable %}
+        <div class="grid__item one-third small--one-whole">
+        <p class="cart-attribute__field">
+          <label class="condensed uppercase">How did you hear about us?</label><hr>
+          <input required class="required" type="radio" name="attributes[How did you hear about us?]" value="Facebook"{% if cart.attributes["How did you hear about us?"] == "Facebook" %} checked{% endif %}> <span>Facebook</span><br>
+          <input required class="required" type="radio" name="attributes[How did you hear about us?]" value="Instagram"{% if cart.attributes["How did you hear about us?"] == "Instagram" %} checked{% endif %}> <span>Instagram</span><br>
+          <input required class="required" type="radio" name="attributes[How did you hear about us?]" value="Pinterest"{% if cart.attributes["How did you hear about us?"] == "Pinterest" %} checked{% endif %}> <span>Pinterest</span><br>
+          <input required class="required" type="radio" name="attributes[How did you hear about us?]" value="Word of Mouth"{% if cart.attributes["How did you hear about us?"] == "Word of Mouth" %} checked{% endif %}> <span>Word of Mouth</span><br>
+
+          <input required class="required mag-help" type="radio" name="attributes[How did you hear about us?]" value="Magazine or Blog" {% if cart.attributes["How did you hear about us?"] == "Word of Mouth" %} checked{% endif %}> <span>Magazine/Blog</span><br>
+          <input required class="required other-help" type="radio" name="attributes[How did you hear about us?]" value="Other"{% if cart.attributes["How did you hear about us?"] == "Other" %} checked{% endif %}> <span>Other</span><br>
+        </p>
+
+        <p id="other-trigger" class="cart-attribute__field" style="display: none;">
+          <label for="if-other-please-specify">If Other, please specify: </label><br/>
+          <input id="if-other-please-specify" type="text" name="attributes[If Other, please specify: ]" value="{{ cart.attributes["If Other, please specify: "] }}" style="width: 100%;">
+        </p>   
+        <p id="mag-trigger" class="cart-attribute__field" style="display: none;">
+          <label for="if-mag-please-specify">If Magazine/Blog, which one? </label><br/>
+          <input id="if-mag-please-specify" type="text" name="attributes[If Other, please specify: ]" value="{{ cart.attributes["If Magazine or Blog, please specify: "] }}" style="width: 100%;">
+        </p>
+        </div>
+<!--         <div class="grid__item one-third small--one-whole">
+          <label for="CartInstagramHandle">Leave us your handle for a chance <br/>to be featured on Instagram!</label>
+          <input name="instagramhandle" class="input-full" id="CartInstagramHandle" style="max-width: 420px; margin-bottom: 1em;" />
+        </div> -->
+        <div class="grid__item one-third small--one-whole">
+          <label for="CartSpecialInstructions" class="condensed uppercase">Special Instructions</label><br/><hr>
+          <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+        </div>
+        
+      {% endif %}
+      <div class="grid__item text-right{% if settings.cart_notes_enable %} one-third small--one-whole{% endif %}">
+        <p>
+          <span class="cart__subtotal-title condensed uppercase">{{ 'cart.general.subtotal' | t }}</span>
+          <span class="h3 cart__subtotal">{{ cart.total_price | money }}</span>
+        </p>
+        {% if cart.total_discounts > 0 %}
+          {% assign savings = cart.total_discounts | money %}
+          <p>
+            <span class="cart-subtotal__savings"><em>{{ 'cart.general.savings_html' | t: price: savings }}</em></span>
+          </p>
+        {% endif %}
+        <p><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
+        <button type="submit" name="update" class="btn--secondary update-cart">{{ 'cart.general.update' | t }}</button>
+        <button type="submit" name="checkout" class="btn blink">{{ 'cart.general.checkout' | t }}</button>
+      </div>
+    </div></div></div>
+  </form>
+{% else %}
+  {% comment %}
+    The cart is empty
+  {% endcomment %}
+  <h2 class="text-center" style="margin-top: 4em;">{{ 'cart.general.title' | t }}</h2>
+  <p class="text-center" style="margin-top: 1em; padding-top: 4em; max-width: 640px; border-top: 1px black dotted; margin-left: auto; margin-right: auto;">{{ 'cart.general.empty' | t }}<br/><a href="/" class="btn button" style="margin-top: 1em;">Continue Browsing here</a></p>
+{% endif %}

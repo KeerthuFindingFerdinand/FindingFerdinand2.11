@@ -1,0 +1,166 @@
+<!-- /templates/blog.liquid -->
+{% comment %}
+
+  Loop through a defined number of articles with the 'paginate' tag.
+  Don't forget to close the tag after your loop.
+
+{% endcomment %}
+
+{% paginate blog.articles by 10 %}
+
+{% include 'breadcrumb' %}
+
+{% comment %}
+  This template is also used for listing out articles of a specific tag.
+  You can change layouts or styles by checking if current_tags is true.
+{% endcomment %}
+<div class="grid blog-wrap">
+
+  <div class="grid__item">
+
+    {% if current_tags %}
+      <h1 class="wrapper extra-wrapper text-center pink pink-bg overline"><span>{{ blog.title }} &mdash; {{ current_tags.first }}</span></h1>
+    {% else %}
+      <h1 class="wrapper extra-wrapper text-center pink pink-bg overline"><span>{{ blog.title }}</span></h1>
+    {% endif %}
+  </div>
+  <div class="grid__item">
+
+    <div class="featured-article">
+    {% for article in blog.articles limit:1 %}
+
+      <div class="article">
+
+        {% if article.image %}
+          <a class="article__featured-image" href="{{ article.url }}" style="background-image: url('{{ article | img_url: 'master' }}');"></a>
+        {% endif %}
+
+        <div class="grid grid--full wrapper extra-wrapper top-gutter bottom-gutter">
+          <div class="grid__item text-center sidelines thin tags">{% include 'tags-article' %}</div>
+        </div>
+
+        <div class="grid grid--full wrapper extra-wrapper">
+
+          <div class="grid__item large--one-half">
+            <h2 class="text-center large--text-left"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+          </div>
+
+          <div class="grid__item large--one-half">
+            {% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
+            <p class="text-center large--text-left">{{ date }}<br/>
+            {% assign author_keyword = 'author' %}
+                  {% assign authormarker = '-' %}
+                  {% assign author = false %}
+                  {% for tag in article.tags %}
+
+                    {% if tag contains author_keyword %}
+                        {% assign author = true %}
+                        {% capture authortitle %}{{ tag | remove: "author-" }}{% endcapture %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if author == true %}
+                    by {{ authortitle }}
+                  {% else %}
+                    by {{ article.user.first_name }}
+                  {% endif %}
+            </p>
+
+            {% if article.excerpt.size > 0 %}
+              <p class="text-center large--text-left excerpt">{{ article.excerpt }}</p>
+            {% else %}
+              <p class="text-center large--text-left excerpt">{{ article.content | strip_html | truncatewords: 150 }}</p>
+            {% endif %}
+
+            <p class="text-center large--text-left"><a href="{{ article.url }}" class="cta condensed">{{ 'blogs.article.read_more' | t }}</a></p>
+          </div>
+        </div> 
+
+      </div>
+
+    {% endfor %}
+    </div>
+    </div>
+    <div class="grid__item">
+      <div class="relative sticker-wrap">
+        <div class="sticker-container">
+          <div class="scale-down">
+            <i class="sticker made-in-ny rotate"></i>
+
+            <i class="sticker star-gold star-01 rotate"></i>
+            <i class="sticker star-black star-02 o-rotate"></i>
+
+            <i class="sticker star-gold star-03 o-rotate"></i>
+            <i class="sticker star-black star-04 rotate"></i>
+
+            <i class="sticker star-gold star-05 o-rotate"></i>
+            <i class="sticker star-black star-06 rotate"></i>
+
+            <i class="sticker taxi o-rotate"></i>
+            <i class="sticker eyes rotate"></i>
+            <i class="sticker liberty o-rotate"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="wrapper">
+        <hr>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="grid grid--full wrapper other-articles">
+      {% for article in blog.articles offset:1 limit:999 %}
+      <article class="grid__item blog-listing blog-listing-sub large--one-third{% for tag in article.tags %} {{ tag | handleize }}{% endfor %}">
+        <div class="article gutter-bottom">
+            <a class="article__featured-image with-image" href="{{ article.url }}" style="background-image: url('{{ article | img_url: 'master' }}')"></a>
+            <div class="information-sub padding">
+              <div class="text-center sidelines thin tags">{% include 'tags-article' %}</div>
+              <div>
+                <h3 class="text-center"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+                <h5 class="wrapper text-center author-name">
+                  {% assign author_keyword = 'author' %}
+                  {% assign authormarker = '-' %}
+                  {% assign author = false %}
+                  {% for tag in article.tags %}
+
+                    {% if tag contains author_keyword %}
+                        {% assign author = true %}
+                        {% capture authortitle %}{{ tag | remove: "author-" }}{% endcapture %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if author == true %}
+                    by {{ authortitle }}
+                  {% else %}
+                    by {{ article.user.first_name }}
+                  {% endif %}
+
+                </h5>
+              </div>
+              <div class="excerpt-container text-center">
+                {% if article.excerpt.size > 0 %}
+                  {{ article.excerpt | truncatewords: 25 | strip_html }}
+                {% else %}
+                  <p>{{ article.content | strip_html | truncatewords:100 | strip_html }}</p>
+                {% endif %}
+                  <p class="text-center"><a href="{{ article.url }}" class="cta condensed read-more" style="">More</a></p>
+              </div>
+            </div>
+        </div>
+      </article>
+      {% endfor %}
+      </div>
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <div class="wrapper extra-wrapper pagination">
+        {{ paginate | default_pagination }}
+      </div>
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endpaginate %}

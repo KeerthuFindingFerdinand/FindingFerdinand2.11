@@ -1,0 +1,82 @@
+<!-- /templates/index.liquid -->
+<div class="carousel">
+  <div class="hero" id="H
+  ero" data-autoplay="true" data-speed="5000">
+    {% for i in (1..6) %}
+    
+      {% capture slide %}hero_slide_{{ i }}_enable{% endcapture %}
+      {% capture gif %}hero_slide_{{ i }}_gif{% endcapture %}
+      {% capture mobile_slide_img %}hero_slide_{{ i }}_mobile.jpg{% endcapture %}
+
+      {% if settings[gif] %}
+        {% capture slide_img %}hero_slide_{{ i }}.gif{% endcapture %}
+      {% else %}
+        {% capture slide_img %}hero_slide_{{ i }}.jpg{% endcapture %}
+      {% endif %}
+
+      {% capture slide_link %}hero_slide_{{ i }}_link{% endcapture %}
+      {% capture slide_cta %}hero_slide_{{ i }}_cta{% endcapture %}
+      {% capture slide_headline %}hero_slide_{{ i }}_headline{% endcapture %}
+      {% capture slide_subhead%}hero_slide_{{ i }}_subhead{% endcapture %}
+
+      {% if settings[slide] %}
+        <div class="hero__slide">
+
+          <style>
+            @media screen and (max-width: 600px) {
+              .hero__image--{{ i }} {
+                background-image: url('{{ mobile_slide_img | asset_img_url: 'master' }}');
+              }
+            }
+            @media screen and (min-width: 601px) and (max-width: 1024px) {
+              .hero__image--{{ i }} {
+                background-image: url('{{ slide_img | asset_img_url: 'master' }}');
+              }
+            }
+            @media screen and (min-width: 1025px) {
+              .hero__image--{{ i }} {
+                background-image: url('{{ slide_img | asset_img_url: 'master' }}');
+              }
+            }
+          </style>
+
+          <div class="hero__image hero__image--{{ i }}" data-image="{{ slide_img | asset_url }}"></div>
+          <a href="{{ settings[slide_link] }}" class="overlay"></a>
+          <div class="hero__text-wrap text-right">
+            <div class="page-width">
+              <div class="hero__text-content">
+                <div class="info-container text-center">
+                  <h3 class="condensed uppercase">{{ settings[slide_headline] }}</h3>
+                  <p>{{ settings[slide_subhead] }}</p>
+                  <a class="cta" href="{{ settings[slide_link] }}">{{ settings[slide_cta] }} &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% assign featuredcollection = collections.frontpage %}
+<div class="featured-collection wrapper relative">
+  <div class="home-logo text-center">
+    <img src="{{'findingferdinand.png' | asset_url }}" border="0" class="rotator" />
+  </div>
+  <h2 class="text-center visually-hidden">{{ 'homepage.sections.frontpage_title' | t }}</h2>
+  <div class="rte rte--header collection-description text-center">
+    {{ featuredcollection.description }}
+    <span class="sidelines"><span class="smaller xoxo-ff">Finding Ferdinand</span></span>
+  </div>
+  <div class="isotope-container grid">
+    {% for product in collections.frontpage.products limit:12 %}
+    {% include 'bold-product' with product, hide_action: 'skip' %}
+      {% assign grid_item_width = 'large--one-third medium--one-half' %}
+      {% include 'product-grid-item' %}
+    {% endfor %}
+  </div>
+  <div class="bg-triangle-pink marquee"></div>
+  <div class="bg-triangle-blue marquee"></div>
+  <div class="bg-triangle-yellow marquee"></div>
+</div>

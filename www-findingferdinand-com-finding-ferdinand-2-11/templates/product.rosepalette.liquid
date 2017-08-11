@@ -1,0 +1,492 @@
+<!-- /templates/product.liquid -->
+<div itemscope itemtype="http://schema.org/Product">
+
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+
+  {% include 'breadcrumb' %}
+
+  <div class="grid product-single relative wrapper">
+    <div class="grid__item large--three-fifths text-center">
+      <div class="product-single__photos" id="ProductPhoto">
+        {% for image in product.images %}
+        <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
+        {% endfor %}
+      </div>
+      <div class="palette-options-container medium-down--hide">
+        <div class="grid">
+          <div class="grid__item one-half">
+            <div class="grid option-container bronzer-container">
+                <div class="grid__item one-whole"><span class="uppercase condensed palette-option-title">Bronzers</span></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="bronzer" data-img="Bronzer_CocoaBronze" data-code="CocoaBronze" data-title="Cocoa Bronze"></div></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="bronzer" data-img="Bronzer_SunkissedBronze" data-code="SunkissedBronze" data-title="Sunkissed Bronze"></div></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="bronzer" data-img="Bronzer_LightBronze" data-code="LightBronze" data-title="Light Bronze"></div></div>
+                
+            </div>
+          </div>
+
+          <div class="grid__item one-half">
+            <div class="grid option-container highlighter-container">
+                <div class="grid__item one-whole"><span class="uppercase condensed palette-option-title">Highlighters</span></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="highlighter" data-img="Highlighter_PinkGlow" data-code="PinkGlow" data-title="Pink Glow"></div></div>
+                <div class="grid__item one-third"><div class="palette palette-large" data-type="highlighter" data-img="Highlighter_GoldenGlow" data-code="GoldenGlow" data-title="Golden Glow"></div></div>
+                
+            </div>
+          </div>
+
+          <div class="grid__item one-whole">
+            <div class="grid option-container blush-container">
+                <div class="grid__item one-whole"><span class="uppercase condensed palette-option-title">Blushes</span></div>
+                <div class="grid__item one-whole"><div class="grid scroll" style="padding-top: 1em;">
+
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No36" data-code="#36" data-title="Peony"              ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No2"  data-code="#2"  data-title="Bubble Gum"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No18" data-code="#18" data-title="Lingerie"           ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No45" data-code="#45" data-title="Happy Hour"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No37" data-code="#37" data-title="No Regrets"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No38" data-code="#38" data-title="Fetch"              ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No8"  data-code="#8"  data-title="HBIC"               ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No3"  data-code="#3"  data-title="Cheeky"             ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No46" data-code="#46" data-title="Peaches and Cream"  ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No23" data-code="#23" data-title="War Paint"          ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No34" data-code="#34" data-title="Jelly Donut"        ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No28" data-code="#28" data-title="Cinnamon"          ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No48" data-code="#48" data-title="Paaank"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No19" data-code="#19" data-title="Skinny Dip"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No15" data-code="#15" data-title="Hot Mama"           ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No33" data-code="#33" data-title="Strawberry Spritzer"></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No21" data-code="#21" data-title="Passion Fruit"       ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No9"  data-code="#9"  data-title="Terracotta"         ></div></div>
+                <div class="grid__item one-sixth"><div class="palette palette-large" data-type="blush" data-img="Blush_No14" data-code="#14" data-title="Disco Fever"        ></div></div>
+                </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid__item large--two-fifths">
+
+      <h1 itemprop="name" class="medium-down--text-center">{{ product.title }}</h1>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <meta itemprop="priceCurrency" class="medium-down--text-center" content="{{ shop.currency }}">
+        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+        {% comment %}
+          ID addToCartForm is a selector for the ajax cart plugin
+        {% endcomment %}
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+          <div class="grid main-el">
+            <div class="pricing grid__item large--one-fifth">
+              <span class="visually-hidden medium-down--text-center">{{ 'products.general.regular_price' | t }}</span>
+              <span id="ProductPrice" class="h2 medium-down--text-center" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money }}</span>
+
+              {% if product.compare_at_price_max > product.price %}
+                <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                <p id="ComparePrice">
+                  {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
+                </p>
+              {% endif %}
+            </div>
+            <div class="grid__item large--four-fifths social-sharing social-sharing-wrap medium-down--text-center">
+              {% include 'social-sharing' %}
+            </div>
+            <div class="grid__item one-whole">
+            <div class="product-description rte" itemprop="description">
+              {{ product.description }}
+            </div>
+            <hr>
+            </div>
+            
+          </div>
+          <div class="palette-options">
+            <div class="grid">
+              <div class="grid__item">
+                <div class="condensed uppercase" style="margin-top: 18px; margin-bottom: 18px;">Your Bronzers, Highlighters, or Blush</div>
+              </div>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>01</label>
+                <select required class="large-select required" id="01" name="properties[01]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Bubble Gum — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Cheeky — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Cinnamon — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Disco Fever — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Fetch — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Happy Hour — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="HBIC — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Hot Mama — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Jelly Donut — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Lingerie — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="No Regrets — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Paaank — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Passion Fruit — No. 21"    data-type="blush" data-code="#21">Passion Fruit</option>
+                  <option data-img="Blush_No46"   value="Peaches and Cream — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Peony — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Skinny Dip — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Strawberry Spritzer — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Terracotta — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="War Paint — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>02</label>
+                <select required class="large-select required" id="02" name="properties[02]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Bubble Gum — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Cheeky — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Cinnamon — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Disco Fever — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Fetch — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Happy Hour — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="HBIC — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Hot Mama — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Jelly Donut — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Lingerie — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="No Regrets — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Paaank — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Passion Fruit — No. 21"    data-type="blush" data-code="#21">Passion Fruit</option>
+                  <option data-img="Blush_No46"   value="Peaches and Cream — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Peony — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Skinny Dip — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Strawberry Spritzer — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Terracotta — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="War Paint — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>03</label>
+                <select required class="large-select required" id="03" name="properties[03]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Bubble Gum — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Cheeky — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Cinnamon — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Disco Fever — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Fetch — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Happy Hour — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="HBIC — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Hot Mama — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Jelly Donut — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Lingerie — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="No Regrets — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Paaank — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Passion Fruit — No. 21"    data-type="blush" data-code="#21">Passion Fruit</option>
+                  <option data-img="Blush_No46"   value="Peaches and Cream — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Peony — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Skinny Dip — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Strawberry Spritzer — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Terracotta — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="War Paint — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>04</label>
+                <select required class="large-select required" id="04" name="properties[04]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Bubble Gum — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Cheeky — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Cinnamon — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Disco Fever — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Fetch — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Happy Hour — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="HBIC — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Hot Mama — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Jelly Donut — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Lingerie — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="No Regrets — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Paaank — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Passion Fruit — No. 21"    data-type="blush" data-code="#21">Passion Fruit</option>
+                  <option data-img="Blush_No46"   value="Peaches and Cream — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Peony — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Skinny Dip — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Strawberry Spritzer — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Terracotta — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="War Paint — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>   
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>05</label>
+                <select required class="large-select required" id="05" name="properties[05]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Bubble Gum — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Cheeky — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Cinnamon — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Disco Fever — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Fetch — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Happy Hour — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="HBIC — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Hot Mama — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Jelly Donut — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Lingerie — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="No Regrets — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Paaank — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Passion Fruit — No. 21"    data-type="blush" data-code="#21">Passion Fruit</option>
+                  <option data-img="Blush_No46"   value="Peaches and Cream — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Peony — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Skinny Dip — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Strawberry Spritzer — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Terracotta — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="War Paint — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <p class="grid__item large--one-half line-item-property__field">
+                <label>06</label>
+                <select required class="large-select required" id="06" name="properties[06]">
+                  <option value="">Select Option</option>
+                  <option data-img="Bronzer_CocoaBronze" value="Bronzer — Cocoa Bronze" data-type="bronzer" data-code="CocoaBronze">Cocoa Bronze</option>
+                  <option data-img="Bronzer_LightBronze" value="Bronzer — Light Bronze" data-type="bronzer" data-code="LightBronze">Light Bronze</option>
+                  <option data-img="Bronzer_SunkissedBronze" value="Bronzer — Sunkissed Bronze" data-type="bronzer" data-code="SunkissedBronze">Sunkissed Bronze</option>
+
+                  <option data-img="Highlighter_GoldenGlow" value="Highlighter — Golden Glow" data-type="highlighter" data-code="GoldenGlow">Golden Glow</option>
+                  <option data-img="Highlighter_PinkGlow" value="Highlighter — Pink Glow" data-type="highlighter" data-code="PinkGlow">Pink Glow</option>
+
+                  <option data-img="Blush_No2"    value="Bubble Gum — No. 2"     data-type="blush" data-code="#2" >Bubble Gum</option>
+                  <option data-img="Blush_No3"    value="Cheeky — No. 3"     data-type="blush" data-code="#3" >Cheeky</option>
+                  <option data-img="Blush_No28"   value="Cinnamon — No. 28"    data-type="blush" data-code="#28">Cinnamon</option>
+                  <option data-img="Blush_No14"   value="Disco Fever — No. 14"    data-type="blush" data-code="#14">Disco Fever</option>
+                  <option data-img="Blush_No38"   value="Fetch — No. 38"    data-type="blush" data-code="#38">Fetch</option>
+                  <option data-img="Blush_No45"   value="Happy Hour — No. 45"    data-type="blush" data-code="#45">Happy Hour</option>
+                  <option data-img="Blush_No8"    value="HBIC — No. 8"     data-type="blush" data-code="#8" >HBIC</option>
+                  <option data-img="Blush_No15"   value="Hot Mama — No. 15"    data-type="blush" data-code="#15">Hot Mama</option>
+                  <option data-img="Blush_No34"   value="Jelly Donut — No. 34"    data-type="blush" data-code="#34">Jelly Donut</option>
+                  <option data-img="Blush_No18"   value="Lingerie — No. 18"    data-type="blush" data-code="#18">Lingerie</option>
+                  <option data-img="Blush_No37"   value="No Regrets — No. 37"    data-type="blush" data-code="#37">No Regrets</option>
+                  <option data-img="Blush_No48"   value="Paaank — No. 48"    data-type="blush" data-code="#48">Paaank</option>
+                  <option data-img="Blush_No21"   value="Passion Fruit — No. 21"    data-type="blush" data-code="#21">Passion Fruit</option>
+                  <option data-img="Blush_No46"   value="Peaches and Cream — No. 46"    data-type="blush" data-code="#46">Peaches and Cream</option>
+                  <option data-img="Blush_No36"   value="Peony — No. 36"    data-type="blush" data-code="#36">Peony</option>
+                  <option data-img="Blush_No19"   value="Skinny Dip — No. 19"    data-type="blush" data-code="#19">Skinny Dip</option>
+                  <option data-img="Blush_No33"   value="Strawberry Spritzer — No. 33"    data-type="blush" data-code="#33">Strawberry Spritzer</option>
+                  <option data-img="Blush_No9"    value="Terracotta — No. 9"     data-type="blush" data-code="#9" >Terracotta</option>
+                  <option data-img="Blush_No23"   value="War Paint — No. 23"    data-type="blush" data-code="#23">War Paint</option>
+                </select>
+                <span class="palette-swatch"></span>
+              </p>
+              <div class="grid__item">
+                <hr/>
+                <div class="condensed uppercase">Your Custom Palette</div>
+                <div style="margin-bottom: 18px; font-size: 0.75rem;">Click to view palette detail</div>
+                <div class="results-palette rose-results-palette">
+                  <div class="palette-group">
+                    <div class="grid">
+                      <div class="grid__item one-third"><div class="relative">
+                        <div id="p01" data-reference="01" class="palette"></div>
+                        <div class="cancel">&times;</div>
+                      </div></div>
+                      <div class="grid__item one-third"><div class="relative">
+                        <div id="p02" data-reference="02" class="palette"></div>
+                        <div class="cancel">&times;</div>
+                      </div></div>
+                      <div class="grid__item one-third"><div class="relative">
+                        <div id="p03" data-reference="03" class="palette"></div>
+                        <div class="cancel">&times;</div>
+                      </div></div>
+                      <div class="grid__item one-whole spacing"></div>
+                      <div class="grid__item one-third"><div class="relative">
+                        <div id="p04" data-reference="04" class="palette"></div>
+                        <div class="cancel">&times;</div>
+                      </div></div>
+                      <div class="grid__item one-third"><div class="relative">
+                        <div id="p05" data-reference="05" class="palette"></div>
+                        <div class="cancel">&times;</div>
+                      </div></div>
+                      <div class="grid__item one-third"><div class="relative">
+                        <div id="p06" data-reference="06" class="palette"></div>
+                        <div class="cancel">&times;</div>
+                      </div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="gift-wrap">
+                <div class="gift-registration" style="margin-top: 18px; margin-bottom: 18px;">
+                    <span class="condensed uppercase">Is this a gift? <span class="option option-yes">Yes</span><span class="option option-no active">No</span></span>
+                </div>
+                <div class="gift-form selector-wrapper-wrap">
+                    <p class="line-item-property__field">
+                      <label for="recipients-name">Recipient's Name</label>
+                      <input id="recipients-name" type="text" name="properties[Recipient's Name]">
+                    </p>
+                </div>
+            </div>
+            <div class="img-property-pass" style="display: none !important; height: 0px !important; overflow: hidden !important;">
+                <p class="line-item-property__field">
+                  <label for="cp01">P01</label>
+                  <input id="cp01" type="text" name="properties[cp01]" value="">
+                </p>
+                <p class="line-item-property__field">
+                  <label for="cp02">P02</label>
+                  <input id="cp02" type="text" name="properties[cp02]" value="">
+                </p>
+                <p class="line-item-property__field">
+                  <label for="cp03">P03</label>
+                  <input id="cp03" type="text" name="properties[cp03]" value="">
+                </p>
+                <p class="line-item-property__field">
+                  <label for="cp04">P04</label>
+                  <input id="cp04" type="text" name="properties[cp04]" value="">
+                </p>
+                <p class="line-item-property__field">
+                  <label for="cp05">P05</label>
+                  <input id="cp05" type="text" name="properties[cp05]" value="">
+                </p>
+                <p class="line-item-property__field">
+                  <label for="cp06">P06</label>
+                  <input id="cp06" type="text" name="properties[cp06]" value="">
+                </p>
+                <p class="line-item-property__field">
+                  <label for="cp07">P07</label>
+                  <input id="cp07" type="text" name="properties[cp07]" value="">
+                </p>
+                <p class="line-item-property__field">
+                  <label for="cp08">P08</label>
+                  <input id="cp08" type="text" name="properties[cp08]" value="">
+                </p>
+            </div>
+          {% include 'rosecustompalette.js' %}
+
+          <select name="id" id="productSelect" class="product-single__variants">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+
+                {% comment %}
+                  Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                {% endcomment %}
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+             </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <div class="selector-wrapper-wrap" style="display: none;">
+            <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector qty-select">
+          </div>
+          <hr/>
+          <button type="submit" name="add" id="AddToCart" class="btn">
+            <span id="AddToCartText">Add To Bag</span>
+          </button>
+        </form>
+      </div>
+      <div class="sticker-container medium-down--hide">
+        <i class="sticker made-in-ny rotate"></i>
+        <i class="sticker star-gold star-01 rotate"></i>
+        <i class="sticker star-gold star-02 o-rotate"></i>
+        <i class="sticker star-gold star-03 o-rotate"></i>
+        <i class="sticker star-black star-04 rotate"></i>
+
+        <i class="sticker star-gold star-05 o-rotate"></i>
+        <i class="sticker star-black star-06 rotate"></i>
+        <i class="sticker liberty rotate"></i>
+        <i class="sticker taxi o-rotate"></i>
+        <i class="sticker eyes rotate"></i>
+      </div>
+
+    </div>
+    <div class="grid__item">
+    <div class="grid grid--full wrapper productreview-wrap">
+        <div class="grid__item">
+          <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% comment %}
+  To take advantage of a callback on the select dropdown, add option_selection.js
+  and customize the JS in timber.productPage as needed.
+
+  Currently, timber.productPage does the following:
+    - Hides your <select> tag from above
+    - Breaks out the product variants into separate product options, if more than one exists
+    - Generates a <select> tag for each product option
+    - Enables/disables elements based on variant availability
+
+  Callback notes:
+    - Keep the callback available to the global scope (window.selectCallback) so that advanced
+      addons can override it.
+      * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
+{% endcomment %}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<script>
+  var selectCallback = function(variant, selector) {
+    timber.productPage({
+      money_format: "{{ shop.money_format }}",
+      variant: variant,
+      selector: selector
+    });
+  };
+
+  jQuery(function($) {
+    new Shopify.OptionSelectors('productSelect', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+      enableHistoryState: true
+    });
+
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    // Hide selectors if we only have 1 variant and its title contains 'Default'.
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      $('.selector-wrapper').hide();
+    {% endif %}
+  });
+</script>
+
+

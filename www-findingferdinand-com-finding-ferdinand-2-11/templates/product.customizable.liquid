@@ -1,0 +1,210 @@
+<!-- /templates/product.liquid -->
+{% include 'bold-product' with product, hide_action: 'break' %}{% if bold_hidden_product %}{% break %}{%endif %}
+<div itemscope itemtype="http://schema.org/Product">
+
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+
+  {% include 'breadcrumb' %}
+
+  <div class="grid grid--full product-single relative wrapper">
+    <div class="grid__item large--three-fifths text-center">
+      <div class="product-single__photos" id="ProductPhoto">
+        {% for image in product.images %}
+        <img src="{{ image.src | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="grid__item large--two-fifths">
+
+      <h1 itemprop="name">{{ product.title }}</h1>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+        {% comment %}
+          ID addToCartForm is a selector for the ajax cart plugin
+        {% endcomment %}
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+          <div class="grid main-el">
+            <div class="pricing grid__item one-whole large--one-fifth">
+              <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+              <span id="ProductPrice" class="h2" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money }}</span>
+
+              {% if product.compare_at_price_max > product.price %}
+                <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                <p id="ComparePrice">
+                  {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
+                </p>
+              {% endif %}
+            </div>
+            <div class="grid__item one-whole large--four-fifths social-sharing social-sharing-wrap">
+              {% include 'social-sharing' %}
+            </div>
+            <div class="grid__item one-whole">
+              <hr style="margin-bottom: 18px;">
+              <div class="condensed uppercase color-select" style="margin-bottom: 18px;"><span>Select up to 4 colors</span></div>
+              <div class="palettes palettes--options grid" data-container="palettes"></div><hr class="dotted"/>
+              <div class="grid">
+                <div class="grid__item large--one-quarter">
+                  <div class="palettes result relative" data-container="result"></div>
+                </div>
+                <div class="grid__item large--three-quarters">
+                  <div class="palettes selection"><span data-container="selection"></span></div>
+                </div>
+                <div class="grid__item one-whole">
+                </div>
+
+              </div>
+              
+              
+            </div>
+            
+          </div>
+          
+          <div class="selector-wrapper-bundle">
+            <select name="id" id="productSelect" class="product-single__variants">
+              {% for variant in product.variants %}
+                {% if variant.available %}
+
+                  {% comment %}
+                    Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                  {% endcomment %}
+                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                {% else %}
+                  <option disabled="disabled">
+                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <div class="selector-wrapper-wrap ordered-list">
+              <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+              <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector qty-select">
+            </div>
+
+            <div class="selector-wrapper-wrap ordered-list">
+                <label for="color-name" class="uppercase condensed">Name Your Color</label>
+                <input type="text" id="color-name" name="properties[Color Name]">
+            </div>
+
+            <div class="selector-wrapper-wrap ordered-list auto-height">
+                <label for="notes" class="uppercase condensed">Additional Notes</label><br>
+                <textarea id="notes" name="properties[Notes]"></textarea>
+            </div>
+          </div>
+          <hr/>
+          <div class="gift-wrap">
+              <div class="gift-registration" style="margin-top: 18px; margin-bottom: 18px;">
+                  <span class="condensed uppercase">Is this a gift? <span class="option option-yes">Yes</span><span class="option option-no active">No</span></span>
+              </div>
+              <div class="gift-form selector-wrapper-wrap">
+                  <p class="line-item-property__field">
+                    <label for="recipients-name">Recipient's Name</label>
+                    <input id="recipients-name" type="text" name="properties[Recipient's Name]">
+                  </p>
+              </div>
+          </div>
+          <hr/>
+          <button type="submit" name="add" id="AddToCart" class="btn">
+            <span id="AddToCartText">Add To Bag</span>
+          </button>
+            
+            {% capture the_snippet_fave %}{% include 'socialshopwave-widget-fave' %}{% endcapture %}
+            {% unless the_snippet_fave contains 'Liquid error' %}
+            	{{ the_snippet_fave }}
+            {% endunless %}
+            
+          <div class="product-description rte" itemprop="description">
+            
+            {% capture the_snippet_ask_friends %}{% include 'socialshopwave-widget-askfriends' %}{% endcapture %}
+            {% unless the_snippet_ask_friends contains 'Liquid error' %}
+                {{ the_snippet_ask_friends }}
+            {% endunless %}
+            
+            {{ product.description }}
+          </div>
+        </form>
+          
+          
+      </div>
+      {% comment %}
+      {% if collection %}
+        {% if collection.previous_product or collection.next_product %}
+          <p>
+            {% if collection.previous_product %}
+              <span class="left">
+                {{ 'products.general.previous_product_html' | t | link_to: collection.previous_product }}
+              </span>
+            {% endif %}
+            {% if collection.next_product %}
+              <span class="right">
+                {{ 'products.general.next_product_html' | t | link_to: collection.next_product }}
+              </span>
+            {% endif %}
+          </p>
+        {% endif %}
+      {% endif %}
+      {% endcomment %}
+
+    </div></div>
+    <div class="grid grid--full wrapper productreview-wrap">
+        <div class="grid__item">
+          <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+{% comment %}
+  To take advantage of a callback on the select dropdown, add option_selection.js
+  and customize the JS in timber.productPage as needed.
+
+  Currently, timber.productPage does the following:
+    - Hides your <select> tag from above
+    - Breaks out the product variants into separate product options, if more than one exists
+    - Generates a <select> tag for each product option
+    - Enables/disables elements based on variant availability
+
+  Callback notes:
+    - Keep the callback available to the global scope (window.selectCallback) so that advanced
+      addons can override it.
+      * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
+{% endcomment %}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<script>
+  var selectCallback = function(variant, selector) {
+    timber.productPage({
+      money_format: "{{ shop.money_format }}",
+      variant: variant,
+      selector: selector
+    });
+  };
+
+  jQuery(function($) {
+    new Shopify.OptionSelectors('productSelect', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+      enableHistoryState: true
+    });
+
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    // Hide selectors if we only have 1 variant and its title contains 'Default'.
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      $('.selector-wrapper').hide();
+    {% endif %}
+  });
+</script>
