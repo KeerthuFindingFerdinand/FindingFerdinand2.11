@@ -1,0 +1,25 @@
+<!-- /templates/customers/register.liquid -->
+
+<div class="grid">
+
+  <div class="grid__item large--one-third push--large--one-third text-center">
+
+
+    
+    <h1>{{ 'customer.register.title' | t }}</h1>
+    
+        {% capture the_snippet_social_icons %}{% include 'ssw-widget-social-login' %}{% endcapture %}
+    {% unless the_snippet_social_icons contains 'Liquid error' %}
+    {{ the_snippet_social_icons }}
+    {% endunless %}
+
+    <div class="form-vertical">
+        <div class="customr-wrapper">
+          {% include 'customr' %}
+        </div>
+
+    </div>
+
+  </div>
+
+</div>

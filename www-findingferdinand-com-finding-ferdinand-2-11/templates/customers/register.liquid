@@ -6,20 +6,28 @@
 
 
     
-    <h1>{{ 'customer.register.title' | t }}</h1>
-    
-        {% capture the_snippet_social_icons %}{% include 'ssw-widget-social-login' %}{% endcapture %}
+    <h1 class="gtext">FF SOCIETY
+BEAUTY PROFILE INFORMATION</h1>
+   <center class="btext"> <p>Udipsanist molorruptat ipsunt quiatia cum quis eum renecte prorunt. Cescia coris sapis dus
+     dus dollit occus es es doluptum fugia et earumen ihitatet velique cus ut voluptatur.</p></center>
+        
     {% unless the_snippet_social_icons contains 'Liquid error' %}
     {{ the_snippet_social_icons }}
     {% endunless %}
 
     <div class="form-vertical">
         <div class="customr-wrapper">
-          {% include 'customr' %}
+          {% include 'customer-fields' %}
         </div>
+       <div class="bg-triangle-pink marquee"></div>
+  		<div class="bg-triangle-blue marquee"></div>
+  		<div class="bg-triangle-yellow marquee"></div>
 
     </div>
+    
 
   </div>
+  
 
 </div>
+ 

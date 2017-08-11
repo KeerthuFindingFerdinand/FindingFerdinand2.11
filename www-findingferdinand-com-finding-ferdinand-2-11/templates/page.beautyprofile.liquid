@@ -1,0 +1,81 @@
+<!-- /templates/page.liquid -->
+<div class="wrapper relative">
+<div class="grid">
+
+  <div class="grid__item large--two-thirds push--large--one-sixth">
+
+    <h2 class="textformat page-title text-center">{{ page.title }}</h2>
+	
+    {% comment %}
+      Regular page content goes here.
+    {% endcomment %}
+    <div class="rte">
+      {{ page.content }}
+      
+      {% form 'beauty' %}
+      {% if form.posted_successfully? %}
+    	<div class="successForm feedback">
+      		{{ 'beauty.form.post_success' | t }}
+    	</div>
+  	  {% endif %}
+      
+      <p><span style="color: #c18f38;"> <strong>{{ 'beauty.form.name' | t }}</strong></span></p>
+      <div><input class="inputbox" id="first" name="beauty[first]" placeholder="First" type="text" /> 
+        <input id="last" class="inputbox" name="beauty[last]" placeholder="Last" type="text" /></div>
+      
+      </div>
+      <div >
+      <p><span style="color: #c18f38;"> <strong>{{ 'beauty.form.location' | t }}</strong></span></p>
+      <div><input class="inputbox" id="city" name="beauty[city]" placeholder="City" type="text" /> <input id="last" class="inputbox" name="state" placeholder="State" type="text" /></div>
+      </div>
+      <div style="margin-top: 10px;">
+      <p><span style="color: #c18f38;"> <strong>{{ 'beauty.form.birthday' | t }}</strong></span></p>
+      <div><input class="inputbox" style="height: 50px; width: 200px;" id="month" name="beauty[month]" placeholder="Month" type="text" /> 
+        <input id="day" style="height: 50px; width: 200px;" class="inputbox" name="beauty[day]" placeholder="Day" type="text" />
+        <input id="year" style="height: 50px; width: 200px; margin-left: 4px;" class="inputbox" name="beauty[year]" placeholder="Year" type="text" /></div>
+      </div>
+      <div><input class="inputbox" style="height: 50px; width: 610px; margin-top: 20px;" id="age" name="beauty[age]" placeholder="Age" type="text" /></div>
+      <div style="margin-top: 10px;">
+      <p><span style="color: #c18f38;"> <strong>{{ 'beauty.form.skintone' | t }}</strong></span></p>
+      <div>
+      <select class="skintone inputbox" name="beauty[skintone]" style="width: 610px;">
+      <option class="inputbox" value="fair">Fair</option>
+      <option class="inputbox" value="light">Light</option>
+      <option class="inputbox" value="olive">Olive</option>
+      <option class="inputbox" value="warm">Warm</option>
+      <option class="inputbox" value="medium">Medium</option>
+      <option class="inputbox" value="deep">Deep</option>
+      <option class="inputbox" value="rich">Rich</option>
+      </select>
+      </div>
+      <div style="margin-top: 10px;">
+      <p><span style="color: #c18f38;"> <strong>{{ 'beauty.form.haircolor' | t }}</strong></span></p>
+      <select name="beauty[haircolor]" class="inputbox" style="height: 50px; width: 610px;">
+      <option class="inputbox" style="height: 50px; width: 610px;">Select</option>
+      </select>
+      </div>
+      <div style="margin-top: 10px;">
+      <p><span style="color: #c18f38;"> <strong>{{ 'beauty.form.eyecolor' | t }}</strong></span></p>
+      <select name="beauty[eyecolor]" class="inputbox" style="height: 50px; width: 610px;">
+      <option class="inputbox" style="height: 50px; width: 610px;">Select</option>
+      </select>
+      </div>
+      <div style="margin-top: 10px;">
+      <p><span style="color: #c18f38;"> <strong>{{ 'beauty.form.beautyfavorites' | t }}</strong></span></p>
+      <select name="beauty[beautyfavorites]" class="inputbox" style="height: 50px; width: 610px;">
+      <option class="inputbox" style="height: 50px; width: 610px;">Select</option>
+      </select>
+      </div>
+        <div class="center">
+        <input type="submit" class="gbtn button" id="BeautyFormSubmit" value="{{ 'beauty.form.send' | t }}" /></div>
+      
+    </div>
+    {% endform %}
+   
+    <div class="bg-triangle-pink marquee"></div>
+    <div class="bg-triangle-blue marquee"></div>
+    <div class="bg-triangle-yellow marquee"></div>
+  </div>
+
+</div>
+</div>

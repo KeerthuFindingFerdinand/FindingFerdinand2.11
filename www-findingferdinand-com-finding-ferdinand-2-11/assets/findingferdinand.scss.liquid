@@ -68,12 +68,14 @@ $pink: #fed6d7;
 $black: #000000;
 $white: #ffffff;
 $darkpink: #fcaaac;
+$gold: #C18F38;
 
 .blue{color: $blue;}
 .pink{color: $pink;}
 
 $colorPrimary: $black;
 $colorSecondary: $pink;
+$colorTertiary: $gold;
 
 // Button colors
 $colorBtnPrimary: $pink;
@@ -92,6 +94,12 @@ $colorLinkHover: $darkpink;
 
 // Text colors
 $colorTextBody: $black;
+
+//Secondary Text color
+$colorTextSecondary: $gold;
+
+//Secondary Alternate Text color
+$colorTextAlternateSecondary: $white;
 
 // Backgrounds
 $colorBody: $white;
@@ -959,6 +967,14 @@ body {
   padding-bottom: $gutter;
 }
 
+.dobBox {
+  max-width: 610px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+  
+
 /*============================================================================
   #Typography
 ==============================================================================*/
@@ -989,6 +1005,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: inherit;
   }
 }
+
+
 
 /*================ Use em() Sass function to declare font-size ================*/
 h1 {
@@ -1024,6 +1042,116 @@ h6 {
 .h5 { @extend h5; }
 .h6 { @extend h6; }
 
+.center {
+    margin: auto;
+    width: 200px;
+    margin-top: 0px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 275px;
+    padding:10px;
+}
+.background1 {
+
+width: 80%;
+height: 150px;
+background-image: url("Assets/ffsociety_image1.jpg");
+background-size: 100% 100%;
+}
+/*---color---*/
+.fair{
+ 
+	width: 20px;
+	height: 20px;
+	background: #F3E4CA;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius:20px;
+	/* width and height can be anything, as long as they're equal */
+
+}
+.fair{
+ 
+	width: 20px;
+	height: 20px;
+	background: #F3E4CA;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius:20px;
+	/* width and height can be anything, as long as they're equal */
+
+}
+/*----end color-----*/
+.inputbox {
+    background-color: white;
+    height: 50px;
+  	width: 300px;
+    border: 1px solid $gold;
+   
+}
+
+.inputform{
+ border: 1px solid $gold;
+}
+.hideoverflow {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  border: solid #DCDFE3 1px
+}
+.hideoverflow select {
+  padding: 4px;
+  margin: -5px -20px -5px -5px;
+}
+.gtext{
+	color: $gold;
+    font-family: "Oswald",Helvetica,Arial,sans-serif;
+}
+.btext{
+	line-height: 1.6;
+    font-family: "NeuzeitGro","Helvetica Neue","Helvetica","Arial","sans-serif";
+    color: #000;
+    font-weight: 300;
+  	font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+.gwhitebutton{
+ 	
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 3px solid #C18F38;
+    width: 186px;
+    height: 46px;
+    box-sizing: border-box;
+    color:$gold;
+    font-weight:bold;
+}
+.gwhitebutton:hover { 
+    color: $gold;
+}
+.gbutton{
+
+    background-color: #C18F38;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+.gbutton:hover { 
+    color: white;
+}
 p {
   margin: 0 0 ($gutter / 2) 0;
 
@@ -1056,6 +1184,75 @@ sup {
 sub {
   bottom: -0.5em;
 }
+
+/*---------login dropdown--------------
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  float: right;
+  background: #eee;
+  border-bottom: 1px solid #fff;
+  border-radius: 3px;    
+}
+
+nav li {
+  float: left;          
+}
+
+nav #login {
+  border-right: 1px solid #ddd;
+  box-shadow: 1px 0 0 #fff;  
+}
+
+nav #login-trigger,
+nav #signup a {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 25px;
+  line-height: 25px;
+  font-weight: bold;
+  padding: 0 8px;
+  text-decoration: none;
+  color: #444;
+  text-shadow: 0 1px 0 #fff; 
+}
+
+nav #signup a {
+  border-radius: 0 3px 3px 0;
+}
+
+nav #login-trigger {
+  border-radius: 3px 0 0 3px;
+}
+
+nav #login-trigger:hover,
+nav #login .active,
+nav #signup a:hover {
+  background: #fff;
+}
+
+nav #login-content {
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: 0;
+  z-index: 999;    
+  background: #fff;
+  background-image: linear-gradient(top, #fff, #eee);  
+  padding: 15px;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+  border-radius: 3px 0 3px 3px;
+}
+
+nav li #login-content {
+  right: 0;
+  width: 250px;  
+}
+
+---------end of login dropdown--------------*/
 
 /*================ Blockquotes ================*/
 blockquote {
@@ -1274,7 +1471,7 @@ a,
 }
 
 .rte a{
-  border-bottom: 1px $darkpink solid;
+ /* border-bottom: 1px $darkpink solid;*/
 }
 
 a.cta{
@@ -1351,7 +1548,55 @@ html input[disabled] {
     background-color: $disabledGrey;
   }
 }
+/*--------------gold color------------------*/
+.gbtn,
+.rte .gbtn {
+  text-transform: uppercase;
+  background-color:$gold;
+  font-family: $condensed;
+  display: inline-block;
+  font-size: 16px;
+  padding: 15px 50px;
+  width: 186px;
+  height: 46px;
+  margin: auto;
+  line-height: 1.42;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  @include user-select(none);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: $radius;
+  transition: all 300ms cubic-bezier(0.57, 0.06, 0.05, 0.95);
 
+  /*================ Set primary button colors - can override later ================*/
+  background-color: $gold;
+  color: $white;
+
+  &:hover {
+    background-color: $gold;
+    color: $white;
+  }
+
+  &:active,
+  &:focus {
+   background-color: $gold;
+   color: $white;
+  }
+
+  &[disabled],
+  &.disabled {
+    cursor: default;
+    color: $disabledBorder;
+    background-color: $white;
+  }
+}
+/*-----end of gold button------*/
 .btn--secondary,
 .rte .btn--secondary {
   @extend .btn;
@@ -1654,10 +1899,14 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+label{
+  color:$gold;
+  font-weight:bold;
+}
 input,
 textarea,
 select {
-  border: 1px solid $colorBorder;
+  border: 1px solid $gold;
   max-width: 100%;
   padding: 8px 10px;
   border-radius: $radius;
@@ -2363,6 +2612,71 @@ label.error {
     }
   }
 }
+/*===========Transition div element===============*/
+.div-ffsoceity1 {
+    
+    background-color: white;
+    position: relative;
+    left:1100px; top:-350px;
+  	padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+   
+    100%  {left:450px; top:-350px; position: relative;}
+    
+}
+
+/* Standard syntax */
+@keyframes example {
+     100%  { left:450px; top:-350px; position: relative;}
+}
+
+.div-ffsoceity2 {
+  	width:450px;
+  heigth:150px;
+    background-color: white;
+    position: relative;
+    left:-500px; top:50px;
+  	padding: 25px;
+    margin: 25px;
+    -webkit-animation-name: div2; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: div2;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes div2 {
+   
+    100%  { left:-100px; top:50px; }
+    
+}
+
+/* Standard syntax */
+@keyframes div2 {
+     100%  {  left:-100px; top:50px; }
+}
+
+
+.margin-transition{
+   				width:auto;
+                text-align: justify;
+                padding: 10px;
+                z-index: 2;
+                
+}
+/*===========End of Transition div element===============*/
 
 /*================ Search bar in header ================*/
 .nav-search {
@@ -4498,6 +4812,15 @@ Template Page
   h1.page-title{
     margin-top: 2em;
     margin-bottom: 2em;
+   
+  }
+
+   .textformat{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-family:$headerFontStack;
+    letter-spacing: 5px;
+     color: $gold;
   }
 
   .rte{

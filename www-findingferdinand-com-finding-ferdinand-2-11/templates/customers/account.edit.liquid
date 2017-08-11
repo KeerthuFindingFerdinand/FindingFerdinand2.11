@@ -1,14 +1,25 @@
-<!-- /templates/customers/account.liquid -->
-{% comment %}
+<!-- /templates/customers/register.liquid -->
 
-  For all available customer liquid tags:
-    - http://docs.shopify.com/themes/liquid-variables/customer
+<div class="grid">
 
-{% endcomment %}
+  <div class="grid__item large--one-third push--large--one-third text-center">
 
-     <div class="customr-wrapper">
-      <h1>Edit Your Account</h1>
-      <a href="/account">Back to account</a>
-      {% include 'customr' %}
-   	 </div>
 
+    
+    <h1>{{ shop.metafields.locales.edit_account }}</h1>
+    
+        {% capture the_snippet_social_icons %}{% include 'ssw-widget-social-login' %}{% endcapture %}
+    {% unless the_snippet_social_icons contains 'Liquid error' %}
+    {{ the_snippet_social_icons }}
+    {% endunless %}
+
+    <div class="form-vertical">
+        <div class="customr-wrapper">
+          {% include 'customer-fields' %}
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
