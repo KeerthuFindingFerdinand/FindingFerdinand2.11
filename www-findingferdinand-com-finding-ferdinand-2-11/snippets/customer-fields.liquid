@@ -6,6 +6,12 @@
     <script>
       var Customr = {
         baseUrl: "https://customr.heliumdev.com",
+        ready: function() {
+          document.querySelector('#customer-fields input[type="submit"]').className = 'gbtn button';
+          document.querySelector('#customer-fields input[type="submit"]').setAttribute("value", "SUBMIT");
+          $( ".cancel-form" ).remove();
+        },
+        
         {% if customer %}
           shopifyCustomer: {
             id: {{ customer.id }},
@@ -13,7 +19,12 @@
           }
         {% endif %}
       };
+      
     </script>
+  <script>
+  
+  </script>
+  
     <script src="https://cdn-customr.heliumdev.com/assets/v2/embed.js"></script>
   {% endform %}
 </div>

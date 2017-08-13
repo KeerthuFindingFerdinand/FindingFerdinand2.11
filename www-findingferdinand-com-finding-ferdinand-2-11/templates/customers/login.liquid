@@ -27,7 +27,8 @@
           <label for="CustomerPassword" class="hidden-label">{{ 'customer.login.password' | t }}</label>
           <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" placeholder="{{ 'customer.login.password' | t }}">
         {% endif %}
-         <p>
+
+        <p>
           <input type="submit" class="btn btn--full" value="{{ 'customer.login.sign_in' | t }}">
         </p>
         <p><a href="/">{{ 'customer.login.cancel' | t }}</a></p>

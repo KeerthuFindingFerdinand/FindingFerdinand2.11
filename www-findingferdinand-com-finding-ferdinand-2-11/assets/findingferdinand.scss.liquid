@@ -1116,15 +1116,15 @@ background-size: 100% 100%;
     -webkit-font-smoothing: antialiased;
 }
 .gwhitebutton{
- 	
+ 	margin:auto;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+   
     cursor: pointer;
-    border: 3px solid #C18F38;
+    border: 1px solid #C18F38;
     width: 186px;
     height: 46px;
     box-sizing: border-box;
@@ -1548,6 +1548,7 @@ html input[disabled] {
     background-color: $disabledGrey;
   }
 }
+
 /*--------------gold color------------------*/
 .gbtn,
 .rte .gbtn {
@@ -2612,9 +2613,61 @@ label.error {
     }
   }
 }
+
+
+
 /*===========Transition div element===============*/
 .div-ffsoceity1 {
+text-align:center;
+}
+.div-ffsoceity2 {
+text-align:center;
+}
+
+.joinus-desktop{
+  display:none;
+  margin-bottom: 20px;
+}
+
+.joinusmobile{
+  display:block;
+}
+ .moreinfo-button{
+      margin-top: 10px;
+  }
+@media (min-width:801px)  { 
+
+ 
+  .joinus-desktop{
+  display:block;
+  
+}
+  .joinusmobile{
+  display:none;
+  }
+
+.imageheader{
+	 margin-left:-250px;
+  
+  
+}
+
+  
+.imagelower{
+ 
     
+   width: 801px;
+   height: 461px;
+   margin-left: 218px;
+    margin-top: -147px;
+}
+
+.moreinfo{
+    margin-top: -170px;
+}
+
+.div-ffsoceity1 {
+    text-align:left;
     background-color: white;
     position: relative;
     left:1100px; top:-350px;
@@ -2644,9 +2697,10 @@ label.error {
 .div-ffsoceity2 {
   	width:450px;
   heigth:150px;
+  text-align:left;
     background-color: white;
     position: relative;
-    left:-500px; top:50px;
+    left:-500px; top:-420px;
   	padding: 25px;
     margin: 25px;
     -webkit-animation-name: div2; /* Safari 4.0 - 8.0 */
@@ -2659,16 +2713,16 @@ label.error {
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes div2 {
    
-    100%  { left:-100px; top:50px; }
+    100%  { left:-100px; top:-420px; }
     
 }
 
 /* Standard syntax */
 @keyframes div2 {
-     100%  {  left:-100px; top:50px; }
+     100%  {  left:-100px; top:-420px; }
 }
 
-
+}
 .margin-transition{
    				width:auto;
                 text-align: justify;

@@ -275,23 +275,23 @@
             <div class="grid__item large--one-third">
             <div class="grid">
               <div class="grid__item two-thirds text-right">
-               {% if shop.customer_accounts_enabled and customer %}
-				<li><a class="login" href="/account/logout">LOGOUT</a></li>
-				{%else%}
-				<li><a class="login" href="/account/login">LOGIN</a></li>
-				{%endif%}
-				                 
+                 
+               		{% capture the_snippet_auth %}{% include 'dropdownlogin' %}{% endcapture %}
+
+                     {% if the_snippet_auth contains 'Liquid error' %}
+                    {% if shop.customer_accounts_enabled %}
+                      <a href="/account">My Account</a><br/>             
+                    {% endif %}
+
+                    {% else %}
+                        {{ the_snippet_auth }}
+                    {% endif %}
                 
-                
-                
-                
-                
-                
-               
                 
                  
                   <span class="site-header__search"><span id="search-toggle">Search</span></span>
               </div>
+              
               <div class="grid__item one-third"> 
                   <a href="/cart" class="site-header__cart-toggle js-drawer-open-right cart-bg" aria-controls="CartDrawer" aria-expanded="false"><span id="CartCount">{{ cart.item_count }}</span></a>
               </div>

@@ -1,0 +1,40 @@
+{% if shop.customer_accounts_enabled and customer %}
+				<li><a class="login" href="/account/logout">LOGOUT</a></li>
+{%else%}
+    
+        <a class="popup" onclick="myFunction()" href="#">LOGIN</a>
+        <div class="popuptext form-vertical" id="myPopup">
+        <!-- <form method="post" action="/account/login">
+
+            <div id="login-content">
+              <input name="customer[email]" type="email" placeholder="Email" required="required">
+            
+              <input name="customer[password]" type="password" placeholder="password" required="required">
+            </div>
+            <div >
+              <a href="/account/login#recover">Forgot_password</a>
+
+            </div>
+            <div >
+              <input type="submit" id="submit" class="btn button ssw-input-block-level" value="Submit">
+            </div>
+          </form>   ------>
+        
+</div>  
+
+{%endif%}
+                
+				                 
+                
+<script>
+  function myFunction() {
+   var x = document.getElementById('myPopup');
+   x.classList.toggle("show");
+    
+    
+    
+}
+
+</script>
+
+
