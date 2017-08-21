@@ -1,105 +1,541 @@
-<!-- /templates/customers/account.liquid -->
-{% comment %}
-
-  For all available customer liquid tags:
-    - http://docs.shopify.com/themes/liquid-variables/customer
-
-{% endcomment %}
-
-<h1>{{ 'customer.account.title' | t }}</h1>
-
-<a href="/account?view=edit">Edit Account</a>
+<!-- Created with Shogun. -->
 
 
-<hr class="hr--small">
 
 <div class="grid">
-
-  <div class="grid__item two-thirds medium-down--one-whole">
-    <h2 class="h4">{{ 'customer.orders.title' | t }}</h2>
-
-    {% comment %}
-      If we have past orders, loop through each one
-    {% endcomment %}
-    {% paginate customer.orders by 20 %}
-      {% if customer.orders.size != 0 %}
-
-        <div class="table-wrap">
-          <table class="full">
-            <thead>
-              <tr>
-                <th>{{ 'customer.orders.order_number' | t }}</th>
-                <th>{{ 'customer.orders.date' | t }}</th>
-                <th>{{ 'customer.orders.payment_status' | t }}</th>
-                <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
-                <th>{{ 'customer.orders.total' | t }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for order in customer.orders %}
-                <tr>
-                  <td>{{ order.name | link_to: order.customer_url }}</td>
-                  <td>{{ order.created_at | date: format: 'month_day_year' }}</td>
-                  <td>{{ order.financial_status_label }}</td>
-                  <td>{{ order.fulfillment_status_label }}</td>
-                  <td>{{ order.total_price | money }}</td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-
-      {% else %}
-
-        <p>{{ 'customer.orders.none' | t }}</p>
-
-      {% endif %}
-      {% if paginate.pages > 1 %}
-        <hr>
-        <div class="pagination">
-          {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
-        </div>
-      {% endif %}
-    {% endpaginate %}
+  <center><h1 style="padding-bottom:30px;">FF ACCOUNT</h1></center>
+  
+<div style="width:1148px;margin-left:-66px;" class="grid__item large--two-thirds push--large--one-sixth">
+<div class="row">
+    <div style="width:8%" class="grid__item one-third medium-down--one-whole">
+      <div class="customer_tag_icon">
+      	<img id="badge" src="https://ucarecdn.com/4db60e62-3794-4166-90d9-a20282794b20/-/stretch/off/-/resize/3000x/-/quality/lighter/" width="" height="" alt="" class="shogun-image img-responsive" />
+      </div>
+    </div>
+  	 <div style="width:17%" class="grid__item one-third medium-down--one-whole">
+      <p><strong>{{customer.name|upcase}}</strong></p>
+      <p><strong  id="customer_id"></strong></p>
   </div>
-
-  <div class="grid__item one-third medium-down--one-whole">
-    <h2 class="h4">{{ 'customer.account.details' | t }} <br><a href="/account?view=edit" style="font-size: 14px;">{{ shop.metafields.locales.edit }}</a></h2>
-
-    <h3 class="h5">{{ customer.name }}</h3>
-
-    {% if customer.default_address != nil %}
-      <p>
-      {{ customer.default_address.address1 }}<br>
-
-      {% if customer.default_address.address2 != "" %}
-        {{ customer.default_address.address2 }}<br>
-      {% endif %}
-
-      {% if customer.default_address.city != "" %}
-        {{ customer.default_address.city }}<br>
-      {% endif %}
-
-      {% if customer.default_address.province_code != "" %}
-        {{ customer.default_address.province_code | upcase }}<br>
-      {% endif %}
-
-      {% if customer.default_address.zip != "" %}
-        {{ customer.default_address.zip | upcase }}<br>
-      {% endif %}
-
-      {% if customer.default_address.country != "" %}
-        {{ customer.default_address.country }}<br>
-      {% endif %}
-
-      {% if customer.default_address.phone != "" %}
-        {{ customer.default_address.phone }}
-      {% endif %}
-      </p>
-
-    {% endif %}
-
-    <p><a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+   <div style="width:23%" class="grid__item one-third medium-down--one-whole">
+      <p><strong id="points">TOTAL POINTS:</strong></p>
+      <p><strong>MEMBER SINCE: 2016</strong></p>
+  </div>
+   <div style="width:40%;margin-top: -42px;" class="grid__item two-thirds medium-down--one-whole">
+     	
+     <img style="z-index: 0; max-width:6%;margin-top: -20px;margin-bottom: -9px" src="{{'Marker_Triangles_-_Bronze.png' | asset_url }}">
+     <img style="z-index: 0;max-width: 6%;margin-top: -20px;margin-bottom: -9px;margin-left: 156px;" src="{{ 'Marker_Triangles_-_Silver.png' | asset_url }}">
+     <img style="z-index: 0; max-width:6%;margin-top: -20px;margin-bottom: -9px; margin-left: 151px;" src="{{ 'Marker_Triangles_-_Gold.png' | asset_url }}">
+     <div>
+     <span></span><span style="margin-left:170px;">250 pts</span><span style="margin-left:130px">500 pts</span>
+     </div>
+     <div id="myProgress">
+  			<div id="myBar"></div>
+  
+		</div>
+		<div id="pointer" class="color:#C18F38">|</div>
+     </div>
+  
+  <div style="width:8%"  class="grid__item one-third medium-down--one-whole">
+    <div class="circle" id="circletext"></div>
   </div>
 
 </div>
+
+<div id="s-c1ab2102-c5dd-4e00-84f0-9d22b9ee47d1" class="shg-c ">
+<hr style="border: 0; border-top: 2px solid #c18f38;" />
+</div>
+  
+  
+  <div class="row">
+    <div style="width:20%" class="grid__item one-third medium-down--one-whole">
+      <div>
+        <img class="profile-pic" src="{{'placekitten.jpg'|asset_url}}" />
+        <div class="upload-button">Upload Image</div>
+        <input id="profile" class="file-upload" type="file" accept="image/*"/>
+      </div>
+              
+    </div>
+  	 <div style="width:20%" class="grid__item one-third medium-down--one-whole">
+      <p><strong>ORDER HISTORY</strong></p>
+      <p>Order History</p>
+      <p>Track Orders</p>
+      <p>Re-order</p>
+  </div>
+   <div style="width:20%" class="grid__item one-third medium-down--one-whole">
+      <p><strong>FF SOCIETY</strong></p>
+      <p>My Points</p>
+     <p>Redeem Points</p>
+     <p>Earn Points</p>
+  </div>
+   <div style="width:20%" class="grid__item two-thirds medium-down--one-whole">
+      <p><strong>MY BEAUTY PROFILE</strong></p>
+     <p>My Beauty Profile</p>
+     <p>How-To Tutorials</p>
+      <p><strong>MY CUSTOM DESIGNS</strong></p>
+     <p>Custom Lips</p>
+     <p>Custom Palettes</p>
+     <p>My Favorites</p>
+      </div>
+  
+   <div style="width:20%" class="grid__item two-thirds medium-down--one-whole" >
+	<p><strong>ACCOUNT</strong></p>
+    <p>Email/Password</p>
+    <p>Shipping/Billing Address</p>
+     <p>FAQ</p> 
+    <p>Customer Service</p>
+   </div>
+  
+  </div>
+  
+</div>
+</div>
+   
+<div class="grid">
+ <center><h1 style="padding-bottom:30px;" class="gtext">FF SOCIETY</h1></center>
+  
+<div style="width:1148px;margin-left:-66px;" class="grid__item large--two-thirds push--large--one-sixth">
+
+  
+  
+ <div class="row">
+   <a href="">
+    <div width="50%" class="grid__item two-thirds medium-down--one-whole">
+      <div>
+        <img id="image1" style="width: 573px;height: 584px;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+      </div>
+      <div id="hr1" style="width: 78%; height: 20px; border-bottom: 1px solid black; text-align: center">
+          <span id="ttxt1" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+              Title Text 
+          </span>
+      </div>
+      <div>
+        <p id="btxt1" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+      </div>
+  
+   </div>
+    </a>
+   <a href="">
+    <div width="50%" class="grid__item two-thirds medium-down--one-whole">
+     <div style="width: 520px;height: 584px;margin-left: 596px;margin-top: -555px;">
+      <img id="image2" style="width: 520px;height: 584px;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+      <div id="hr2" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+          <span id="ttxt2" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+              What's New  
+          </span>
+      </div>
+      	<div>
+        <p id="btxt2" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+      </div>
+      </div>
+    </div>
+   </a>
+  
+  </div> 
+  
+  <div class="row">
+  <a href="">
+    <img id="image3" style="margin-top:132px; height:350px; width:100%;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+    <div id="hr3" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+          <span id="ttxt3" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+              New Color 
+          </span>
+      </div>
+    <div>
+        <p id="btxt3" style="width: 100%; padding: 24px 304px;text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+      </div>
+  </a>
+    </div>
+
+  
+  <div class="row">
+    <a href="">
+    <img id="image4" style="width:832px;height:190px;margin-top:128px; margin:auto;display:flex;" src="{{'Lips_Banner.jpg'| asset_url }}"/>
+  	 <div id="hr4" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+          <span id="ttxt4" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+              New Color 
+          </span>
+      </div>
+    <div>
+        <p id="btxt4" style="width: 100%; padding: 24px 304px;text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+      </div>
+      </a>
+  </div>
+  
+ 
+  <div class="row">
+     <a href="">
+    <div width="50%" class="grid__item two-thirds medium-down--one-whole">
+      <div>
+        <img id="image5" style="width: 573px;height: 584px;margin-top:287px;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+      </div>
+      <div id="hr5" style="width: 78%; height: 20px; border-bottom: 1px solid black; text-align: center">
+          <span id="ttxt5" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+              PERSONAL RECOMMENDATION 
+          </span>
+      </div>
+      <div>
+        <p id="btxt5" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+      </div>
+   
+   </div>
+    </a>
+    <a href="">
+    <div width="50%" class="grid__item two-thirds medium-down--one-whole">
+     <div style="width: 520px;height: 584px;margin-left: 596px;margin-top: -897px;">
+      <img id="image6" style="width: 520px;height: 584px;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+      <div id="hr6" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+          <span id="ttxt6" style="font-size: 22px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+             CHECK OUT OUR BLOG  
+          </span>
+      </div>
+      <div>
+        <p id="btxt6" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+      </div>
+      </div>
+    </div>
+    </a>
+    <div style="display:none;" id="valueStore"></div>
+  </div>
+</div>
+  
+
+  
+  
+  
+ 
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script src="https://cdn.getshogun.com/4ba5b18a-9859-4c8f-bc3d-e700476f59a4.js"></script>
+  
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+
+  <script>
+ 	$(document).ready(function() {
+
+    
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+});
+  </script>
+
+  
+  <script>
+
+    
+    var getJSON = function(url) {
+  return new Promise(function(resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status == 200) {
+        resolve(xhr.response);
+      } else {
+        reject(status);
+      }
+    };
+    xhr.send();
+  });
+};
+
+    getJSON(`https://www.swellrewards.com/api/v2/customers?customer_email={{customer.email}}&merchant_id=17000&api_key=u9N91hrRyZSrrrI0S5wQrgtt`).then(function(data) {
+      //alert('Point_balance:  ' + data.points_balance +' point_earned:'+data.points_earned); //you can comment this, i used it to debug
+		document.getElementById('points').innerHTML = "TOTAL POINTS:"+ data.points_balance;
+      document.getElementById('pointer').innerHTML = "|<br/><div style='color:black;'>you have<br/>"+ data.points_balance+" pts</div>";
+   	 //var score = 300;
+     var score = parseInt(data.points_balance);
+     var badge = document.getElementById('badge');
+      if((score>=250)&&(score<500))
+      {
+      document.getElementById('circletext').innerHTML = "    you need "+(500-score) +" more points to get to the next tier.";
+      document.getElementById("valueStore").value ="FFINSIDER";
+        badge.src = "{{'FF_Insider_Badge_246px.png' | asset_url }}";
+        document.getElementById("customer_id").innerHTML = "FF INSIDER";
+      }
+      if((score>=0)&&(score<250)){
+        document.getElementById('circletext').innerHTML = "   you need "+(250-score) +" more points to get to the next tier.";
+     	document.getElementById("valueStore").value = "FFSOCIETY";
+         badge.src = "{{'FF_Society_Badge_246px.png' | asset_url }}";
+          document.getElementById("customer_id").innerHTML = "FF SOCIETY";
+      }
+      if(score>=500){
+      document.getElementById('circletext').remove();
+      document.getElementById("valueStore").value ="FFSIGNATURE";
+      badge.src = "{{'FF_Signature_Badge_246px.png' | asset_url }}";
+       document.getElementById("customer_id").innerHTML = "FF SIGNATURE";
+      }
+      
+      
+     
+      //Slider point
+      var elem = document.getElementById("myBar"); 
+  	  var pelem = document.getElementById("pointer"); 
+      var points = (380*score)/500;
+      if(points > 380){
+      points = 380;
+      }
+     
+      var pos = 0;
+      var pos1 = 0;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (pos == Math.round(points)) {
+          clearInterval(id);
+        } else {
+          pos++; 
+          elem.style.width = pos+'px';
+          elem.style.top = pos1 + 'px'; 
+          pelem.style.left = (pos-3)+'px';
+          //elem.style.left = pos + 'px'; 
+        }
+      }
+
+      
+      
+      
+}, function(status) { //error detection....
+  alert('Something went wrong.'+status);
+});
+    
+  
+        
+             
+
+     var fileButton = document.getElementById("profile");
+     fileButton.addEventListener('change', function(e){
+       var config1 = {
+         apiKey: "AIzaSyC16CuxlGaTovEugUSYaj51TjQM_gmMdaI",
+         authDomain: "profile-management-89470.firebaseapp.com",
+         databaseURL: "https://profile-management-89470.firebaseio.com",
+         projectId: "profile-management-89470",
+         storageBucket: "profile-management-89470.appspot.com",
+         messagingSenderId: "407183772725"
+       };
+       firebase.initializeApp(config1);
+       database1 = firebase.database();
+       var ref1 = database1.ref('profile-management-89470');
+       var email = "{{customer.email}}";
+       var file = e.target.files[0];
+       var ext = (/[.]/.exec(file.name)) ? /[^.]+$/.exec(file.name)[0] : undefined;
+       console.log(ext);
+       var storageRef1 = firebase.storage().ref("{{customer.email}}"+ext);
+       storageRef1.put(file);
+       
+       
+ 	
+       var storageRef2 = firebase.storage().ref();
+       var spaceRef2 = storageRef2.child("{{customer.email}}"+ext);
+       storageRef2.child("{{customer.email}}"+ext).getDownloadURL().then(function(url) {
+     	                                            
+	                                            
+	                                            
+       var test = url;                                  
+       document.getElementById("profile-pic").src = test;
+       
+        
+       }).catch(function(error) { });
+     });  
+
+
+  // Initialize Firebase
+  
+  var Dffid, Dimage1,Dimage2,Dimage3,Dimage4,Dimage5,Dimage6,Dtitle1,Dtitle2,Dtitle3,Dtitle4,Dtitle5,Dtitle6,Dbody1,Dbody2,Dbody3,Dbody4,Dbody5,Dbody6,Dstart,Dend;
+   var config = {
+    apiKey: "AIzaSyBoAUJ0UDX5n0_IWvUPPg_9CAqS_iWGBfE",
+    authDomain: "test-ff-shopify.firebaseapp.com",
+    databaseURL: "https://test-ff-shopify.firebaseio.com",
+    projectId: "test-ff-shopify",
+    storageBucket: "test-ff-shopify.appspot.com",
+    messagingSenderId: "779729469093"
+  };
+  firebase.initializeApp(config);
+  
+  database = firebase.database();
+  
+  //github code
+  
+ var ref = database.ref('posts'); 
+ ref.on('value',gotData,errData); 
+ 
+ 
+ function gotData(data){ 
+  
+ var response = data.val(); 
+   
+ var key = Object.keys(response); 
+ console.log(key.length);
+ for(var i = 0; i < key.length; i++){ 
+ 	var k = key[i]; 
+ 	var posts = response[k]; 
+ 	
+ 	
+ 	append(k,posts.image1,posts.image2,posts.image3,
+           posts.image4,posts.image5,posts.image6,
+           posts.titleText1,posts.titleText2,posts.titleText3,
+           posts.titleText4,posts.titleText5,posts.titleText6,
+           posts.bodyText1,posts.bodyText2,posts.bodyText3,
+           posts.bodyText4,posts.bodyText5,posts.bodyText6,posts.startDate,posts.endDate); 
+ 				 
+ 			
+ 	} 
+ 
+ } 
+ function errData(err){ 
+ console.log('error'); 
+ console.log(err); 
+ } 
+ 
+ function append(ffid, image1,image2,image3,image4,image5,image6,title1,title2,title3,title4,title5,title6,body1,body2,body3,body4,body5,body6,start,end) { 
+   console.log(ffid);
+    
+  if(ffid == "DEFAULT"){
+   	updateAccount();
+   }
+  
+   if(ffid == $('#valueStore').val()){
+      checkDate(start,end);//FUNCTION WONT ENTER FOR DEFAULT ffid
+    }
+   
+   
+   
+   /*---------------------check date function----------------*/
+   function checkDate(start,end) {
+            
+             var startyear = start.substring(0, 4);
+            var startmonth = start.substring(5, 7);
+            var startdate = start.substring(8, 10);
+		
+            var sDate = new Date(startyear, startmonth - 1, startdate);
+			
+         	var endyear = end.substring(0, 4);
+            var endmonth = end.substring(5, 7);
+            var enddate = end.substring(8, 10);
+            var eDate = new Date(endyear, endmonth - 1, enddate);
+            
+     var today = new Date();
+
+            if ((sDate <= today) && ( eDate >= today)) {
+              
+              
+              updateAccount();
+            }
+    		 else{
+     			document.getElementById("valueStore").value="DEFAULT";
+              // console.log(Dffid);
+              // updateAccountD(Dffid, Dimage1,Dimage2,Dimage3,Dimage4,Dimage5,Dimage6,Dtitle1,Dtitle2,Dtitle3,Dtitle4,Dtitle5,Dtitle6,Dbody1,Dbody2,Dbody3,Dbody4,Dbody5,Dbody6,Dstart,Dend);
+ 
+     		}
+           
+        }
+  	/*------------------end checkdate-----------------*/ 
+   
+   
+  
+   
+   
+   function updateAccount(){
+      console.log("Hi I am called"+ffid);
+     toDisplay1("hr1","ttxt1",title1);
+     toDisplay1("hr2","ttxt2",title2);
+     toDisplay1("hr3","ttxt3",title3);
+     toDisplay1("hr4","ttxt4",title4);
+     toDisplay1("hr5","ttxt5",title5);
+     toDisplay1("hr6","ttxt6",title6);
+     toDisplay("btxt1",body1);
+     toDisplay("btxt2",body2);
+     toDisplay("btxt3",body3);
+     toDisplay("btxt4",body4);
+     toDisplay("btxt5",body5);
+     toDisplay("btxt6",body6);
+         
+     function toDisplay(variable,value){
+       if(value == ""){
+       	document.getElementById(variable).style.display = "none";
+       }
+       else{
+       	document.getElementById(variable).innerHTML = value;
+       }
+     
+     }
+     function toDisplay1(divider,variable,value){
+       if(value == ""){
+       	document.getElementById(divider).style.display = "none";
+       }
+       else{
+       	document.getElementById(variable).innerHTML = value;
+       }
+     
+     }
+  
+      mapImage(image1,"image1");
+      mapImage(image2,"image2");
+      mapImage(image3,"image3");
+      mapImage(image4,"image4");
+      mapImage(image5,"image5");
+      mapImage(image6,"image6");
+     
+     
+     function mapImage(imagefb,imageid) { 
+    var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var tangRef = storageRef.child(imagefb);
+
+        tangRef.getDownloadURL().then(function(url) 
+        {
+            var test = url
+            console.log(test);
+            document.getElementById(imageid).src = test;
+        }).catch(function(error) 
+        {
+            switch (error.code) 
+            {
+                case 'storage/object_not_found':
+                    break;
+
+                case 'storage/unauthorized':
+                    break;
+
+                case 'storage/canceled':
+                    break;
+
+                case 'storage/unknown':
+                    break;
+            }
+        });
+     }
+  
+   
+   
+   }
+   
+   
+  
+  
+   
+   
+ 
+ } 
+
+
+  
+  
+</script>

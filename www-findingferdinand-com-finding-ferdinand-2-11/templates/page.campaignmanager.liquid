@@ -1,0 +1,1265 @@
+<!-- /templates/page.liquid -->
+<div class="wrapper relative">
+<div class="grid">
+
+  <div class="grid__item large--two-thirds push--large--one-sixth">
+
+    <h2 style="color:black;" class="textformat page-title text-center">{{ page.title }}</h2>
+	
+    {% comment %}
+      Regular page content goes here.
+    {% endcomment %}
+    <div class="rte">
+      
+      <form action="" id="formid">
+      
+      <table>
+        <tr>
+        <th>CUSTOMER TAG</th>
+        <th>PROMOTION NAME</th>
+        <th>TIME FRAME</th>
+        <th>PAUSE</th>
+        </tr>
+        <tr>
+          <td><a id="ffsociety" href="#society">FF SOCIETY</a></td>
+        <td><input type="textbox" name="campaign_name" id="campaignNameFFSociety" placeholder="Promotion Name"/></td>
+        <td>Start Date:<input type="date" name="start_date" id="startDateFFSociety" placeholder="Start Date" style="padding-bottom:3px;"/><br/>
+         	End Date: <input type="date" name="end_date" id="endDateFFSociety" placeholder="End Date" />
+        </td>
+       	
+        <td>
+          <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" style="display:none;" class="onoffswitch-checkbox" id="pauseFFSociety" checked>
+            <label class="onoffswitch-label" for="pauseFFSociety">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+		</div>
+          </td>
+        
+        </tr>
+       <tr>
+        <td><a href="#insider">FF INSIDER</a></td>
+        <td><input type="textbox" name="campaign_name" id="campaignNameFFInsider" placeholder="Promotion Name"/></td>
+        <td>Start Date:<input type="date" name="start_date" id="startDateFFInsider" placeholder="Start Date" style="padding-bottom:3px;"/><br/>
+          End Date: <input type="date" name="end_date2" id="endDateFFInsider" placeholder="End Date" />
+        </td>
+       
+        <td>
+          <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" style="display:none;" class="onoffswitch-checkbox" id="pauseFFInsider" checked>
+            <label class="onoffswitch-label" for="pauseFFInsider">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+		</div>
+          </td>
+        
+        </tr>
+        
+         <tr>
+           <td><a href="#signature">FF SIGNATURE</a></td>
+         <td><input type="textbox" name="campaign_name" id="campaignNameFFSignature" placeholder="Promotion Name"/></td>
+        <td>Start Date:<input type="date" name="start_date" id="startDateFFSignature" placeholder="Start Date" style="padding-bottom:3px;"/><br/>
+          End Date: <input type="date" name="end_date2" id="endDateFFSignature" placeholder="End Date" />
+        </td>
+       
+        <td>
+          <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" style="display:none;" class="onoffswitch-checkbox" id="pauseFFSignature" checked>
+            <label class="onoffswitch-label" for="pauseFFSignature">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+		</div>
+          </td>
+        
+        
+        </tr>
+        
+        <tr>
+          <td><a href="#default">DEFAULT</a></td>
+        <td><input type="textbox" name="campaign_name" id="campaignNameDefault" placeholder="Promotion Name"/></td>
+        <td>Start Date:<input type="date" name="start_date" id="startDateDefault" placeholder="Start Date" style="padding-bottom:3px;"/><br/>
+          End Date: <input type="date" name="end_date" id="endDateDefault" placeholder="End Date" /></td>
+       	
+        <td>
+          <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" style="display:none;" class="onoffswitch-checkbox" id="pauseDefault" checked>
+            <label class="onoffswitch-label" for="pauseDefault">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+		</div>
+          </td>
+        
+        </tr>
+        
+      </table>
+        
+      <div id="society"></div>
+        <hr/>
+      
+      
+      <h2>FF SOCIETY</h2>
+      <div>
+        <div>
+        <p >Upload Image:</p>
+      	<input type="file" id="image1FFSociety" class="input-full" />
+          <img style="max-width:10%;" id="img1FFSociety"/>Size: 573 X 584
+		<input type="file" id="image2FFSociety" class="input-full" />
+          <img style="max-width:10%;" id="img2FFSociety"/>Size: 520 X  584
+		<input type="file" id="image3FFSociety" class="input-full" />
+          <img style="max-width:10%;" id="img3FFSociety"/>Size: 1132 X 352
+		<input type="file" id="image4FFSociety" class="input-full" />
+          <img style="max-width:10%;" id="img4FFSociety"/>Size: 832 X 190
+		<input type="file" id="image5FFSociety" class="input-full" />
+          <img style="max-width:10%;" id="img5FFSociety"/>Size: 573 X 584
+		<input type="file" id="image6FFSociety" class="input-full" />
+          <img style="max-width:10%;" id="img6FFSociety"/>Size: 520 X 584
+		</div>
+        <div>
+        <div>
+          <p>Title Text1:</p>
+          <input type="text" class="input-full" id="titleText1FFSociety" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text1:</p>
+          <input type="text" class="input-full" id="bodyText1FFSociety" placeholder="Body Text"/>
+        </div>
+          <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url1FFSociety" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text2:</p>
+          <input type="text" class="input-full" id="titleText2FFSociety" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text2:</p>
+          <input type="text" class="input-full" id="bodyText2FFSociety" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url2FFSociety" placeholder="Url"/>
+          </div>
+		<div>
+          <p>Title Text3:</p>
+          <input type="text" class="input-full" id="titleText3FFSociety" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text3:</p>
+          <input type="text" class="input-full" id="bodyText3FFSociety" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url3FFSociety" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text4:</p>
+          <input type="text" class="input-full" id="titleText4FFSociety" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text4:</p>
+          <input type="text" class="input-full" id="bodyText4FFSociety" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url4FFSociety" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text5:</p>
+          <input type="text" class="input-full" id="titleText5FFSociety" placeholder="Title Text"/>
+        </div>
+          
+        <br/>
+        <div>
+          <p>Body Text5:</p>
+          <input type="text" class="input-full" id="bodyText5FFSociety" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url5FFSociety" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text6:</p>
+          <input type="text" class="input-full" id="titleText6FFSociety" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text6:</p>
+          <input type="text" class="input-full" id="bodyText6FFSociety" placeholder="Body Text"/>
+        </div>
+		 <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url6FFSociety" placeholder="Url"/>
+          </div>
+        </div>
+      </div>
+        <div id="insider"></div>
+        <hr/>
+        
+      <h2>FF INSIDER</h2>
+      <div>
+      <div>
+        <p>Upload Image:</p>
+      	<input type="file" id="image1FFInsider" class="input-full" />
+        <img style="max-width:10%;" id="img1Insider"/>Size: 573 X 584
+		<input type="file" id="image2FFInsider" class="input-full" />
+        <img style="max-width:10%;" id="img2Insider"/>Size: 520 X  584
+        <input type="file" id="image3FFInsider" class="input-full" />
+        <img style="max-width:10%;" id="img3Insider"/>Size: 1132 X 352
+        <input type="file" id="image4FFInsider" class="input-full" />
+        <img style="max-width:10%;" id="img4Insider"/>Size: 832 X 190
+        <input type="file" id="image5FFInsider" class="input-full" />
+        <img style="max-width:10%;" id="img5Insider"/>Size: 573 X 584
+        <input type="file" id="image6FFInsider" class="input-full" />
+        <img style="max-width:10%;" id="img6Insider"/>Size: 520 X 584
+      </div>
+        <div>
+        <div>
+          <p>Title Text1:</p>
+          <input type="text" class="input-full" id="titleText1FFInsider" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text1:</p>
+          <input type="text" class="input-full" id="bodyText1FFInsider" placeholder="Body Text"/>
+        </div>
+          <div>
+            <p>Url:</p>
+             <input type="text" class="input-full" id="url1FFInsider" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text2:</p>
+          <input type="text" class="input-full" id="titleText2FFInsider" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text2:</p>
+          <input type="text" class="input-full" id="bodyText2FFInsider" placeholder="Body Text"/>
+        </div>
+          <div>
+            <p>Url:</p>
+             <input type="text" class="input-full" id="url2FFInsider" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text3:</p>
+          <input type="text" class="input-full" id="titleText3FFInsider" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text3:</p>
+          <input type="text" class="input-full" id="bodyText3FFInsider" placeholder="Body Text"/>
+        </div>
+          <div>
+            <p>Url:</p>
+             <input type="text" class="input-full" id="url3FFInsider" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text4:</p>
+          <input type="text" class="input-full" id="titleText4FFInsider" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text4:</p>
+          <input type="text" class="input-full" id="bodyText4FFInsider" placeholder="Body Text"/>
+        </div>
+          <div>
+            <p>Url:</p>
+             <input type="text" class="input-full" id="url4FFInsider" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text5:</p>
+          <input type="text" class="input-full" id="titleText5FFInsider" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text5:</p>
+          <input type="text" class="input-full" id="bodyText5FFInsider" placeholder="Body Text"/>
+        </div>
+          <div>
+            <p>Url:</p>
+             <input type="text" class="input-full" id="url5FFInsider" placeholder="Url"/>
+          </div>
+            <div>
+          <p>Title Text6:</p>
+          <input type="text" class="input-full" id="titleText6FFInsider" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text6:</p>
+          <input type="text" class="input-full" id="bodyText6FFInsider" placeholder="Body Text"/>
+        </div>
+          <div>
+            <p>Url:</p>
+             <input type="text" class="input-full" id="url6FFInsider" placeholder="Url"/>
+          </div>
+        </div>
+      </div>
+        <div id="signature"></div>
+        <hr/>
+      <h2>FF SIGNATURE</h2>
+      <div>
+     <div>
+        <p>Upload Image:</p>
+      	<input type="file" id="image1FFSignature" class="input-full" />
+        <img style="max-width:10%;" id="img1Signature"/>Size: 573 X 584
+		<input type="file" id="image2FFSignature" class="input-full" />
+       <img style="max-width:10%;" id="img2Signature"/>Size: 520 X  584
+        <input type="file" id="image3FFSignature" class="input-full" />
+       <img style="max-width:10%;" id="img3Signature"/>Size: 1132 X 352
+        <input type="file" id="image4FFSignature" class="input-full" />
+       <img style="max-width:10%;" id="img4Signature"/>Size: 832 X 190
+        <input type="file" id="image5FFSignature" class="input-full" />
+       <img style="max-width:10%;" id="img5Signature"/>Size: 573 X 584
+        <input type="file" id="image6FFSignature" class="input-full" />
+       <img style="max-width:10%;" id="img6Signature"/>Size: 520 X 584
+      </div>
+        <div>
+        <div>
+          <p>Title Text1:</p>
+          <input type="text" class="input-full" id="titleText1FFSignature" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text1:</p>
+          <input type="text" class="input-full" id="bodyText1FFSignature" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url1FFSignature" placeholder="Url"/>
+          </div>
+        </div>
+        <div>
+        <div>
+          <p>Title Text2:</p>
+          <input type="text" class="input-full" id="titleText2FFSignature" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text2:</p>
+          <input type="text" class="input-full" id="bodyText2FFSignature" placeholder="Body Text"/>
+        </div>
+          <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url2FFSignature" placeholder="Url"/>
+          </div>
+        </div>
+        <div>
+        <div>
+          <p>Title Text3:</p>
+          <input type="text" class="input-full" id="titleText3FFSignature" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text3:</p>
+          <input type="text" class="input-full" id="bodyText3FFSignature" placeholder="Body Text"/>
+        </div>
+          <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url3FFSignature" placeholder="Url"/>
+          </div>
+        </div>
+        <div>
+        <div>
+          <p>Title Text4:</p>
+          <input type="text" class="input-full" id="titleText4FFSignature" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text4:</p>
+          <input type="text" class="input-full" id="bodyText4FFSignature" placeholder="Body Text"/>
+        </div>
+             <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url4FFSignature" placeholder="Url"/>
+          </div>       
+        </div>
+        <div>
+        <div>
+          <p>Title Text5:</p>
+          <input type="text" class="input-full" id="titleText5FFSignature" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text5:</p>
+          <input type="text" class="input-full" id="bodyText5FFSignature" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url5FFSignature" placeholder="Url"/>
+          </div>
+        </div>
+        <div>
+        <div>
+          <p>Title Text6:</p>
+          <input type="text" class="input-full" id="titleText6FFSignature" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text6:</p>
+          <input type="text" class="input-full" id="bodyText6FFSignature" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url6FFSignature" placeholder="Url"/>
+          </div>
+        </div>
+      </div>
+   
+    <div id="default"></div>
+        <hr/>
+    <h2>DEFAULT</h2>
+      <div>
+      <div>
+        <p>Upload Image:</p>
+      	<input type="file" id="image1Default" class="input-full" />
+        <img style="max-width:10%;" id="img1Default"/>Size: 573 X 584
+        <input type="file" id="image2Default" class="input-full" />
+        <img style="max-width:10%;" id="img2Default"/>Size: 520 X  584
+        <input type="file" id="image3Default" class="input-full" />
+        <img style="max-width:10%;" id="img3Default"/>Size: 1132 X 352
+        <input type="file" id="image4Default" class="input-full" />
+        <img style="max-width:10%;" id="img4Default"/>Size: 832 X 190
+        <input type="file" id="image5Default" class="input-full" />
+        <img style="max-width:10%;"  id="img5Default"/>Size: 573 X 584
+        <input type="file" id="image6Default" class="input-full" />
+        <img style="max-width:10%;" id="img6Default"/>Size: 520 X 584
+			
+        </div>
+        <div>
+        <div>
+          <p>Title Text1:</p>
+          <input type="text" class="input-full" id="titleText1Default" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text1:</p>
+          <input type="text" class="input-full" id="bodyText1Default" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url1Default" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text2:</p>
+          <input type="text" class="input-full" id="titleText2Default" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text2:</p>
+          <input type="text" class="input-full" id="bodyText2Default" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url2Default" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text3:</p>
+          <input type="text" class="input-full" id="titleText3Default" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text3:</p>
+          <input type="text" class="input-full" id="bodyText3Default" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url3Default" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text4:</p>
+          <input type="text" class="input-full" id="titleText4Default" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p >Body Text4:</p>
+          <input type="text" class="input-full" id="bodyText4Default" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url4Default" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text5:</p>
+          <input type="text" class="input-full" id="titleText5Default" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text5:</p>
+          <input type="text" class="input-full" id="bodyText5Default" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url5Default" placeholder="Url"/>
+          </div>
+          <div>
+          <p>Title Text6:</p>
+          <input type="text" class="input-full" id="titleText6Default" placeholder="Title Text"/>
+        </div>
+        <br/>
+        <div>
+          <p>Body Text6:</p>
+          <input type="text" class="input-full" id="bodyText6Default" placeholder="Body Text"/>
+        </div>
+           <div>
+           <p>Url:</p>
+             <input type="text" class="input-full" id="url6Default" placeholder="Url"/>
+          </div>
+        </div>
+      </div>
+        
+	<br/><br/>
+	<input type="submit" class="btn button" id="submitbtn" value="submit"/>
+        </form>
+    </div>
+       
+  </div>
+    
+  </div>
+
+</div>
+
+ <script defer src="/__/firebase/4.2.0/firebase-app.js"></script> 
+ <script defer src="/__/firebase/init.js"></script> 
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  
+  
+     var imagepack = [];
+  var x = 0;
+   var config = {
+    apiKey: "AIzaSyBoAUJ0UDX5n0_IWvUPPg_9CAqS_iWGBfE",
+    authDomain: "test-ff-shopify.firebaseapp.com",
+    databaseURL: "https://test-ff-shopify.firebaseio.com",
+    projectId: "test-ff-shopify",
+    storageBucket: "test-ff-shopify.appspot.com",
+    messagingSenderId: "779729469093"
+  };
+  firebase.initializeApp(config);
+  
+  database = firebase.database();
+  var ref = database.ref('test-ff-shopify');
+  
+  
+   
+ var ref1 = database.ref('posts'); 
+ ref1.on('value',gotData,errData); 
+ 
+ 
+ function gotData(data){ 
+  
+ var response = data.val(); 
+   
+ var key = Object.keys(response); 
+ console.log(key.length);
+ for(var i = 0; i < key.length; i++){ 
+ 	var k = key[i]; 
+ 	var posts = response[k]; 
+ 	
+ 	
+ 	append(k,posts.bodyText1,posts.bodyText2,posts.bodyText3,
+           posts.bodyText4,posts.bodyText5,posts.bodyText6,
+           posts.titleText1,posts.titleText2,posts.titleText3,
+           posts.titleText4,posts.titleText5,posts.titleText6,
+           posts.image1,posts.image2,posts.image3,
+           posts.image4,posts.image5,posts.image6,
+          posts.campaignName,posts.startDate,posts.endDate,posts.pause); 
+ 				 
+ 			
+ 	} 
+ 
+ }
+  
+  function append(k,bodyText1,bodyText2,bodyText3,bodyText4,bodyText5,bodyText6,
+                   titleText1,titleText2,titleText3,titleText4,titleText5,titleText6,
+                   image1,image2,image3,image4,image5,image6,
+                   campaignName,startDate,endDate,pause){
+
+    
+   
+    //-------------FFSOCIETY--------------------//
+    if(k == "FFSOCIETY"){
+    imagepack[0] = image1;
+     
+    imagepack[1] = image2;
+   
+    imagepack[2] = image3;
+  
+    imagepack[3] = image4;
+   
+    imagepack[4] = image5;
+   
+    imagepack[5] = image6;
+  
+    mapText("FFSociety");
+    }
+    if(k == "FFINSIDER"){
+    imagepack[6] = image1;
+    imagepack[7] = image2;
+    imagepack[8] = image3;
+    imagepack[9] = image4;
+    imagepack[10] = image5;
+    imagepack[11] = image6;
+    mapText("FFInsider");
+    }
+    if(k == "FFSIGNATURE"){
+    imagepack[12] = image1;
+    imagepack[13] = image2;
+    imagepack[14] = image3;
+    imagepack[15] = image4;
+    imagepack[16] = image5;
+    imagepack[17] = image6;
+    mapText("FFSignature");
+    }
+    if(k == "DEFAULT"){
+    imagepack[18] = image1;
+    imagepack[19] = image2;
+    imagepack[20] = image3;
+    imagepack[21] = image4;
+    imagepack[22] = image5;
+    imagepack[23] = image6;
+    mapText("Default");  
+    }
+    function mapText(id){
+  //document.getElementById('ffid'+id).value = k;
+  document.getElementById('campaignName'+id).value = campaignName;
+  document.getElementById('startDate'+id).value = startDate;
+  document.getElementById('endDate'+id).value = endDate;
+  document.getElementById('pause'+id).value = pause;
+  mapImage(image1,"img1"+id,"image1"+id);
+  mapImage(image2,"img2"+id,"image2"+id);
+  mapImage(image3,"img3"+id,"image3"+id);
+  mapImage(image4,"img4"+id,"image4"+id);
+  mapImage(image5,"img5"+id,"image5"+id);
+  mapImage(image6,"img6"+id,"image6"+id);
+  document.getElementById('titleText1'+id).value = titleText1;
+  document.getElementById('bodyText1'+id).value = bodyText1;
+  document.getElementById('titleText2'+id).value = titleText2;
+  document.getElementById('bodyText2'+id).value = bodyText2;
+  document.getElementById('titleText3'+id).value = titleText3;
+  document.getElementById('bodyText3'+id).value = bodyText3;
+  document.getElementById('titleText4'+id).value = titleText4;
+  document.getElementById('bodyText4'+id).value = bodyText4;
+  document.getElementById('titleText5'+id).value = titleText5;
+  document.getElementById('bodyText5'+id).value = bodyText5;
+  document.getElementById('titleText6'+id).value = titleText6;
+  document.getElementById('bodyText6'+id).value = bodyText6;
+ 
+    
+        
+     
+     function mapImage(imagefb,imageid,textimageid) {
+       if(imagefb != ""){
+    var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var tangRef = storageRef.child(imagefb);
+
+        tangRef.getDownloadURL().then(function(url) 
+        {
+            var test = url
+            console.log(test);
+            //document.getElementById(textimageid).value = imagefb;
+            document.getElementById(imageid).src = test;
+        }).catch(function(error) 
+        {
+            switch (error.code) 
+            {
+                case 'storage/object_not_found':
+                    break;
+
+                case 'storage/unauthorized':
+                    break;
+
+                case 'storage/canceled':
+                    break;
+
+                case 'storage/unknown':
+                    break;
+            }
+        });
+     }
+     }
+    
+    }
+
+ 
+  
+  }
+  
+  
+  function errData(err){ 
+ console.log('error'); 
+ console.log(err); 
+ } 
+ 
+ // $('#formid input').attr('readonly', 'readonly');
+ 
+   console.log("waiting for submit to be done");
+  
+   $('#formid').submit(function() {
+     console.log("submit function called");
+  
+  //-------------FFSOCIETY--------------------//   
+  var ffidFFSociety = $('#ffidFFSociety').val();
+  var campaignNameFFSociety = $('#campaignNameFFSociety').val();
+  var startDateFFSociety = $('#startDateFFSociety').val();
+  var endDateFFSociety  = $('#endDateFFSociety').val();
+  var pauseFFSociety 	  = $('#pauseFFSociety').val();
+  var image1FFSociety = ($('#image1FFSociety').val()== "")?imagepack[0]:$('#image1FFSociety').val();
+  var image2FFSociety = ($('#image2FFSociety').val()== "")?imagepack[1]:$('#image2FFSociety').val();
+  var image3FFSociety = ($('#image3FFSociety').val()== "")?imagepack[2]:$('#image3FFSociety').val();
+  var image4FFSociety = ($('#image4FFSociety').val()== "")?imagepack[3]:$('#image4FFSociety').val();
+  var image5FFSociety = ($('#image5FFSociety').val()== "")?imagepack[4]:$('#image5FFSociety').val();
+  var image6FFSociety = ($('#image6FFSociety').val()== "")?imagepack[5]:$('#image6FFSociety').val();
+  var titleText1FFSociety  = $('#titleText1FFSociety').val();
+  var bodyText1FFSociety  = $('#bodyText1FFSociety').val();
+  var titleText2FFSociety  = $('#titleText2FFSociety').val();
+  var bodyText2FFSociety  = $('#bodyText2FFSociety').val();
+  var titleText3FFSociety  = $('#titleText3FFSociety').val();
+  var bodyText3FFSociety  = $('#bodyText3FFSociety').val();
+  var titleText4FFSociety  = $('#titleText4FFSociety').val();
+  var bodyText4FFSociety  = $('#bodyText4FFSociety').val();
+  var titleText5FFSociety  = $('#titleText5FFSociety').val();
+  var bodyText5FFSociety  = $('#bodyText5FFSociety').val();
+  var titleText6FFSociety  = $('#titleText6FFSociety').val();
+  var bodyText6FFSociety  = $('#bodyText6FFSociety').val();
+    
+  //-------------FFINSIDER----------------------//
+  
+  var ffidFFInsider = $('#ffidFFInsider').val();
+  var campaignNameFFInsider = $('#campaignNameFFInsider').val();
+  var startDateFFInsider = $('#startDateFFInsider').val();
+  var endDateFFInsider  = $('#endDateFFInsider').val();
+  var pauseFFInsider 	  = $('#pauseFFInsider').val();
+  var image1FFInsider = ($('#image1FFInsider').val()== "")?imagepack[6]:$('#image1FFInsider').val();
+  var image2FFInsider = ($('#image2FFInsider').val()== "")?imagepack[7]:$('#image1FFInsider').val();
+  var image3FFInsider = ($('#image3FFInsider').val()== "")?imagepack[8]:$('#image1FFInsider').val();
+  var image4FFInsider = ($('#image4FFInsider').val()== "")?imagepack[9]:$('#image1FFInsider').val();
+  var image5FFInsider = ($('#image5FFInsider').val()== "")?imagepack[10]:$('#image1FFInsider').val();
+  var image6FFInsider = ($('#image6FFInsider').val()== "")?imagepack[11]:$('#image1FFInsider').val();
+  var titleText1FFInsider  = $('#titleText1FFInsider').val();
+  var titleText2FFInsider  = $('#titleText2FFInsider').val();
+  var titleText3FFInsider  = $('#titleText3FFInsider').val();
+  var titleText4FFInsider  = $('#titleText4FFInsider').val();
+  var titleText5FFInsider  = $('#titleText5FFInsider').val();
+  var titleText6FFInsider  = $('#titleText6FFInsider').val();
+  var bodyText1FFInsider  = $('#bodyText1FFInsider').val();
+  var bodyText2FFInsider  = $('#bodyText2FFInsider').val();
+  var bodyText3FFInsider  = $('#bodyText3FFInsider').val();
+  var bodyText4FFInsider  = $('#bodyText4FFInsider').val();
+  var bodyText5FFInsider  = $('#bodyText5FFInsider').val();
+  var bodyText6FFInsider  = $('#bodyText6FFInsider').val();
+  
+     
+     
+     
+  //----------------FFSIGNATURE-------------------//
+     
+  var ffidFFSignature  = "FFSIGNATURE";
+  var campaignNameFFSignature  = $('#campaignNameFFSignature').val();
+  var startDateFFSignature  = $('#startDateFFSignature').val();
+  var endDateFFSignature   = $('#endDateFFSignature').val();
+  var pauseFFSignature 	  = $('#pauseFFSignature').val();
+  var image1FFSignature = ($('#image1FFSignature').val()== "")?imagepack[12]:$('#image1FFSignature').val();
+  var image2FFSignature = ($('#image2FFSignature').val()== "")?imagepack[13]:$('#image2FFSignature').val();
+  var image3FFSignature = ($('#image3FFSignature').val()== "")?imagepack[14]:$('#image3FFSignature').val();
+  var image4FFSignature = ($('#image4FFSignature').val()== "")?imagepack[15]:$('#image4FFSignature').val();
+  var image5FFSignature = ($('#image5FFSignature').val()== "")?imagepack[16]:$('#image5FFSignature').val();
+  var image6FFSignature = ($('#image6FFSignature').val()== "")?imagepack[17]:$('#image6FFSignature').val();
+  
+  var titleText1FFSignature   = $('#titleText1FFSignature').val();
+  var titleText2FFSignature   = $('#titleText2FFSignature').val();
+  var titleText3FFSignature   = $('#titleText3FFSignature').val();
+  var titleText4FFSignature   = $('#titleText4FFSignature').val();
+  var titleText5FFSignature   = $('#titleText5FFSignature').val();
+  var titleText6FFSignature   = $('#titleText6FFSignature').val();
+  var bodyText1FFSignature   = $('#bodyText1FFSignature').val();
+  var bodyText2FFSignature   = $('#bodyText2FFSignature').val();
+  var bodyText3FFSignature   = $('#bodyText3FFSignature').val();
+  var bodyText4FFSignature   = $('#bodyText4FFSignature').val();
+  var bodyText5FFSignature   = $('#bodyText5FFSignature').val();
+  var bodyText6FFSignature   = $('#bodyText6FFSignature').val();
+     
+     
+     
+  //---------------FFDEFAULT--------------------//
+     
+  var ffidDefault   = "DEFAULT";
+  var campaignNameDefault  = $('#campaignNameDefault').val();
+  var startDateDefault   = $('#startDateDefault').val();
+  var endDateDefault    = $('#endDateDefault').val();
+  var pauseDefault 	  = $('#pauseDefault').val();
+  var image1Default = ($('#image1Default').val()== "")?imagepack[18]:$('#image1Default').val();
+  var image2Default = ($('#image2Default').val()== "")?imagepack[19]:$('#image2Default').val();
+  var image3Default = ($('#image3Default').val()== "")?imagepack[20]:$('#image3Default').val();
+  var image4Default = ($('#image4Default').val()== "")?imagepack[21]:$('#image4Default').val();
+  var image5Default = ($('#image5Default').val()== "")?imagepack[22]:$('#image5Default').val();
+  var image6Default = ($('#image6Default').val()== "")?imagepack[23]:$('#image6Default').val();
+  var titleText1Default    = $('#titleText1Default').val();
+  var titleText2Default    = $('#titleText2Default').val();
+  var titleText3Default    = $('#titleText3Default').val();
+  var titleText4Default    = $('#titleText4Default').val();
+  var titleText5Default    = $('#titleText5Default').val();
+  var titleText6Default    = $('#titleText6Default').val();
+  var bodyText1Default    = $('#bodyText1Default').val();
+  var bodyText2Default    = $('#bodyText2Default').val();
+  var bodyText3Default    = $('#bodyText3Default').val();
+  var bodyText4Default    = $('#bodyText4Default').val();
+  var bodyText5Default    = $('#bodyText5Default').val();
+  var bodyText6Default    = $('#bodyText6Default').val();
+     
+     
+  
+     
+  //------------EXTRACT FILENAME FROM URL--------------------//
+  
+  	var fullPath1 = document.getElementById('image1FFSociety').value;
+    if (fullPath1) {
+        var startIndex = (fullPath1.indexOf('\\') >= 0 ? fullPath1.lastIndexOf('\\') : fullPath1.lastIndexOf('/'));
+        var filename = fullPath1.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image1FFSociety = filename;
+    }
+    var fullPath2 = document.getElementById('image2FFSociety').value;
+    if (fullPath2) {
+        var startIndex = (fullPath2.indexOf('\\') >= 0 ? fullPath2.lastIndexOf('\\') : fullPath2.lastIndexOf('/'));
+        var filename = fullPath2.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image2FFSociety = filename;
+    }
+     var fullPath3 = document.getElementById('image3FFSociety').value;
+    if (fullPath3) {
+        var startIndex = (fullPath3.indexOf('\\') >= 0 ? fullPath3.lastIndexOf('\\') : fullPath3.lastIndexOf('/'));
+        var filename = fullPath3.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image3FFSociety = filename;
+    }
+     var fullPath4 = document.getElementById('image4FFSociety').value;
+    if (fullPath4) {
+        var startIndex = (fullPath4.indexOf('\\') >= 0 ? fullPath4.lastIndexOf('\\') : fullPath4.lastIndexOf('/'));
+        var filename = fullPath4.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image4FFSociety = filename;
+    }
+     var fullPath5 = document.getElementById('image5FFSociety').value;
+    if (fullPath5) {
+        var startIndex = (fullPath5.indexOf('\\') >= 0 ? fullPath5.lastIndexOf('\\') : fullPath5.lastIndexOf('/'));
+        var filename = fullPath5.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image5FFSociety = filename;
+    }
+    var fullPath6 = document.getElementById('image6FFSociety').value;
+    if (fullPath6) {
+        var startIndex = (fullPath6.indexOf('\\') >= 0 ? fullPath6.lastIndexOf('\\') : fullPath6.lastIndexOf('/'));
+        var filename = fullPath6.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image6FFSociety = filename;
+    }
+    
+    //----------------------------1-----------------
+    var fullPath7 = document.getElementById('image1FFInsider').value;
+    if (fullPath7) {
+        var startIndex = (fullPath7.indexOf('\\') >= 0 ? fullPath7.lastIndexOf('\\') : fullPath7.lastIndexOf('/'));
+        var filename = fullPath7.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image1FFInsider = filename;
+    }
+    var fullPath8 = document.getElementById('image2FFInsider').value;
+    if (fullPath8) {
+        var startIndex = (fullPath8.indexOf('\\') >= 0 ? fullPath8.lastIndexOf('\\') : fullPath8.lastIndexOf('/'));
+        var filename = fullPath8.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image2FFInsider = filename;
+    }
+     var fullPath9 = document.getElementById('image3FFInsider').value;
+    if (fullPath9) {
+        var startIndex = (fullPath9.indexOf('\\') >= 0 ? fullPath9.lastIndexOf('\\') : fullPath9.lastIndexOf('/'));
+        var filename = fullPath9.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image3FFInsider = filename;
+    }
+     var fullPath10 = document.getElementById('image4FFInsider').value;
+    if (fullPath10) {
+        var startIndex = (fullPath10.indexOf('\\') >= 0 ? fullPath10.lastIndexOf('\\') : fullPath10.lastIndexOf('/'));
+        var filename = fullPath10.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image4FFInsider = filename;
+    }
+     var fullPath11 = document.getElementById('image5FFInsider').value;
+    if (fullPath11) {
+        var startIndex = (fullPath11.indexOf('\\') >= 0 ? fullPath11.lastIndexOf('\\') : fullPath11.lastIndexOf('/'));
+        var filename = fullPath11.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image5FFInsider = filename;
+    }
+     var fullPath12 = document.getElementById('image6FFInsider').value;
+    if (fullPath12) {
+        var startIndex = (fullPath12.indexOf('\\') >= 0 ? fullPath12.lastIndexOf('\\') : fullPath12.lastIndexOf('/'));
+        var filename = fullPath12.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image6FFInsider = filename;
+    }
+    
+   //----------------------------------------
+     
+     
+    var fullPath13 = document.getElementById('image1FFSignature').value;
+    if (fullPath13) {
+        var startIndex = (fullPath13.indexOf('\\') >= 0 ? fullPath13.lastIndexOf('\\') : fullPath13.lastIndexOf('/'));
+        var filename = fullPath13.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image1FFSignature = filename;
+    }
+    var fullPath14 = document.getElementById('image2FFSignature').value;
+    if (fullPath14) {
+        var startIndex = (fullPath14.indexOf('\\') >= 0 ? fullPath14.lastIndexOf('\\') : fullPath14.lastIndexOf('/'));
+        var filename = fullPath14.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image2FFSignature = filename;
+    }
+     var fullPath15 = document.getElementById('image3FFSignature').value;
+    if (fullPath15) {
+        var startIndex = (fullPath15.indexOf('\\') >= 0 ? fullPath15.lastIndexOf('\\') : fullPath15.lastIndexOf('/'));
+        var filename = fullPath15.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image3FFSignature = filename;
+    }
+     var fullPath16 = document.getElementById('image4FFSignature').value;
+    if (fullPath16) {
+        var startIndex = (fullPath16.indexOf('\\') >= 0 ? fullPath16.lastIndexOf('\\') : fullPath16.lastIndexOf('/'));
+        var filename = fullPath16.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image4FFSignature = filename;
+    }
+     var fullPath17 = document.getElementById('image5FFSignature').value;
+    if (fullPath17) {
+        var startIndex = (fullPath17.indexOf('\\') >= 0 ? fullPath17.lastIndexOf('\\') : fullPath17.lastIndexOf('/'));
+        var filename = fullPath17.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image5FFSignature = filename;
+    }
+     var fullPath18 = document.getElementById('image6FFSignature').value;
+    if (fullPath18) {
+        var startIndex = (fullPath18.indexOf('\\') >= 0 ? fullPath18.lastIndexOf('\\') : fullPath18.lastIndexOf('/'));
+        var filename = fullPath18.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image6FFSignature = filename;
+    }
+     
+    //----------------------------------------------------- 
+     
+     
+     var fullPath19 = document.getElementById('image1Default').value;
+    if (fullPath19) {
+        var startIndex = (fullPath19.indexOf('\\') >= 0 ? fullPath19.lastIndexOf('\\') : fullPath19.lastIndexOf('/'));
+        var filename = fullPath19.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image1Default = filename;
+    }
+    var fullPath20 = document.getElementById('image2Default').value;
+    if (fullPath20) {
+        var startIndex = (fullPath20.indexOf('\\') >= 0 ? fullPath20.lastIndexOf('\\') : fullPath20.lastIndexOf('/'));
+        var filename = fullPath20.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image2Default = filename;
+    }
+     var fullPath21 = document.getElementById('image3Default').value;
+    if (fullPath21) {
+        var startIndex = (fullPath21.indexOf('\\') >= 0 ? fullPath21.lastIndexOf('\\') : fullPath21.lastIndexOf('/'));
+        var filename = fullPath21.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image3Default = filename;
+    }
+     var fullPath22 = document.getElementById('image4Default').value;
+    if (fullPath22) {
+        var startIndex = (fullPath22.indexOf('\\') >= 0 ? fullPath22.lastIndexOf('\\') : fullPath22.lastIndexOf('/'));
+        var filename = fullPath22.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image4Default = filename;
+    }
+     var fullPath23 = document.getElementById('image5Default').value;
+    if (fullPath23) {
+        var startIndex = (fullPath23.indexOf('\\') >= 0 ? fullPath23.lastIndexOf('\\') : fullPath23.lastIndexOf('/'));
+        var filename = fullPath23.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image5Default = filename;
+    }
+     var fullPath24 = document.getElementById('image6Default').value;
+    if (fullPath24) {
+        var startIndex = (fullPath24.indexOf('\\') >= 0 ? fullPath24.lastIndexOf('\\') : fullPath24.lastIndexOf('/'));
+        var filename = fullPath24.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+       image6Default = filename;
+    }
+     
+ /*---------------end of function----------------------*/
+ 
+     console.log("Writepost function call");
+  /*---------------calling writeNewPost function--------------*/
+     
+  writeNewPost(
+    ffidFFSociety,
+    campaignNameFFSociety,
+    startDateFFSociety,
+    endDateFFSociety,
+	pauseFFSociety,
+    image1FFSociety,
+    image2FFSociety,
+    image3FFSociety,
+    image4FFSociety,
+    image5FFSociety,
+    image6FFSociety,
+    titleText1FFSociety,
+    titleText2FFSociety,
+    titleText3FFSociety,
+    titleText4FFSociety,
+    titleText5FFSociety,
+    titleText6FFSociety,
+    bodyText1FFSociety,
+    bodyText2FFSociety,
+    bodyText3FFSociety,
+    bodyText4FFSociety,
+    bodyText5FFSociety,
+    bodyText6FFSociety
+  );
+     
+  
+  writeNewPost(
+    ffidFFInsider,
+    campaignNameFFInsider,
+    startDateFFInsider,
+    endDateFFInsider,
+	pauseFFInsider,
+    image1FFInsider,
+    image2FFInsider,
+    image3FFInsider,
+    image4FFInsider,
+    image5FFInsider,
+    image6FFInsider,
+    titleText1FFInsider,
+    titleText2FFInsider,
+    titleText3FFInsider,
+    titleText4FFInsider,
+    titleText5FFInsider,
+    titleText6FFInsider,
+    bodyText1FFInsider,
+    bodyText2FFInsider,
+    bodyText3FFInsider,
+    bodyText4FFInsider,
+    bodyText5FFInsider,
+    bodyText6FFInsider
+  );
+  
+  writeNewPost(
+    ffidDefault ,
+    campaignNameDefault,
+    startDateDefault,
+    endDateDefault,
+	pauseDefault,
+    image1Default,
+    image2Default,
+    image3Default,
+    image4Default,
+    image5Default,
+    image6Default,
+    titleText1Default,
+    titleText2Default,
+    titleText3Default,
+    titleText4Default,
+    titleText5Default,
+    titleText6Default,
+    bodyText1Default,
+    bodyText2Default,
+    bodyText3Default,
+    bodyText4Default,
+    bodyText5Default,
+    bodyText6Default
+  );   
+     
+  writeNewPost(
+    ffidFFSignature,
+    campaignNameFFSignature,
+    startDateFFSignature,
+    endDateFFSignature,
+	pauseFFSignature,
+    image1FFSignature,
+    image2FFSignature,
+    image3FFSignature,
+    image4FFSignature,
+    image5FFSignature,
+    image6FFSignature,
+    titleText1FFSignature,
+    titleText2FFSignature,
+    titleText3FFSignature,
+    titleText4FFSignature,
+    titleText5FFSignature,
+    titleText6FFSignature,
+    bodyText1FFSignature,
+    bodyText2FFSignature,
+    bodyText3FFSignature,
+    bodyText4FFSignature,
+    bodyText5FFSignature,
+    bodyText6FFSignature  
+  );
+    
+  
+  function writeNewPost(ffid,campaignName,startDate,endDate,pause,image1,image2,image3,image4,image5,image6,titleText1,titleText2,titleText3,titleText4,titleText5,titleText6,bodyText1,bodyText2,bodyText3,bodyText4,bodyText5,bodyText6) {
+ 
+  var postData = {
+    "campaignName": campaignName,
+    "ffid": ffid,
+    "startDate":startDate,
+    "endDate":endDate,
+    "pause":pause,
+    "image1":image1,
+    "image2":image2,
+    "image3":image3,
+    "image4":image4,
+    "image5":image5,
+    "image6":image6,
+    "titleText1":titleText1,
+    "titleText2":titleText2,
+    "titleText3":titleText3,
+    "titleText4":titleText4,
+    "titleText5":titleText5,
+    "titleText6":titleText6,
+    "bodyText1":bodyText1,
+    "bodyText2":bodyText2,
+    "bodyText3":bodyText3,
+    "bodyText4":bodyText4,
+    "bodyText5":bodyText5,
+    "bodyText6":bodyText6
+    
+  };
+
+ // Get a key for a new Post.
+ // var newPostKey = firebase.database().ref().child('posts').push().key;
+ // Write the new post's data simultaneously in the posts list and the user's post list.
+ 
+ var updates = {};
+ // updates['/posts/' + newPostKey] = postData;
+ 
+  updates["/posts/"+ffid + '/'] = postData;
+  
+	console.log("writepost function finished successfully");
+  return firebase.database().ref().update(updates);
+}
+   
+});
+ 
+  
+  //var submit = document.getElementById('submitbtn');
+
+
+  
+</script>
+
+<script>
+  
+  
+  uploadToStorage('image1FFSociety');
+  uploadToStorage('image2FFSociety');
+  uploadToStorage('image3FFSociety');
+  uploadToStorage('image4FFSociety');
+  uploadToStorage('image5FFSociety');
+  uploadToStorage('image6FFSociety');
+  
+  uploadToStorage('image1FFInsider');
+  uploadToStorage('image2FFInsider');
+  uploadToStorage('image3FFInsider');
+  uploadToStorage('image4FFInsider');
+  uploadToStorage('image5FFInsider');
+  uploadToStorage('image6FFInsider');
+  
+  uploadToStorage('image1FFSignature');
+  uploadToStorage('image2FFSignature');
+  uploadToStorage('image3FFSignature');
+  uploadToStorage('image4FFSignature');
+  uploadToStorage('image5FFSignature');
+  uploadToStorage('image6FFSignature');
+  
+  uploadToStorage('image1Default');
+  uploadToStorage('image2Default');
+  uploadToStorage('image3Default');
+  uploadToStorage('image4Default');
+  uploadToStorage('image5Default');
+  uploadToStorage('image6Default');
+  
+  
+  /*----------------function to store in firebase storage----------------*/
+  
+  
+  
+  
+  
+  
+  
+  function uploadToStorage(imageFile){
+  
+              var fileButton = document.getElementById(imageFile);
+              fileButton.addEventListener('change', function(e){
+                  var file = e.target.files[0];
+                  var storageRef = firebase.storage().ref(file.name);
+                  storageRef.put(file);
+              });  
+  }
+ </script>

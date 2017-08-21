@@ -7,9 +7,12 @@
       var Customr = {
         baseUrl: "https://customr.heliumdev.com",
         ready: function() {
-          document.querySelector('#customer-fields input[type="submit"]').className = 'gbtn button';
+          document.querySelector('#customer-fields input[type="submit"]').className = 'gbtn register-submit-btn button';
           document.querySelector('#customer-fields input[type="submit"]').setAttribute("value", "SUBMIT");
-          $( ".cancel-form" ).remove();
+        // document.getElementById("create_customer").method = "get";
+   // document.getElementById("create_customer").action = "customers/account";
+          $(".cancel-form").remove();
+         
         },
         
         {% if customer %}

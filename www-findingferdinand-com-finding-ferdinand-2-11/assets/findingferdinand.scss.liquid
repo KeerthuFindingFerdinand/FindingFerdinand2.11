@@ -1117,7 +1117,7 @@ background-size: 100% 100%;
 }
 .gwhitebutton{
  	margin:auto;
-    padding: 15px 32px;
+    padding: 11px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -1152,6 +1152,20 @@ background-size: 100% 100%;
 .gbutton:hover { 
     color: white;
 }
+
+.image-upload > input
+{
+    
+}
+
+.image-upload img
+{
+    width: 60px;
+    cursor: pointer;
+}
+
+
+
 p {
   margin: 0 0 ($gutter / 2) 0;
 
@@ -1253,6 +1267,25 @@ nav li #login-content {
 }
 
 ---------end of login dropdown--------------*/
+/*-----------------image upload------------*/
+.upload-button {
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    float: left;
+}
+
+.profile-pic {
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+}
+
+.file-upload {
+    display: none;
+}
+/*----------------end of image upload-------*/
 
 /*================ Blockquotes ================*/
 blockquote {
@@ -1549,7 +1582,110 @@ html input[disabled] {
   }
 }
 
+.show{
+ visibility:hidden;
+}
 /*--------------gold color------------------*/
+.register-submit-btn{
+  margin:auto !important;
+  display:flex !important;
+}
+
+.signup-login {
+	color: #ffffff !important;
+}
+
+.signup-login:hover {
+	color: #ffffff !important;
+}
+.customer_tag_icon{
+
+        width:82px;
+  height:82px;
+    margin: -6px -12px;
+    padding-bottom: 23px;
+}
+
+.circle {
+	
+   width: 90px;
+    height: 90px;
+    border: 1px solid #c18f38;
+    border-radius: 59px;
+    padding: 13px;
+    margin-top: -12px;
+    font-size: 10px;
+	text-align: center;
+}
+
+
+#myProgress {
+  width: 380px;
+  background-color: #FEE8E8;
+  position: relative;
+}
+
+#myBar {
+  width: 0px;
+  height: 30px;
+  background-color: #FDD5D6;
+  position: relative;
+}
+#pointer {
+  margin-top:-7px;
+  position: relative;
+}
+
+/*--------ON OFF Button-------*/
+.onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #E0E0E0; border-radius: 20px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #FAE4E3; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: none; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 20;
+    right: 56px;
+    border: 2px solid #E0E0E0; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+
+/*--------ON OFF Button end-------*/
+
 .gbtn,
 .rte .gbtn {
   text-transform: uppercase;
@@ -1557,7 +1693,7 @@ html input[disabled] {
   font-family: $condensed;
   display: inline-block;
   font-size: 16px;
-  padding: 15px 50px;
+  padding: 11px 50px;
   width: 186px;
   height: 46px;
   margin: auto;
@@ -1597,6 +1733,7 @@ html input[disabled] {
     background-color: $white;
   }
 }
+
 /*-----end of gold button------*/
 .btn--secondary,
 .rte .btn--secondary {
@@ -1860,6 +1997,8 @@ select {
   @include user-select(text);
 }
 
+
+
 button {
   background: none;
   border: none;
@@ -1907,7 +2046,7 @@ label{
 input,
 textarea,
 select {
-  border: 1px solid $gold;
+  border: 1px solid $black;
   max-width: 100%;
   padding: 8px 10px;
   border-radius: $radius;
@@ -2467,6 +2606,7 @@ label.error {
     &.active{
       font-weight: bold;
     }
+    
   }
 
   #desk-search{
@@ -2666,11 +2806,68 @@ text-align:center;
     margin-top: -170px;
 }
 
-.div-ffsoceity1 {
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  	border:1px solid #D3D3D3;
+    visibility: hidden;
+    width: 250px;
+    height: 247px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: 20px 0;
+    position: absolute;
+    z-index: 1;
+    top: 170%;
+    left: 50%;
+    margin-left: -190px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 77%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+  .div-ffsoceity1 {
     text-align:left;
     background-color: white;
     position: relative;
-    left:1100px; top:-350px;
+    left:1100px; top:-396px;
   	padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
@@ -2685,22 +2882,22 @@ text-align:center;
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
    
-    100%  {left:450px; top:-350px; position: relative;}
+    100%  {left:450px; top:-396px; position: relative;}
     
 }
 
 /* Standard syntax */
 @keyframes example {
-     100%  { left:450px; top:-350px; position: relative;}
+     100%  { left:450px; top:-396px; position: relative;}
 }
 
 .div-ffsoceity2 {
   	width:450px;
-  heigth:150px;
-  text-align:left;
+    heigth:150px;
+    text-align:left;
     background-color: white;
     position: relative;
-    left:-500px; top:-420px;
+    left:-500px; top:-343px;
   	padding: 25px;
     margin: 25px;
     -webkit-animation-name: div2; /* Safari 4.0 - 8.0 */
@@ -2713,13 +2910,13 @@ text-align:center;
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes div2 {
    
-    100%  { left:-100px; top:-420px; }
+    100%  { left:-100px; top:-343px; }
     
 }
 
 /* Standard syntax */
 @keyframes div2 {
-     100%  {  left:-100px; top:-420px; }
+     100%  {  left:-100px; top:-343px; }
 }
 
 }
@@ -4307,7 +4504,9 @@ body.js-drawer-open{
 }
 
 
-
+.customr-control{
+border : 1px solid $gold;
+}
 
 /*============================================================================
 #Custom Palette

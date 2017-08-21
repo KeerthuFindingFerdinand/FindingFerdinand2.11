@@ -1,25 +1,36 @@
 {% if shop.customer_accounts_enabled and customer %}
 				<li><a class="login" href="/account/logout">LOGOUT</a></li>
 {%else%}
-    
-        <a class="popup" onclick="myFunction()" href="#">LOGIN</a>
-        <div class="popuptext form-vertical" id="myPopup">
-        <!-- <form method="post" action="/account/login">
+		
+
+<div class="popup"><div onclick="myFunction()"> Login</div>
+       
+        <span class="popuptext" id="myPopup">
+        
+          <div>
+          <div >
+            <a style="background-color:#C18F38;width: 80%;FONT-SIZE: 15PX;" class="btn button ssw-input-block-level signup-login" href="/account/register">SIGNUP</a>
+            </div>
+         
+          <br>
+         <form method="post" action="/account/login">
 
             <div id="login-content">
-              <input name="customer[email]" type="email" placeholder="Email" required="required">
+              <input style="width:80%;margin-bottom: 7px;" name="customer[email]" type="email" placeholder="Email" required="required">
             
-              <input name="customer[password]" type="password" placeholder="password" required="required">
+              <input style="width:80%;" name="customer[password]" type="password" placeholder="password" required="required">
             </div>
             <div >
-              <a href="/account/login#recover">Forgot_password</a>
+              <a style="float:right;width: 58%;" href="/account/login#recover">Forgot Password?</a>
 
             </div>
             <div >
-              <input type="submit" id="submit" class="btn button ssw-input-block-level" value="Submit">
+              <input  type="submit" id="submit" style="width: 80%;" class="btn button ssw-input-block-level" value="LOGIN">
             </div>
-          </form>   ------>
-        
+          </form>
+            
+          </div>
+          </span>
 </div>  
 
 {%endif%}
@@ -28,11 +39,8 @@
                 
 <script>
   function myFunction() {
-   var x = document.getElementById('myPopup');
-   x.classList.toggle("show");
-    
-    
-    
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
 }
 
 </script>
