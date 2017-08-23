@@ -5,28 +5,30 @@
 <div class="grid">
   <center><h1 style="padding-bottom:30px;">FF ACCOUNT</h1></center>
   
-<div style="width:1148px;margin-left:-66px;" class="grid__item large--two-thirds push--large--one-sixth">
+<div class="grid__item large--two-thirds push--large--one-sixth desktop-gridview">
 <div class="row">
-    <div style="width:8%" class="grid__item one-third medium-down--one-whole">
+    <div class="grid__item one-third medium-down--one-whole desktop-one-fifth">
       <div class="customer_tag_icon">
       	<img id="badge" src="https://ucarecdn.com/4db60e62-3794-4166-90d9-a20282794b20/-/stretch/off/-/resize/3000x/-/quality/lighter/" width="" height="" alt="" class="shogun-image img-responsive" />
       </div>
     </div>
-  	 <div style="width:17%" class="grid__item one-third medium-down--one-whole">
-      <p><strong>{{customer.name|upcase}}</strong></p>
-      <p><strong  id="customer_id"></strong></p>
+  	 <div class="grid__item one-third medium-down--one-whole desktop-two-fifth">
+       <p class="name-display-desktop"><span><strong>{{customer.name|upcase}}</strong></span><br/>
+         <span><strong  id="customer_id1"></strong></span></p>
+         <p class="name-display-mobile"> <span><strong>HI,{{customer.first_name|upcase}}!</strong></span><br/>
+         <span><strong  id="customer_id2"></strong></span></p>
   </div>
-   <div style="width:23%" class="grid__item one-third medium-down--one-whole">
-      <p><strong id="points">TOTAL POINTS:</strong></p>
-      <p><strong>MEMBER SINCE: 2016</strong></p>
+   <div class="grid__item one-third medium-down--one-whole desktop-three-fifth">
+      <p class="points-display-mobile"><span><strong id="points">TOTAL POINTS:</strong></span><br/>
+        <span><strong>MEMBER SINCE: 2016</strong></span></p>
   </div>
-   <div style="width:40%;margin-top: -42px;" class="grid__item two-thirds medium-down--one-whole">
+   <div class="grid__item two-thirds medium-down--one-whole desktop-four-fifth-slider">
      	
-     <img style="z-index: 0; max-width:6%;margin-top: -20px;margin-bottom: -9px" src="{{'Marker_Triangles_-_Bronze.png' | asset_url }}">
-     <img style="z-index: 0;max-width: 6%;margin-top: -20px;margin-bottom: -9px;margin-left: 156px;" src="{{ 'Marker_Triangles_-_Silver.png' | asset_url }}">
-     <img style="z-index: 0; max-width:6%;margin-top: -20px;margin-bottom: -9px; margin-left: 151px;" src="{{ 'Marker_Triangles_-_Gold.png' | asset_url }}">
+     <img class="desktop-four-fifth-sliderimage1" src="{{'Marker_Triangles_-_Bronze.png' | asset_url }}">
+     <img class="desktop-four-fifth-sliderimage2" src="{{ 'Marker_Triangles_-_Silver.png' | asset_url }}">
+     <img class="desktop-four-fifth-sliderimage3" src="{{ 'Marker_Triangles_-_Gold.png' | asset_url }}">
      <div>
-     <span></span><span style="margin-left:170px;">250 pts</span><span style="margin-left:130px">500 pts</span>
+     <span></span><span class="point1-transition">250 pts</span><span class="point2-transition"  >500 pts</span>
      </div>
      <div id="myProgress">
   			<div id="myBar"></div>
@@ -35,7 +37,7 @@
 		<div id="pointer" class="color:#C18F38">|</div>
      </div>
   
-  <div style="width:8%"  class="grid__item one-third medium-down--one-whole">
+  <div class="grid__item one-third medium-down--one-whole desktop-five-fifth">
     <div class="circle" id="circletext"></div>
   </div>
 
@@ -48,41 +50,108 @@
   
   <div class="row">
     <div style="width:20%" class="grid__item one-third medium-down--one-whole">
-      <div>
-        <img class="profile-pic" src="{{'placekitten.jpg'|asset_url}}" />
-        <div class="upload-button">Upload Image</div>
+      <div class="profile-transition">
+        <img class="profile-pic" id="preload" src="{{'placekitten.jpg'|asset_url}}" />
+       	
         <input id="profile" class="file-upload" type="file" accept="image/*"/>
       </div>
               
     </div>
-  	 <div style="width:20%" class="grid__item one-third medium-down--one-whole">
-      <p><strong>ORDER HISTORY</strong></p>
-      <p>Order History</p>
-      <p>Track Orders</p>
-      <p>Re-order</p>
+    <div class="links-mobile">
+         <div class="container">
+           <div class="header"><span>ORDER HISTORY<span style="float: right;">+</span></span>
+
+          </div>
+          <div class="content">
+              <ul>
+                  <li>Order History</li>
+                  <li>Track Orders</li>
+                  <li>Re-order</li>
+                  
+              </ul>
+          </div>
+		</div>
+      	<div class="container">
+          <div class="header"><span>FF SOCIETY<span style="float: right;">+</span></span>
+
+          </div>
+          <div class="content">
+              <ul>
+                  <li>My Points</li>
+                  <li>Redeem Points</li>
+                  <li>Earn Points</li>
+                  
+              </ul>
+          </div>
+          
+		</div>
+      		<div class="container">
+          <div class="header"><span>MY BEAUTY PROFILE<span style="float: right;">+</span></span>
+
+          </div>
+          <div class="content">
+              <ul>
+                  <li>My Beauty Profile</li>
+                  <li>How-to Tutorials</li>
+                  
+                  
+              </ul>
+          </div>
+          
+		</div>
+      	<div class="container">
+          <div class="header"><span>MY CUSTOM DESIGN<span style="float: right;">+</span></span>
+
+          </div>
+          <div class="content">
+              <ul>
+                  <li>Custom Lips</li>
+                  <li>Custom Palettes</li>
+                <li>My Favorites</li>
+                  
+              </ul>
+          </div>
+          
+		</div>
+    </div>
+  	 <div style="width:20%" class="grid__item one-third medium-down--one-whole links-desktop">
+      <p>
+      <span><strong>ORDER HISTORY</strong></span><br/>
+      <span>Order History</span><br/>
+      <span>Track Orders</span><br/>
+      <span>Re-order</span><br/>
+       </p>
   </div>
-   <div style="width:20%" class="grid__item one-third medium-down--one-whole">
-      <p><strong>FF SOCIETY</strong></p>
-      <p>My Points</p>
-     <p>Redeem Points</p>
-     <p>Earn Points</p>
+   <div style="width:20%" class="grid__item one-third medium-down--one-whole links-desktop">
+      <p>
+      <span><strong>FF SOCIETY</strong></span><br/>
+      <span>My Points</span><br/>
+     <span>Redeem Points</span><br/>
+     <span>Earn Points</span><br/>
+        <span><button class="refer-button-desktop gbtn">REFER A FRIEND</button></span>
+     </p>
   </div>
-   <div style="width:20%" class="grid__item two-thirds medium-down--one-whole">
-      <p><strong>MY BEAUTY PROFILE</strong></p>
-     <p>My Beauty Profile</p>
-     <p>How-To Tutorials</p>
-      <p><strong>MY CUSTOM DESIGNS</strong></p>
-     <p>Custom Lips</p>
-     <p>Custom Palettes</p>
-     <p>My Favorites</p>
+   <div class="grid__item two-thirds medium-down--one-whole links-desktop profile-desktop">
+      <p>
+        <span><strong>MY BEAUTY PROFILE</strong></span><br/>
+     
+     <span>My Beauty Profile</span><br/>
+     <span>How-To Tutorials</span><br/>
+     </p>
+      <span><strong>MY CUSTOM DESIGNS</strong></span><br/>
+     <span>Custom Lips</span><br/>
+     <span>Custom Palettes</span><br/>
+     <span>My Favorites</span><br/>
+     
       </div>
   
-   <div style="width:20%" class="grid__item two-thirds medium-down--one-whole" >
-	<p><strong>ACCOUNT</strong></p>
-    <p>Email/Password</p>
-    <p>Shipping/Billing Address</p>
-     <p>FAQ</p> 
-    <p>Customer Service</p>
+   <div style="width:20%" class="grid__item two-thirds medium-down--one-whole links-desktop" >
+	<p>
+    <span><strong>ACCOUNT</strong></span><br/>
+    <span>Email/Password</span><br/>
+    <span>Shipping/Billing Address</span><br/>
+     <span>FAQ</span> <br/>
+    <span>Customer Service</span><br/>
    </div>
   
   </div>
@@ -93,108 +162,112 @@
 <div class="grid">
  <center><h1 style="padding-bottom:30px;" class="gtext">FF SOCIETY</h1></center>
   
-<div style="width:1148px;margin-left:-66px;" class="grid__item large--two-thirds push--large--one-sixth">
+<div class="grid__item large--two-thirds push--large--one-sixth grid-view">
 
   
   
  <div class="row">
-   <a href="">
-    <div width="50%" class="grid__item two-thirds medium-down--one-whole">
+ <!--  <a href="https://fftestsiteask.myshopify.com/blogs/news" id="url1">-->
+    <div class="grid__item two-thirds medium-down--one-whole promotion-img1-div">
       <div>
-        <img id="image1" style="width: 573px;height: 584px;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+        <img id="image1" class="promotion-img1" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
       </div>
-      <div id="hr1" style="width: 78%; height: 20px; border-bottom: 1px solid black; text-align: center">
-          <span id="ttxt1" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+      <div id="hr1" class="promotion-img1-hr" >
+          <span id="ttxt1" class="promotion-img1-txt">
               Title Text 
           </span>
       </div>
       <div>
-        <p id="btxt1" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+        <p id="btxt1" class="promotion-img1-btxt">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
       </div>
   
    </div>
-    </a>
-   <a href="">
-    <div width="50%" class="grid__item two-thirds medium-down--one-whole">
-     <div style="width: 520px;height: 584px;margin-left: 596px;margin-top: -555px;">
-      <img id="image2" style="width: 520px;height: 584px;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
-      <div id="hr2" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-          <span id="ttxt2" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+ <!--   </a>-->
+ <!--  <a href="https://fftestsiteask.myshopify.com/blogs/news" id="url2">-->
+    <div class="grid__item two-thirds medium-down--one-whole ">
+     <div class="promotion-img2-div">
+      <img id="image2" class="promotion-img2" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+      <div id="hr2" class="promotion-img2-hr">
+          <span id="ttxt2" class="promotion-img2-txt">
               What's New  
           </span>
       </div>
       	<div>
-        <p id="btxt2" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+        <p id="btxt2" class="promotion-img2-btxt">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
       </div>
       </div>
     </div>
-   </a>
+<!--   </a>-->
   
   </div> 
-  
+ 
   <div class="row">
-  <a href="">
-    <img id="image3" style="margin-top:132px; height:350px; width:100%;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
-    <div id="hr3" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-          <span id="ttxt3" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+     <div class="grid__item two-thirds medium-down--one-whole promotion-img3-div">
+<!--  <a href="https://fftestsiteask.myshopify.com/blogs/news" id="url3">-->
+    <img id="image3" class="promotion-img3" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+    <div id="hr3" class="promotion-img3-hr" >
+          <span id="ttxt3" class="promotion-img3-txt">
               New Color 
           </span>
       </div>
     <div>
-        <p id="btxt3" style="width: 100%; padding: 24px 304px;text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+        <p id="btxt3" class="promotion-img3-btxt" >Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
       </div>
-  </a>
+<!--  </a>-->
     </div>
-
+  </div>
   
   <div class="row">
-    <a href="">
-    <img id="image4" style="width:832px;height:190px;margin-top:128px; margin:auto;display:flex;" src="{{'Lips_Banner.jpg'| asset_url }}"/>
-  	 <div id="hr4" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-          <span id="ttxt4" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+    <div class="grid__item two-thirds medium-down--one-whole promotion-img4-div">
+   <!-- <a href="https://fftestsiteask.myshopify.com/blogs/news" id="url4">-->
+    <img id="image4" class="promotion-img4" src="{{'Lips_Banner.jpg'| asset_url }}"/>
+  	 <div id="hr4" class="promotion-img4-hr">
+          <span id="ttxt4" class="promotion-img4-txt">
               New Color 
           </span>
       </div>
     <div>
-        <p id="btxt4" style="width: 100%; padding: 24px 304px;text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+        <p id="btxt4" class="promotion-img4-btxt">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
       </div>
-      </a>
+    <!--  </a>-->
+  </div>
   </div>
   
  
   <div class="row">
-     <a href="">
-    <div width="50%" class="grid__item two-thirds medium-down--one-whole">
-      <div>
-        <img id="image5" style="width: 573px;height: 584px;margin-top:287px;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
-      </div>
-      <div id="hr5" style="width: 78%; height: 20px; border-bottom: 1px solid black; text-align: center">
-          <span id="ttxt5" style="font-size: 37px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+  <!--   <a href="https://fftestsiteask.myshopify.com/blogs/news" id="url5">-->
+    <div class="grid__item two-thirds medium-down--one-whole promotion-img5-div">
+      
+        <img id="image5" class="promotion-img5"  src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+      
+      <div id="hr5" class="promotion-img5-hr">
+          <span class="prmotion-img5-txt" id="ttxt5">
               PERSONAL RECOMMENDATION 
           </span>
       </div>
       <div>
-        <p id="btxt5" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+        <p class="promotion-img5-btxt" id="btxt5" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
       </div>
    
    </div>
-    </a>
-    <a href="">
-    <div width="50%" class="grid__item two-thirds medium-down--one-whole">
-     <div style="width: 520px;height: 584px;margin-left: 596px;margin-top: -897px;">
-      <img id="image6" style="width: 520px;height: 584px;" src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
-      <div id="hr6" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-          <span id="ttxt6" style="font-size: 22px;background-color: #ffffff;padding: 0 10px;font-weight: bold;font-family: 'NeuzeitGro','Helvetica Neue','Helvetica,Arial','sans-serif';">
+    <!--</a>-->
+    <!--<a href="https://fftestsiteask.myshopify.com/blogs/news" id="url6">-->
+    <div class="grid__item two-thirds medium-down--one-whole promotion-img6-div">
+    
+      <img id="image6" class="promotion-img6"  src="{{'FFSocietyHeaderImage.jpg'| asset_url }}"/>
+      <div id="hr6" class="promotion-img6-hr" >
+          <span id="ttxt6" class="promotion-img6-txt" >
              CHECK OUT OUR BLOG  
           </span>
       </div>
       <div>
-        <p id="btxt6" style="width: 78%; padding-top: 24px; text-align: justify;font-size: 19px;">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
+        <p id="btxt6" class="promotion-img6-btxt">Vocae notia ina, dierbis diemususata aucto con peritem tes vit; is vid arimaximmod consilneredi inpro ere rem spicessere nonoc obse cone publica qua poponsunte</p>
       </div>
-      </div>
+     
     </div>
-    </a>
+    <!--</a>-->
     <div style="display:none;" id="valueStore"></div>
+      <div style="display:none;" id="profile_name"></div>
   </div>
 </div>
   
@@ -210,9 +283,22 @@
 <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 
   <script>
- 	$(document).ready(function() {
+    $(".header").click(function () {
 
+    $header = $(this);
+    //getting the next element
+    $content = $header.next();
+    //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+    $content.slideToggle(500, function () {
+        //execute this after slideToggle is done
+       
+    });
+
+});
+    $('#profile-pic').click(function(){ $('#file-upload').trigger('click'); });
     
+ 	$(document).ready(function() {
+	
     var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -224,21 +310,28 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-    
-
-    $(".file-upload").on('change', function(){
+     var fileButton = document.getElementById("file-upload");
+    		  var preview = document.getElementById("profile-pic");
+	//var profile_storage = document.getElementById("profile_name");
+    $(".file-upload").on('change', function(e){
         readURL(this);
-    });
+ 		
+                 
+                  var file = e.target.files[0];
+       var ext = (/[.]/.exec(file.name)) ? /[^.]+$/.exec(file.name)[0] : undefined;
+      var filename = "{{customer.id}}" + "." + ext; 
+       document.getElementById("profile_name").value = filename;
+      var storageRef = firebase.storage().ref(filename);
+                  storageRef.put(file);
+              });  
+  
     
-    $(".upload-button").on('click', function() {
+    
+    $(".profile-pic").on('click', function() {
        $(".file-upload").click();
     });
 });
-  </script>
-
-  
-  <script>
-
+ 
     
     var getJSON = function(url) {
   return new Promise(function(resolve, reject) {
@@ -269,19 +362,22 @@
       document.getElementById('circletext').innerHTML = "    you need "+(500-score) +" more points to get to the next tier.";
       document.getElementById("valueStore").value ="FFINSIDER";
         badge.src = "{{'FF_Insider_Badge_246px.png' | asset_url }}";
-        document.getElementById("customer_id").innerHTML = "FF INSIDER";
+        document.getElementById("customer_id1").innerHTML = "FF INSIDER";
+        document.getElementById("customer_id2").innerHTML = "FF INSIDER";
       }
       if((score>=0)&&(score<250)){
         document.getElementById('circletext').innerHTML = "   you need "+(250-score) +" more points to get to the next tier.";
      	document.getElementById("valueStore").value = "FFSOCIETY";
          badge.src = "{{'FF_Society_Badge_246px.png' | asset_url }}";
-          document.getElementById("customer_id").innerHTML = "FF SOCIETY";
+          document.getElementById("customer_id1").innerHTML = "FF SOCIETY";
+        document.getElementById("customer_id2").innerHTML = "FF SOCIETY";
       }
       if(score>=500){
       document.getElementById('circletext').remove();
       document.getElementById("valueStore").value ="FFSIGNATURE";
       badge.src = "{{'FF_Signature_Badge_246px.png' | asset_url }}";
-       document.getElementById("customer_id").innerHTML = "FF SIGNATURE";
+       document.getElementById("customer_id1").innerHTML = "FF SIGNATURE";
+        document.getElementById("customer_id2").innerHTML = "FF SIGNATURE";
       }
       
       
@@ -318,7 +414,7 @@
     
   
         
-             
+       /*      
 
      var fileButton = document.getElementById("profile");
      fileButton.addEventListener('change', function(e){
@@ -333,7 +429,7 @@
        firebase.initializeApp(config1);
        database1 = firebase.database();
        var ref1 = database1.ref('profile-management-89470');
-       var email = "{{customer.email}}";
+       var email = "{{customer.id}}";
        var file = e.target.files[0];
        var ext = (/[.]/.exec(file.name)) ? /[^.]+$/.exec(file.name)[0] : undefined;
        console.log(ext);
@@ -354,7 +450,7 @@
         
        }).catch(function(error) { });
      });  
-
+*/
 
   // Initialize Firebase
   
@@ -386,14 +482,14 @@
  for(var i = 0; i < key.length; i++){ 
  	var k = key[i]; 
  	var posts = response[k]; 
- 	
+ 	console.log("one byone-"+k+"-"+posts.bodyText1);
  	
  	append(k,posts.image1,posts.image2,posts.image3,
            posts.image4,posts.image5,posts.image6,
            posts.titleText1,posts.titleText2,posts.titleText3,
            posts.titleText4,posts.titleText5,posts.titleText6,
            posts.bodyText1,posts.bodyText2,posts.bodyText3,
-           posts.bodyText4,posts.bodyText5,posts.bodyText6,posts.startDate,posts.endDate); 
+           posts.bodyText4,posts.bodyText5,posts.bodyText6,posts.startDate,posts.endDate,posts.url1,posts.url2,posts.url3,posts.url4,posts.url5,posts.url6); 
  				 
  			
  	} 
@@ -404,8 +500,8 @@
  console.log(err); 
  } 
  
- function append(ffid, image1,image2,image3,image4,image5,image6,title1,title2,title3,title4,title5,title6,body1,body2,body3,body4,body5,body6,start,end) { 
-   console.log(ffid);
+ function append(ffid,image1,image2,image3,image4,image5,image6,title1,title2,title3,title4,title5,title6,body1,body2,body3,body4,body5,body6,start,end,url1,url2,url3,url4,url5,url6) { 
+   //console.log("this is-"+ffid+"-"+title1+"-"+body1);
     
   if(ffid == "DEFAULT"){
    	updateAccount();
@@ -434,11 +530,12 @@
      var today = new Date();
 
             if ((sDate <= today) && ( eDate >= today)) {
-              
+              console.log("ACTIVE-"+ffid);
               
               updateAccount();
             }
     		 else{
+               console.log("INACTIVE-"+ffid+image1);
      			document.getElementById("valueStore").value="DEFAULT";
               // console.log(Dffid);
               // updateAccountD(Dffid, Dimage1,Dimage2,Dimage3,Dimage4,Dimage5,Dimage6,Dtitle1,Dtitle2,Dtitle3,Dtitle4,Dtitle5,Dtitle6,Dbody1,Dbody2,Dbody3,Dbody4,Dbody5,Dbody6,Dstart,Dend);
@@ -466,22 +563,39 @@
      toDisplay("btxt4",body4);
      toDisplay("btxt5",body5);
      toDisplay("btxt6",body6);
+     toDisplay2("url1",url1);
+     toDisplay2("url2",url2);
+     toDisplay2("url3",url3);
+     toDisplay2("url4",url4);
+     toDisplay2("url5",url5);
+     toDisplay2("url6",url6);
          
      function toDisplay(variable,value){
+       
        if(value == ""){
        	document.getElementById(variable).style.display = "none";
        }
        else{
        	document.getElementById(variable).innerHTML = value;
+        
        }
      
      }
+     
      function toDisplay1(divider,variable,value){
        if(value == ""){
        	document.getElementById(divider).style.display = "none";
        }
        else{
        	document.getElementById(variable).innerHTML = value;
+       }
+     
+     }
+     function toDisplay2(variable,value){
+       
+       if(value != ""){
+         	document.getElementById(variable).href = value;
+        
        }
      
      }
@@ -492,12 +606,12 @@
       mapImage(image4,"image4");
       mapImage(image5,"image5");
       mapImage(image6,"image6");
-     
+     mapImage("{{customer.id}}.jpg","preload");
      
      function mapImage(imagefb,imageid) { 
     var storage = firebase.storage();
         var storageRef = storage.ref();
-        var tangRef = storageRef.child(imagefb);
+       var tangRef = storageRef.child(imagefb);
 
         tangRef.getDownloadURL().then(function(url) 
         {
